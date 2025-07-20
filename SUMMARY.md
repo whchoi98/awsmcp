@@ -17,6 +17,4 @@
   * [12. EC2 연결성 분석](amazon-q-cli-2/12.-ec2.md)
   * [13.네트워크 분석하기](amazon-q-cli-2/13..md)
   * [14. CloudWatch 기반 분석](amazon-q-cli-2/14.-cloudwatch.md)
-  * [.비용최적화 분석하기](amazon-q-cli-2/untitled.md)
-  * [07. Amazon Q CLI로 IaC 배포하기](amazon-q-cli-2/07.-amazon-q-cli-iac.md)
 * [AWS MCP](aws-mcp.md)
