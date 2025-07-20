@@ -11,6 +11,7 @@
   * [05. Amazon Q CLI로 자동화 구현하기](amazon-q-cli-1/05.-amazon-q-cli.md)
   * [06. Amazon Q CLI로 코드 이해하기](amazon-q-cli-1/06.-amazon-q-cli.md)
 * [Amazon Q CLI 기반 플랫폼 운영하기](amazon-q-cli-2/README.md)
+  * [09.Q CLI 기반 플랫폼 운영 환경 설정](amazon-q-cli-2/09.q-cli.md)
   * [07. Amazon Q CLI로 IaC 배포하기](amazon-q-cli-2/07.-amazon-q-cli-iac.md)
   * [08. 프로파일 기반 환경에서 운영하기](amazon-q-cli-2/08..md)
   * [09.비용최적화 분석하기](amazon-q-cli-2/09..md)
