@@ -17,4 +17,5 @@
   * [12. EC2 연결성 분석](amazon-q-cli-2/12.-ec2.md)
   * [13.네트워크 분석하기](amazon-q-cli-2/13..md)
   * [14. CloudWatch 기반 분석](amazon-q-cli-2/14.-cloudwatch.md)
+  * [15. 아키텍쳐 분석하기](amazon-q-cli-2/15..md)
 * [AWS MCP](aws-mcp.md)
