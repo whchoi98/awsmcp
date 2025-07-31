@@ -1,0 +1,2 @@
+# Amazon OpenSearch MCP Server
+

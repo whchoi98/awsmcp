@@ -1,0 +1,2 @@
+# Amazon ElastiCache MCP Server
+

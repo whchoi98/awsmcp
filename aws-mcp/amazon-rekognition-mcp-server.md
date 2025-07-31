@@ -1,0 +1,2 @@
+# Amazon Rekognition MCP Server
+
