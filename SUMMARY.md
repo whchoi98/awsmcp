@@ -18,4 +18,6 @@
   * [13.네트워크 분석하기](amazon-q-cli-2/13..md)
   * [14. CloudWatch 기반 분석](amazon-q-cli-2/14.-cloudwatch.md)
   * [15. 아키텍쳐 분석하기](amazon-q-cli-2/15..md)
+* [Amazon Q CLI 기반  Graviton 전환](amazon-q-cli-graviton/README.md)
+  * [16.Java App을 AWS Graviton으로 전환](amazon-q-cli-graviton/16.java-app-aws-graviton.md)
 * [AWS MCP](aws-mcp.md)
