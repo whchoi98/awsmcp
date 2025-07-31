@@ -22,3 +22,4 @@
   * [16.Java App을 AWS Graviton으로 전환](amazon-q-cli-graviton/16.java-app-aws-graviton.md)
   * [17.Java App을 Graviton으로 전환하기 LAB](amazon-q-cli-graviton/17.java-app-graviton-lab.md)
 * [AWS MCP](aws-mcp.md)
+* [모든 개발자/엔지니어를 위한 랩](undefined.md)
