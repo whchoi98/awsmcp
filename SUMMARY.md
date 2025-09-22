@@ -9,6 +9,7 @@
   * [04. Amazon Q CLI 기능 탐색하기](amazon-q-cli/02.-amazon-q-cli-1.md)
   * [04. Amazon Q CLI 시작하기 (NEW)](amazon-q-cli/04.-amazon-q-cli-new.md)
   * [05. Amazon Q CLI 고급 기능](amazon-q-cli/05.-amazon-q-cli.md)
+  * [05.Amazon Q CLI 고급 기능 (NEW)](amazon-q-cli/05.amazon-q-cli-new.md)
 * [Amazon Q CLI 기반 코드 작성하기](amazon-q-cli-1/README.md)
   * [06. Amazon Q CLI로 코드 작성하기](amazon-q-cli-1/06.-amazon-q-cli.md)
   * [07. Amazon Q CLI로 자동화 구현하기](amazon-q-cli-1/07.-amazon-q-cli.md)
