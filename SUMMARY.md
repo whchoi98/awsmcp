@@ -1,6 +1,15 @@
 # Table of contents
 
-* [Amazon Q CLI](README.md)
+* [Kiro CLI](README.md)
+  * [VSCode 서버 구성하기](kiro-cli/vscode.md)
+  * [Get Started 시작하기](kiro-cli/get-started/README.md)
+    * [Installation / 설치](kiro-cli/get-started/installation.md)
+    * [Authentication Methods / 인증 방식](kiro-cli/get-started/authentication-methods.md)
+  * [Chat/대화모드](kiro-cli/chat.md)
+  * [LAB 01 . Kiro CLI 초기 구축 및 사용](kiro-cli/lab-01-.-kiro-cli.md)
+  * [LAB02. Kiro CLI 고급 구성](kiro-cli/lab02.-kiro-cli.md)
+  * [LAB 03. Kiro CLI](kiro-cli/lab-03.-kiro-cli.md)
+* [Amazon Q CLI](<README (1).md>)
   * [01. VSCode 서버 구성하기](amazon-q-cli/01.-vscode.md)
   * [02. Amazon Q CLI 시작하기](amazon-q-cli/02.-amazon-q-cli.md)
   * [02. Amazon Q CLI 시작하기 (New)](amazon-q-cli/02.-amazon-q-cli-new.md)

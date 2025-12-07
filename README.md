@@ -1,2 +1,2 @@
-# MCP 소개
+# Kiro CLI
 
