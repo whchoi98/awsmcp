@@ -1273,7 +1273,7 @@ MCP 서버(MCP Servers)는 Amazon Q CLI와 같은 AI 코딩 에이전트에게 �
 
 #### 조직 차원의 MCP 비활성화 기능
 
-이 기능은 회사/프로페셔널 계정으로 로그인한 사용자에게만 제공됩니다. 의K o중앙 관리(Admin) 화면에서 다음과 같은 토글 스위치를 통해 MCP 서버 사용 여부를 제어할 수 있습니다:
+이 기능은 회사/프로페셔널 계정으로 로그인한 사용자에게만 제공됩니다. Kiro 관리(Admin) 화면에서 다음과 같은 토글 스위치를 통해 MCP 서버 사용 여부를 제어할 수 있습니다:
 
 <figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
@@ -1310,11 +1310,11 @@ MCP 서버(MCP Servers)는 Amazon Q CLI와 같은 AI 코딩 에이전트에게 �
 
 이를 위해 toolsSettings라는 항목을 custom agent JSON 설정 파일 내에 추가할 수 있으며, 각 도구별로 다음과 같은 권한 필드를 정의할 수 있습니다:
 
-**✅ 내장 도구(Built-in Tools)의 세부 권한 설정 예시:**
+**내장 도구(Built-in Tools)의 세부 권한 설정 예시:**
 
 <table data-header-hidden><thead><tr><th width="184.23440551757812"></th><th></th></tr></thead><tbody><tr><td>Tool 이름</td><td>지원 설정 항목 예시</td></tr><tr><td>fs_read, fs_write</td><td>allowedPaths, deniedPaths</td></tr><tr><td>use_aws</td><td>allowedServices, deniedServices</td></tr><tr><td>execute_bash</td><td>allowedCommands, deniedCommands, allowReadOnly</td></tr></tbody></table>
 
-**🛠 예시:  execute\_bash - 도구의 권한 설정**
+**예시:  execute\_bash - 도구의 권한 설정**
 
 ```
 "toolsSettings": {
@@ -1332,7 +1332,7 @@ MCP 서버(MCP Servers)는 Amazon Q CLI와 같은 AI 코딩 에이전트에게 �
 
 ***
 
-### 🌐 MCP 서버 도구(MCP Server Tools)의 세부 설정
+### MCP 서버 도구(MCP Server Tools)의 세부 설정
 
 MCP 서버를 통해 추가된 도구도 동일한 방식으로 설정할 수 있습니다.
 
@@ -1348,50 +1348,79 @@ MCP 서버를 통해 추가된 도구도 동일한 방식으로 설정할 수 �
 }
 ```
 
-#### 📌 참고사항
+#### 참고사항
 
 * 모든 도구가 toolsSettings 구성을 지원하는 것은 아닙니다.
 * 세부 옵션이 존재하는지 여부는 공식 문서 또는 MCP Server 문서를 반드시 확인해야 합니다.
 
-#### ✅ 요약
+#### 요약
 
 <table data-header-hidden><thead><tr><th width="185.83242797851562"></th><th></th></tr></thead><tbody><tr><td>항목</td><td>설명</td></tr><tr><td>toolsSettings</td><td>도구별 세부 권한을 제어하는 JSON 설정 블록</td></tr><tr><td>적용 대상</td><td>내장 도구 및 MCP 서버 도구 모두</td></tr><tr><td>필수 문서</td><td>각 도구 또는 MCP 서버 문서에서 지원 옵션 확인 필요</td></tr><tr><td>유용성</td><td>조직 보안 정책 또는 개발 표준에 따라 강력한 제어 가능</td></tr></tbody></table>
 
 필요 시, execute\_bash, fs\_write, use\_aws 등의 권한을 제한하거나 허용함으로써, 개발자 실수 방지, 보안 강화, 컴플라이언스 대응에 유용하게 사용할 수 있습니다.
 
-### ✅ Task-10: Amazon Q CLI에서 파일 접근 제어 설정 (Fine-Grained File Access Control)&#x20;
+### Task-10: Kiro CLI에서 파일 접근 제어 설정 (Fine-Grained File Access Control)&#x20;
 
-이번 태스크(Task)에서는 Amazon Q CLI가 접근 가능한 파일의 범위를 제어하는 Custom Agent 설정을 구성해 봅니다.
+이번 Task에서는 Kiro CLI가 접근 가능한 파일의 범위를 제어하는 Custom Agent 설정을 구성해 봅니다.
 
 * 프로젝트 디렉토리 내의 파일은 읽기 허용
 * 민감하거나 임시적인 경로(/tmp 등)는 접근 차단
 
-#### 🛠 Custom Agent JSON 설정 예시
+#### Custom Agent JSON 설정 예시
 
 ```
 {
-  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
   "name": "python-developer",
   "description": "",
   "prompt": null,
-  "mcpServers": {},
+  "mcpServers": {
+    "awslabs.aws-documentation-mcp-server": {
+      "command": "uvx",
+      "args": ["awslabs.aws-documentation-mcp-server@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "AWS_DOCUMENTATION_PARTITION": "aws"
+      },
+      "disabled": true
+    },
+    "KiroCLIPromptDemo": {
+      "command": "uv",
+      "args": ["--directory", "/home/ec2-user/mcp-prompts", "run", "--with", "mcp", "mcp", "run", "mcp-server.py"]
+    }
+  },
   "tools": [
     "fs_read",
     "fs_write",
-    "use_aws"
+    "use_aws",
+    "@awslabs.aws-documentation-mcp-server/read_documentation",
+    "@awslabs.aws-documentation-mcp-server/search_documentation"
   ],
   "toolAliases": {},
-  "allowedTools": ["fs_read", "fs_write"],
+  "allowedTools": ["fs_read", "fs_write", "use_aws"],
   "resources": [
-    "file://.amazonq/rules/**/*.md"
+    "file://AGENTS.md",
+    "file://README.md"
   ],
-  "hooks": {},
-  "toolsSettings": {
-    "fs_read": {
-      "allowedPaths": ["./**"],
-      "deniedPaths": ["/tmp/*"]
-    }
+  "hooks": {
+    "userPromptSubmit": [
+      {
+        "command": "cat pirate.md"
+      }
+    ],
+    "agentSpawn": [
+     {
+       "command": "aws sts get-caller-identity"
+     }
+    ]
+  },
+"toolsSettings": {
+  "fs_read": {
+    "allowedPaths": ["./**"],
+    "deniedPaths": ["/tmp/*"]
   }
+},
+  "useLegacyMcpJson": true,
+  "model": null
 }
 ```
 
@@ -1409,39 +1438,53 @@ MCP 서버를 통해 추가된 도구도 동일한 방식으로 설정할 수 �
 * "allowedPaths": \["./\*\*"] → 현재 디렉토리(./) 및 모든 하위 디렉토리(\*\*) 읽기 허용
 * "deniedPaths": \["/tmp/\*"] → /tmp 디렉토리 하위 파일은 접근 차단
 
-#### 📂 테스트 파일 생성
+#### 테스트 파일 생성
 
 ```
-echo "import os" > /tmp/q-cli-test.py
-echo "import os" > q-cli-test.py
-echo "import os" > ~/q-cli-test.py
+echo "import os" > /tmp/kiro-cli-test.py
+echo "import os" > kiro-cli-test.py
+echo "import os" > ~/kiro-cli-test.py
 ```
 
-#### ▶️ 테스트 프롬프트 입력
+#### 테스트 프롬프트 입력
 
 1. 정상 접근 테스트:
 
 ```
-"q-cli-test.py" 파일을 검토하고, 어떤 프로그래밍 언어로 작성되었는지 알려줄 수 있나요?
+"kiro-cli-test.py" 파일을 검토하고, 어떤 프로그래밍 언어로 작성되었는지 알려줄 수 있나요?
 ```
 
-✅ 정상 작동해야 하며, Python으로 인식할 가능성 높음.
+정상 작동해야 하며, Python으로 인식할 가능성 높습니다.
 
 2. 차단 테스트:
 
 ```
-"/tmp/q-cli-test.py" 파일을 검토하고, 어떤 프로그래밍 언어로 작성되었는지 알려줄 수 있나요?
-"~/q-cli-test.py" 파일을 검토하고, 어떤 프로그래밍 언어로 작성되었는지 알려줄 수 있나요?
+"/tmp/kiro-cli-test.py" 파일을 검토하고, 어떤 프로그래밍 언어로 작성되었는지 알려줄 수 있나요?
+"~/kiro-cli-test.py" 파일을 검토하고, 어떤 프로그래밍 언어로 작성되었는지 알려줄 수 있나요?
 ```
 
 차단된 경로이므로, 다음과 같은 오류 메시지가 나와야 정상입니다:
 
 ```
-파일 읽기가 금지된 인자(인수)로 인해 거부된 것으로 이해됩니다.
-이는 “/tmp/q-cli-test.py” 경로가 허용된 디렉터리 범위를 벗어났거나 제한된 콘텐츠를 포함하고 있기 때문일 가능성이 큽니다.
+Command fs_read is rejected because it matches one or more rules on the denied list:
+  - /tmp/*
+
+✓ 1 of 1 hooks finished in 0.08 s
+> 아하! 제가 두 파일을 한 번에 읽으려다가 거절당했네요. 😅 마치 뷔페에서 접시 두 개를 들고 가려다 "한 번에 하나씩만요!"라고 제지당한 기분입니다.
+
+그럼 한 번에 하나씩 정중하게 읽어볼게요!
+Command fs_read is rejected because it matches one or more rules on the denied list:
+  - /tmp/*
+
+✓ 1 of 1 hooks finished in 0.08 s
+> 음... 이번엔 한 개만 읽으려 했는데도 거절당했네요! 🤔 
+
+파일 경로에 뭔가 민감한 부분이 있나 봅니다. /tmp 디렉토리나 특정 경로 접근이 제한되어 있는 것 같아요. 마치 "출입금지" 표지판이 붙은 방문을 열려다 경비원한테 제지당한 느낌이네요! 🚫
+
+혹시 현재 디렉토리(/home/ec2-user)에 있는 파일이나 접근 가능한 다른 경로의 파일을 확인해드릴까요? 아니면 파일 내용을 직접 보여주시면 어떤 언어인지 알려드릴 수 있습니다! 😊
 ```
 
-#### ✅ 요약
+#### 요약
 
 <table data-header-hidden><thead><tr><th width="239.89846801757812"></th><th></th></tr></thead><tbody><tr><td>설정 목적</td><td>설정 방법</td></tr><tr><td>특정 디렉토리만 읽기 허용</td><td>"allowedPaths": ["./**"]</td></tr><tr><td>민감한 디렉토리 차단</td><td>"deniedPaths": ["/tmp/*", "~/secret/**"]</td></tr><tr><td>설정 대상 도구</td><td>"fs_read", "fs_write" 등</td></tr></tbody></table>
 
@@ -1449,22 +1492,22 @@ echo "import os" > ~/q-cli-test.py
 
 ***
 
-## 🧩  17. 프로젝트 범위(Custom Scope)의 커스텀 에이전트 생성하기
+## 17. 프로젝트 범위(Custom Scope)의 커스텀 에이전트 생성하기
 
 \
 지금까지 이 실습에서는 전역(Global) 커스텀 에이전트만 생성해왔습니다. 커스텀 에이전트가 전역인지, 프로젝트 범위(Project Scoped)인지 여부는 JSON 구성 파일의 위치에 따라 결정됩니다.
 
-### **🔹 전역(Global) 커스텀 에이전트**
+### **전역(Global) 커스텀 에이전트**
 
 실습 초반에 agent create -n xxx 명령어를 사용해 에이전트를 생성했는데,기본적으로 이 명령은 전역 범위(Global Scope)로 커스텀 에이전트를 생성합니다.
 
 이 경우, JSON 구성 파일은 다음 위치에 생성됩니다:
 
 ```
-~/.aws/amazonq/client-agents
+~/.kiro/agents/
 ```
 
-### **🔹 프로젝트 범위(Project Scoped) 커스텀 에이전트**
+### **프로젝트 범위(Project Scoped) 커스텀 에이전트**
 
 에이전트를 특정 프로젝트 디렉터리에 국한하고 싶다면, -d 인자를 추가로 사용하면 됩니다:
 
@@ -1475,17 +1518,21 @@ agent create -n my-agent -d .
 이렇게 하면 JSON 구성 파일은 다음 경로에 생성됩니다:
 
 ```
-./.amazonq/client-agents
+<프로젝트_디렉토리>/.kiro-project/agents/
 ```
 
-→ 이 경로에 위치하게 되면 프로젝트 범위(Project Scoped)의 커스텀 에이전트로 인식됩니다.
+```
+<프로젝트_디렉토리>/.kiro/agents/
+```
 
-### **🔹 커스텀 에이전트 로드 우선순위**
+이 경로에 위치하게 되면 프로젝트 범위(Project Scoped)의 커스텀 에이전트로 인식됩니다.
 
-Amazon Q CLI가 에이전트를 로드할 때는 다음과 같은 우선순위를 따릅니다:
+### **커스텀 에이전트 로드 우선순위**
 
-1. 로컬(프로젝트) 범위의 커스텀 에이전트 - 현재 작업 디렉터리 기준으로 .amazonq/client-agents 에서 먼저 탐색
-2. 전역(Global) 범위의 커스텀 에이전트- 사용자 홈 디렉터리의 \~/.aws/amazonq/client-agents 에서 탐색
+Kiro CLI가 에이전트를 로드할 때는 다음과 같은 우선순위를 따릅니다:
+
+1. 로컬(프로젝트) 범위의 커스텀 에이전트 - 현재 작업 디렉터리 기준으로 `<프로젝트_디렉토리>/.kiro-project/agents/` 에서 먼저 탐색
+2. 전역(Global) 범위의 커스텀 에이전트- 사용자 홈 디렉터리의 `~/.kiro/agents/` 에서 탐색
 3. 기본 내장(Built-in) 에이전트 - 로컬 및 전역 범위에서도 찾을 수 없는 경우 사용
 
 > 만약 동일한 이름의 커스텀 에이전트가 로컬과 전역 모두에 존재한다면, 로컬(프로젝트 범위)의 에이전트가 우선시됩니다.
