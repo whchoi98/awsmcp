@@ -205,7 +205,7 @@ Amazon Q CLI 세션에서 아래 명령을 입력하면 해당 스키마 전체�
 
 “python-developer” — 파이썬 코드 작성을 위한 구체적인 가이드라인을 규칙(Rule)로 불러오는 커스텀 에이전트입니다.&#x20;
 
-### 🧪 Task-02: 커스텀 에이전트 생성하기
+### Task-02: 커스텀 에이전트 생성하기
 
 Amazon Q CLI 세션에서, 아래 명령어를 입력합니다:
 
@@ -264,10 +264,10 @@ Amazon Q CLI 세션에서, 아래 명령어를 입력합니다:
 
 #### 에이전트 적용하여 실행
 
-k세K션을 종료하고, 아래 명령으로 다시 Q 에 접속해 봅니다.
+kiro cli 세션을 종료하고, 아래 명령으로 다시 kiro cli 에 접속해 봅니다.
 
 ```
-q chat --agent python-developer
+kiro-cli --agent python-developer
 ```
 
 실행하면, 프롬프트 앞에 \[python-developer] 가 붙은 것을 볼 수 있습니다.
@@ -289,26 +289,25 @@ q chat --agent python-developer
 예시 출력:
 
 ```
-> /context show
+[python-developer] > /context show
 
-👤 Agent (python-developer):
-    .amazonq/rules/**/*.md 
+Agent (python-developer)
+  - AGENTS.md (no matches)
+  - README.md (no matches)
 
-💬 Session (temporary):
-    <none>
-
-No files in the current directory matched the rules above.
+Session (temporary)
+  <none>
 ```
 
 ***
 
-## 🧩 5. /agent generate 명령어로 자동 생성하기 (v1.15+)
+## 5. `/agent generate` 명령어로 자동 생성하기 (v1.15+)
 
-Amazon Q CLI v1.15부터 도입된 새로운 명령어 `/agent generate`는 커스텀 에이전트(Custom Agent) 생성을 보다 쉽게 만들어 줍니다.
+Kiro CLI v1.15부터 도입된 새로운 명령어 `/agent generate`는 커스텀 에이전트(Custom Agent) 생성을 보다 쉽게 만들어 줍니다.
 
 이 명령어는 설정 과정을 단계적으로 안내하며, 최종적으로는 JSON 에디터로 이동해 필요한 수정을 할 수 있도록 합니다.
 
-Amazon Q CLI 세션에서 다음 명령어를 입력하세요:
+Kiro CLI 세션에서 다음 명령어를 입력하세요:
 
 ```
 /agent generate
@@ -328,20 +327,27 @@ Amazon Q CLI 세션에서 다음 명령어를 입력하세요:
 {
   "name": "python-dev",
   "description": "Python developer",
-  "prompt": "You are a Python developer assistant. ...",
-  "tools": ["*"],
-  "allowedTools": ["fs_read"],
+  "prompt": "You are a Python developer assistant. Help with Python programming tasks including writing, debugging, testing, and optimizing Python code. Provide best practices, explain concepts, and assist with Python libraries and frameworks.",
+  "mcpServers": {},
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {},
+  "allowedTools": [],
   "resources": [
-    "file://AmazonQ.md",
-    "file://README.md",
-    "file://.amazonq/rules/**/*.md"
-  ]
+    "file://AGENTS.md",
+    "file://README.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {},
+  "useLegacyMcpJson": false,
+  "model": null
 }
 ```
 
 📝 `/agent create` 와는 달리, `/agent generate` 는 자동으로 prompt도 생성해줍니다.
 
-#### 🎯 특정 모델 연결하기
+#### 특정 모델 연결하기
 
 원하는 모델을 지정하려면 model 필드를 설정:
 
@@ -355,25 +361,25 @@ Amazon Q CLI 세션에서 다음 명령어를 입력하세요:
 * "claude-sonnet-4"
 * null (기본 설정값 사용)
 
-#### 📌 요약
+#### &#x20;요약
 
 <table data-header-hidden><thead><tr><th width="249.65936279296875"></th><th></th></tr></thead><tbody><tr><td>작업</td><td>명령어</td></tr><tr><td>커스텀 에이전트 생성</td><td>/agent create --name &#x3C;name></td></tr><tr><td>자동 생성 (AI 기반)</td><td>/agent generate</td></tr><tr><td>사용 중인 에이전트 목록 보기</td><td>/agent list</td></tr><tr><td>구성 편집</td><td>/agent edit --name &#x3C;name></td></tr><tr><td>적용하여 실행</td><td>q chat --agent &#x3C;name></td></tr><tr><td>컨텍스트 확인</td><td>/context show</td></tr></tbody></table>
 
-이제  Amazon Q CLI에서 자신만의 커스텀 에이전트 환경을 구성하고 적용할 수 있습니다.
+이제  Kiro CLI에서 자신만의 커스텀 에이전트 환경을 구성하고 적용할 수 있습니다.
 
 ***
 
-### 🧩 6. Custom Agent 구성 (Tool & Trust)
+## 6. Custom Agent 구성 (Tool & Trust)
 
-#### 🧪 Task 03 : Tools 및 권한 구성하기
+### Task 03 : Tools 및 권한 구성하기
 
-이전 실습에서는 Amazon Q CLI에서 사용할 수 있는 도구(tools)와 신뢰(trust) 설정에 대해 알아보았습니다.
+이전 실습에서는 Kiro CLI에서 사용할 수 있는 도구(tools)와 신뢰(trust) 설정에 대해 알아보았습니다.
 
-기본 커스텀 에이전트인 q\_cli\_default는 Amazon Q CLI에 내장된 모든 도구를 사용할 수 있도록 되어 있습니다.
+기본 커스텀 에이전트인 kiro\_default는 Kiro CLI에 내장된 모든 도구를 사용할 수 있도록 되어 있습니다.
 
 하지만 새로 생성한 Custom Agent(예: python-developer)는 기본적으로 아무 도구도 포함하고 있지 않습니다.
 
-#### 🧵 현재 세션에서 사용 가능한 도구 확인
+#### 현재 세션에서 사용 가능한 도구 확인
 
 ```
 /tools
@@ -395,7 +401,7 @@ Built-in:
 
 ***
 
-## 🧩  7. Custom Agent 설정 파일 수정
+## 7. Custom Agent 설정 파일 수정
 
 이제 tools 항목을 설정하여 Amazon Q CLI의 기본 내장 도구들을 사용할 수 있도록 변경해 보겠습니다.
 
@@ -410,63 +416,42 @@ Built-in:
 * 이 방법은 Global Custom Agent를 생성하므로 JSON 설정 파일은 다음 경로에 저장됩니다:
 
 ```
-~/.aws/amazonq/cli-agents/python-developer.json
+~/.kiro/agents/python-developer.json
 ```
 
-#### ✏️ tools 설정 추가
-
-파일을 열고 아래와 같이 수정하세요:
+#### tools 설정 확인
 
 ```
 {
   "name": "python-developer",
+  "description": "",
   "prompt": null,
   "mcpServers": {},
-  "tools": ["@builtin"],
+  "tools": [
+    "*"
+  ],
   "toolAliases": {},
   "allowedTools": [],
   "resources": [
-    "file://.amazonq/rules/**/*.md"
+    "file://AGENTS.md",
+    "file://README.md"
   ],
   "hooks": {},
-  "toolsSettings": {}
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": null
 }
 ```
 
 <table data-header-hidden><thead><tr><th width="181.29998779296875"></th><th></th></tr></thead><tbody><tr><td>키</td><td>설명</td></tr><tr><td>"tools"</td><td>"@builtin"은 Amazon Q CLI의 모든 내장 도구를 활성화합니다.</td></tr><tr><td>"*"</td><td>와일드카드로 모든 도구를 허용</td></tr><tr><td>"execute_bash"</td><td>bash 명령 실행</td></tr><tr><td>"fs_read"</td><td>파일 시스템 읽기</td></tr><tr><td>"fs_write"</td><td>파일 시스템 쓰기</td></tr><tr><td>"report_issue"</td><td>GitHub issue 생성</td></tr><tr><td>"use_aws"</td><td>AWS CLI 명령 실행</td></tr></tbody></table>
 
-#### 🔁 Amazon Q CLI 재시작
-
-```
-q chat --agent python-developer
-```
-
-#### 🔍 다시 도구 확인
-
-```
-/tools
-```
-
-출력 예시:
-
-```
-Tool              Permission
-▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
-Built-in:
-- execute_bash    * trust read-only commands
-- fs_read         * trusted
-- fs_write        * not trusted
-- report_issue    * trusted
-- use_aws         * trust read-only commands
-```
-
-## 🧩 8. 기본 권한 설정 변경하기
+## 8. 기본 권한 설정 변경하기
 
 기본적으로 일부 도구는 “`not trusted`” 상태로 시작합니다.
 
 이제 `allowedTools` 항목을 설정하여, 특정 도구를 자동으로 신뢰할 수 있도록 변경해 봅니다.
 
-#### ✏️ JSON 수정
+#### &#x20;JSON 수정
 
 ```
 {
@@ -487,7 +472,7 @@ Built-in:
 #### 🔁 다시 Amazon Q CLI 재시작
 
 ```
-q chat --agent python-developer
+kiro-cli --agent python-developer
 ```
 
 #### 🔍 권한 상태 재확인
@@ -499,19 +484,23 @@ q chat --agent python-developer
 변경된 출력 예시:
 
 ```
+[python-developer] > /tools
+
 Tool              Permission
-▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
-Built-in:
-- execute_bash    * trust read-only commands
-- fs_read         * trusted
-- fs_write        * trusted
-- report_issue    * trusted
-- use_aws         * trusted
+▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔Built-in
+- shell           not trusted
+- read            trusted
+- write           trusted
+- introspect      trusted
+- report          not trusted
+- aws             trusted
+- web_fetch       not trusted
+- web_search      not trusted
 ```
 
-🔐 이제 fs\_write 및 use\_aws도 기본적으로 신뢰(trusted) 상태입니다.
+이제 fs\_write 및 use\_aws도 기본적으로 신뢰(trusted) 상태입니다.
 
-#### 🧪  Task04 - 기본 Custom Agent 설정하기
+#### Task04 - 기본 Custom Agent 설정하기
 
 Amazon Q CLI를 실행할 때 매번 `--agent` 옵션을 쓰지 않고, 기본 커스텀 에이전트를 `python-developer`로 변경해 봅니다.
 
@@ -530,27 +519,27 @@ Amazon Q CLI를 실행할 때 매번 `--agent` 옵션을 쓰지 않고, 기본 �
 * 재시작하여 확인
 
 ```
-q chat
+kiro-cli
 ```
 
-→ \[python-developer] > 프롬프트가 나타나면 성공!
+\[python-developer] > 프롬프트가 나타나면 성공!
 
-#### ⚙️ 설정 파일 확인 (선택)
+#### 설정 파일 확인 (선택)
 
 ```
-q settings open
+kiro-cli settings list
 ```
 
 설정 파일에 다음 항목이 추가되어 있어야 합니다:
 
 ```
-chat.defaultAgent: "python-developer"
+chat.defaultAgent = "python-developer"
 ```
 
 ***
 
-🧩  9. Custom Agent 간 전환하기<br>
-------------------------------
+9\. Custom Agent 간 전환하기<br>
+---------------------------
 
 세션 도중에 커스텀 에이전트를 바꾸고 싶을 때는 다음 명령으로 가능합니다:
 
@@ -566,7 +555,7 @@ chat.defaultAgent: "python-developer"
 
 에이전트를 전환하면 MCP 서버 연결, 도구 및 권한 설정, 컨텍스트 리소스 등이 모두 자동으로 적용됩니다.
 
-#### ✅ 요약
+#### 요약
 
 | 작업          | 명령어                          |
 | ----------- | ---------------------------- |
@@ -576,7 +565,7 @@ chat.defaultAgent: "python-developer"
 | 기본 에이전트 설정  | /agent set-default -n {name} |
 | 에이전트 간 전환   | /agent swap {name}           |
 
-#### 🔒 보안 관련 주의사항
+#### 보안 관련 주의사항
 
 * 도구 권한은 가능한 최소한으로 설정하세요.
 * 특히 execute\_bash, fs\_write, use\_aws와 같은 도구는 신중하게 신뢰 설정을 하세요.
@@ -588,17 +577,17 @@ chat.defaultAgent: "python-developer"
 
 ***
 
-## 🧩 10. Context Hooks 구성
+## 10. Context Hooks 구성
 
-#### 📌 Context Hook이란?
+#### Context Hook이란?
 
-Context Hook은 Amazon Q CLI에서 대화 중에 자동으로 컨텍스트(문맥)를 주입할 수 있는 기능입니다.
+Context Hook은 Kiro CLI에서 대화 중에 자동으로 컨텍스트(문맥)를 주입할 수 있는 기능입니다.
 
-Hook은 명령어(command)를 실행한 결과를 컨텍스트로 포함시켜, Amazon Q CLI가 더 정확하고 상황에 맞는 응답을 할 수 있도록 돕습니다.
+Hook은 명령어(command)를 실행한 결과를 컨텍스트로 포함시켜, Kiro CLI가 더 정확하고 상황에 맞는 응답을 할 수 있도록 돕습니다.
 
 이러한 Context Hook은 Custom Agent 내부에서 구성합니다.
 
-#### 📚 Amazon Q CLI는 다음과 같은 4가지 유형의 Context Hook을 지원합니다:
+#### Kiro CLI는 다음과 같은 4가지 유형의 Context Hook을 지원합니다:
 
 <table data-header-hidden><thead><tr><th width="175.98431396484375"></th><th></th></tr></thead><tbody><tr><td>Hook 유형</td><td>설명</td></tr><tr><td>agentSpawn</td><td>대화 세션 시작 시 한 번만 실행. 결과는 전체 세션 동안 유지되는 컨텍스트로 추가됩니다.</td></tr><tr><td>userPromptSubmit</td><td>사용자의 프롬프트가 제출될 때마다 실행. 해당 프롬프트에만 결과가 포함됩니다.</td></tr><tr><td>preToolUse</td><td>도구(tool)가 실행되기 전에 실행됨. 도구 실행을 검증하거나 차단할 때 유용합니다.</td></tr><tr><td>postToolUse</td><td>도구 실행 후 결과가 반환될 때 실행됨. 도구 출력값을 후처리할 수 있습니다.</td></tr></tbody></table>
 
@@ -618,17 +607,19 @@ Hook은 명령어(command)를 실행한 결과를 컨텍스트로 포함시켜, 
 No hooks are configured.
 ```
 
-### 🧪 Task-05: Per-Prompt Hook 만들기 (Pirate Style)
+### Task-05: Per-Prompt Hook 만들기 (Pirate Style)
 
 \
 이번 실습에서는 매번 프롬프트를 제출할 때마다 해적처럼 말하고 유머를 섞도록 하는 Hook을 만들어 보겠습니다.
 
 #### 1. pirate.md  파일 생성
 
-Amazon Q CLI를 종료한 뒤, 현재 디렉토리에 pirate.md 파일을 만들고 아래 내용을 작성합니다:
+Kiro CLI를 종료한 뒤, 현재 디렉토리에 pirate.md 파일을 만들고 아래 내용을 작성합니다:
 
 ```
-“해적처럼 말하고, 어이없는 농담을 해라.”
+cat << EOF > ~/ㅔ.md
+해적처럼 말하고, 어이없는 농담을 해라.
+EOF
 ```
 
 #### 2. Custom Agent JSON 수정
