@@ -617,8 +617,8 @@ No hooks are configured.
 Kiro CLI를 종료한 뒤, 현재 디렉토리에 pirate.md 파일을 만들고 아래 내용을 작성합니다:
 
 ```
-cat << EOF > ~/ㅔ.md
-해적처럼 말하고, 어이없는 농담을 해라.
+cat << EOF > ~/pirate.md
+답변을 할 때 한국어로 답변하고, 유머러스하게 반말로 답변해줘.
 EOF
 ```
 
@@ -626,29 +626,32 @@ EOF
 
 기존의 python-developer 에이전트 설정 파일을 아래와 같이 수정합니다:
 
-```
-{
-  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+<pre><code>{
   "name": "python-developer",
   "description": "",
   "prompt": null,
   "mcpServers": {},
-  "tools": ["*"],
-  "toolAliases": {},
-  "allowedTools": ["fs_read","fs_write","use_aws"],
-  "resources": [
-    "file://.amazonq/rules/**/*.md"
+  "tools": [
+    "*"
   ],
-  "hooks": {
-    "userPromptSubmit": [
+  "toolAliases": {},
+  "allowedTools": ["fs_read", "fs_write", "use_aws"],
+  "resources": [
+    "file://AGENTS.md",
+    "file://README.md"
+  ],
+<strong>  "hooks": {
+</strong>    "userPromptSubmit": [
       {
         "command": "cat pirate.md"
       }
     ]
   },
-  "toolsSettings": {}
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": null
 }
-```
+</code></pre>
 
 #### 3. Amazon Q CLI 재시작 및 Hook 확인
 
@@ -672,32 +675,39 @@ userPromptSubmit:
 “당신이 사용 중인 모델은 무엇인가요?”
 ```
 
-👉 출력 결과에 해적 말투와 유머가 포함되는지 확인해 보세요!<br>
+출력 결과에 해적 말투와 유머가 포함되는지 확인해 보세요!
+
+출력 예시
+
+```
+나는 AWS가 만든 AI 어시스턴트 Kiro야! 근데 솔직히 말하면... 내가 정확히 어떤 모델 기반인지는 AWS가 비밀로 하고 있어서 나도 몰라 ㅋㅋ 
+
+뭐 중요한 건 모델 이름보다는 내가 뭘 할 수 있냐는 거 아니겠어? 파일 읽고 쓰고, 배시 명령어 실행하고, AWS 리소스 관리하고, 코드 짜고... 이런 거 다 할 수 있으니까 필요한 거 있으면 편하게 말해봐! 😎
+```
 
 이 Hook은 cat pirate.md의 출력이 매 프롬프트마다 컨텍스트로 주입되기 때문에 동작합니다.
 
-#### 🎯 Session 시작 시 실행되는 Hook : agentSpawn
+#### 5. Session 시작 시 실행되는 Hook : agentSpawn
 
 이번에는 Amazon Q CLI 세션을 시작할 때 자동으로 실행되는 Hook을 설정해보겠습니다.
 
 예: 현재 시간과 날짜를 컨텍스트에 포함시키기
 
 ```
-"hooks": {
-  "agentSpawn": [
-    {
-      "command": "echo 'current date and time is:' && date"
-    }
-  ]
-}
+  "hooks": {
+        "agentSpawn": [
+     {
+       "command": "aws sts get-caller-identity"
+     }
+    ]
 ```
 
 📌 agentSpawn Hook은 대화가 시작될 때 한 번만 실행되며, 그 출력은 전체 세션의 고정 컨텍스트가 됩니다.
 
-## 🧩 11. Tool 관련 Hook 설정하기
+## 11. Tool 관련 Hook 설정하기
 
 \
-Amazon Q CLI에서 사용 가능한 도구들(ex: fs\_write, execute\_bash)에 대해 도구 실행 전후에 Hook을 설정할 수 있습니다.
+Kiro CLI에서 사용 가능한 도구들(ex: fs\_write, execute\_bash)에 대해 도구 실행 전후에 Hook을 설정할 수 있습니다.
 
 이때는 Hook 설정에 matcher 필드를 추가로 사용합니다.
 
@@ -724,7 +734,7 @@ Amazon Q CLI에서 사용 가능한 도구들(ex: fs\_write, execute\_bash)에 �
 
 📌 matcher 필드는 Hook이 어떤 도구에 연동되는지를 명시합니다.
 
-### 📌 요약
+### 요약
 
 | Hook 유형    | 키 값              | 실행 시점             | 사용 예         |
 | ---------- | ---------------- | ----------------- | ------------ |
@@ -733,7 +743,7 @@ Amazon Q CLI에서 사용 가능한 도구들(ex: fs\_write, execute\_bash)에 �
 | 도구 실행 전    | preToolUse       | 도구 실행 직전          | 로깅, 차단       |
 | 도구 실행 후    | postToolUse      | 도구 실행 직후          | 포맷팅, 검증      |
 
-### 📦 참고
+### 참고
 
 * .md 파일, 쉘 커맨드 등 자유롭게 Hook에 활용 가능
 * Hook 설정은 Custom Agent마다 독립적으로 구성됩니다
@@ -743,11 +753,11 @@ Amazon Q CLI에서 사용 가능한 도구들(ex: fs\_write, execute\_bash)에 �
 
 ***
 
-## 🧩  12. MCP Servers 설정
+## 12. MCP Servers 설정
 
-앞서 이 실습의 초반부에서 MCP(Model Context Protocol)와 Amazon Q CLI에서 이를 세션에 통합하는 방법에 대해 소개했습니다. 지금까지 우리는 Custom Agent(사용자 정의 에이전트)를 사용하여 context 제공을 위한 리소스를 추가하고, 사용할 수 있는 tools(도구) 설정 방법과 context hooks(후크) 생성 방법을 배웠습니다. 이 모든 작업은 Custom Agent의 JSON 구성 파일을 편집하여 수행되었습니다.
+앞서 이 실습의 초반부에서 MCP(Model Context Protocol)와 Kiro CLI에서 이를 세션에 통합하는 방법에 대해 소개했습니다. 지금까지 Custom Agent(사용자 정의 에이전트)를 사용하여 context 제공을 위한 리소스를 추가하고, 사용할 수 있는 tools(도구) 설정 방법과 context hooks(후크) 생성 방법을 배웠습니다. 이 모든 작업은 Custom Agent의 JSON 구성 파일을 편집하여 수행되었습니다.
 
-MCP Server는 Tools, Resources, Prompts를 노출할 수 있으며, Amazon Q CLI는 이 중 Tools와 Prompts를 사용할 수 있습니다.
+MCP Server는 Tools, Resources, Prompts를 노출할 수 있으며, Kiro CLI는 이 중 Tools와 Prompts를 사용할 수 있습니다.
 
 Tools를 제공하는 MCP Server를 추가하면, 이는 Amazon Q CLI의 기존 도구들과 동일하게 동작하며, 접근 제어와 권한 설정도 동일한 방식으로 관리할 수 있습니다.
 
@@ -772,13 +782,12 @@ Tools를 제공하는 MCP Server를 추가하면, 이는 Amazon Q CLI의 기존 
 
 AWS MCP Servers 목록은 [AWS MCP Server Directory](https://github.com/awslabs/amazon-q-devtools-mcp-servers)에서 확인할 수 있으며, 각 MCP Server가 제공하는 기능 및 설치 방법도 포함되어 있습니다.
 
-#### 🧪 Task-06: MCP Server 통합
+#### Task-06: MCP Server 통합
 
 기존의 `python-developer` 에이전트 구성에 위의 `mcpServers` 블록을 추가합니다.
 
 ```
 {
-  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
   "name": "python-developer",
   "description": "",
   "prompt": null,
@@ -792,14 +801,30 @@ AWS MCP Servers 목록은 [AWS MCP Server Directory](https://github.com/awslabs/
       }
     }
   },
-  "tools": ["*"],
+  "tools": [
+    "*"
+  ],
   "toolAliases": {},
   "allowedTools": ["fs_read", "fs_write", "use_aws"],
   "resources": [
-    "file://.amazonq/rules/**/*.md"
+    "file://AGENTS.md",
+    "file://README.md"
   ],
-  "hooks": {},
-  "toolsSettings": {}
+  "hooks": {
+    "userPromptSubmit": [
+      {
+        "command": "cat pirate.md"
+      }
+    ],
+    "agentSpawn": [
+     {
+       "command": "aws sts get-caller-identity"
+     }
+    ]
+  },
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": null
 }
 ```
 
@@ -824,11 +849,11 @@ awslabs.aws-documentation-mcp-server
 ✓ awslabs.aws-documentation-mcp-server loaded in 10.37 s
 ```
 
-### 🎯 MCP 서버 도구(Tools) 설정하기
+### MCP 서버 도구(Tools) 설정하기
 
 MCP 서버를 통합하면 해당 서버가 제공하는 도구(Tools)을 사용할 수 있게 되며, /tools 명령어를 통해 확인할 수 있습니다. 이 MCP 도구(Tools)들도 Amazon Q CLI 내 기본 도구(Tools)과 동일하게 신뢰 여부(trusted/untrusted)를 설정할 수 있습니다.
 
-#### 🧪  Task-07: MCP Tools 구성 및 권한 설정
+#### Task-07: MCP Tools 구성 및 권한 설정
 
 MCP Server가 정상적으로 로드되면 해당 MCP Server가 제공하는 도구들이 `/tools` 명령어를 통해 표시됩니다.&#x20;
 
@@ -842,25 +867,26 @@ MCP Server가 정상적으로 로드되면 해당 MCP Server가 제공하는 도
 
 ```
 Tool                      Permission
-▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
-Built-in:
-- execute_bash            * trust read-only commands
-- fs_read                 * trusted
-- fs_write                * trusted
-- report_issue            * trusted
-- use_aws                 * trusted
+▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔Built-in
+- shell                   not trusted
+- read                    trusted
+- write                   trusted
+- introspect              trusted
+- report                  not trusted
+- aws                     trusted
+- web_fetch               not trusted
+- web_search              not trusted
 
-awslabs.aws-documentation-mcp-server (MCP):
-- read_documentation      * not trusted
-- recommend               * not trusted
-- search_documentation    * not trusted
+awslabs.aws-documentation-mcp-server (MCP)
+- read_documentation      not trusted
+- recommend               not trusted
+- search_documentation    not trusted
 ```
 
 Custom Agent의 JSON 파일을 다음과 같이 수정하여,  특정 MCP Tools만 활성화하고 일부에 대해서만 신뢰 권한을 부여할 수 있습니다:
 
 ```json
 {
-  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
   "name": "python-developer",
   "description": "",
   "prompt": null,
@@ -871,8 +897,7 @@ Custom Agent의 JSON 파일을 다음과 같이 수정하여,  특정 MCP Tools�
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR",
         "AWS_DOCUMENTATION_PARTITION": "aws"
-      },
-      "disabled": false
+      }
     }
   },
   "tools": [
@@ -883,32 +908,46 @@ Custom Agent의 JSON 파일을 다음과 같이 수정하여,  특정 MCP Tools�
     "@awslabs.aws-documentation-mcp-server/search_documentation"
   ],
   "toolAliases": {},
-  "allowedTools": [
-    "@awslabs.aws-documentation-mcp-server/read_documentation"
-  ],
+  "allowedTools": ["fs_read", "fs_write", "use_aws"],
   "resources": [
-    "file://.amazonq/rules/**/*.md"
+    "file://AGENTS.md",
+    "file://README.md"
   ],
-  "hooks": {},
-  "toolsSettings": {}
+  "hooks": {
+    "userPromptSubmit": [
+      {
+        "command": "cat pirate.md"
+      }
+    ],
+    "agentSpawn": [
+     {
+       "command": "aws sts get-caller-identity"
+     }
+    ]
+  },
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": null
 }
 ```
 
 Amazon Q CLI를 재시작하고 `/tools` 명령어를 통해 구성 결과를 확인할 수 있습니다.
 
 ```
-Tool                      Permission
-Built-in:
-- fs_read                 * trusted
-- fs_write                * not trusted
-- use_aws                 * trust read-only commands
+/tools
 
-awslabs.aws-documentation-mcp-server (MCP):
-- read_documentation      * trusted
-- search_documentation    * not trusted
+Tool                      Permission
+▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔Built-in
+- read                    trusted
+- write                   trusted
+- aws                     trusted
+
+awslabs.aws-documentation-mcp-server (MCP)
+- read_documentation      not trusted
+- search_documentation    not trusted
 ```
 
-#### ✅ MCP Tool 테스트
+#### MCP Tool 테스트
 
 프롬프트에 다음과 같이 입력해보세요:
 
@@ -930,9 +969,9 @@ MCP 서버는 매우 강력하며, 다음과 같은 유연한 구성이 가능�
 
 ***
 
-## 🧩  13. 도구 이름 충돌 방지 - toolAliases 사용하기
+## 13. 도구 이름 충돌 방지 - toolAliases 사용하기
 
-Amazon Q CLI에 MCP 서버(MCP Server)를 추가할 때 고려해야 할 중요한 점 중 하나는 도구(Tools) 이름 충돌(tool name clash) 가능성입니다.
+Kiro CLI에 MCP 서버(MCP Server)를 추가할 때 고려해야 할 중요한 점 중 하나는 도구(Tools) 이름 충돌(tool name clash) 가능성입니다.
 
 예를 들어, get\_issues라는 이름의 도구(Tools)이 있다고 가정해 보겠습니다. 여기에 GitHub와 GitLab MCP 서버를 통합하면, 두 서버 모두 동일한 이름의 툴(get\_issues)을 제공하게 됩니다. 이 경우, 어떤 MCP 서버의 도구(Tools)을 사용할지 명확히 지정해야 할 필요가 생깁니다.<br>
 
@@ -949,9 +988,9 @@ Amazon Q CLI에 MCP 서버(MCP Server)를 추가할 때 고려해야 할 중요�
 
 이렇게 구성하면 충돌을 피하면서도 명확하게 도구를 사용할 수 있습니다.
 
-## 🧩 14. toolAliases 를 활용한 도구 참조 방식 개선
+## 14. toolAliases 를 활용한 도구 참조 방식 개선
 
-앞에서 소개한 toolAliases는 단순히 네임스페이스 충돌을 해결하기 위한 용도 외에도, 개발자 경험(Developer Experience, DX)을 개선하기 위한 수단으로도 사용할 수 있습니다.
+앞에서 소개한 toolAliases는 단순히 네임스페이스 충돌을 해결하기 위한 용도 외에도, 개발자의 사용자 경험(Developer Experience, DX)을 개선하기 위한 수단으로도 사용할 수 있습니다.
 
 예를 들어, 도구 이름이 너무 길거나 복잡하다면, 더 짧고 직관적인 이름으로 별칭을 부여할 수 있습니다.
 
@@ -976,13 +1015,13 @@ Amazon Q CLI에 MCP 서버(MCP Server)를 추가할 때 고려해야 할 중요�
 
 ***
 
-## 🧩  15. MCP 프롬프트 (MCP Prompts)
+## 15. MCP 프롬프트 (MCP Prompts)
 
-앞서 Amazon Q CLI에서 MCP 도구(MCP Tools) 를 어떻게 활용하는지 알아보았지만, Q CLI는 MCP 도구뿐 아니라 MCP 프롬프트(Prompts) 도 지원합니다. MCP 프롬프트는 /prompts 명령어를 통해 확인할 수 있으며, MCP 서버(MCP Server)에서 제공하는 프롬프트 리소스를 탐색하여 목록화합니다.
+앞서 Kiro CLI에서 MCP 도구(MCP Tools) 를 어떻게 활용하는지 알아보았지만, Kiro CLI는 MCP 도구뿐 아니라 MCP 프롬프트(Prompts) 도 지원합니다. MCP 프롬프트는 /prompts 명령어를 통해 확인할 수 있으며, MCP 서버(MCP Server)에서 제공하는 프롬프트 리소스를 탐색하여 목록화합니다.
 
-이 프롬프트들은 Amazon Q CLI 세션 내에서 @{prompt} 구문으로 호출하여 사용할 수 있습니다.
+이 프롬프트들은 Kiro CLI 세션 내에서 @{prompt} 구문으로 호출하여 사용할 수 있습니다.
 
-#### 🧪  Task08: 사용자 정의 MCP 프롬프트 서버 생성
+#### Task08: 사용자 정의 MCP 프롬프트 서버 생성
 
 * **새로운 디렉토리 및 MCP 서버 코드 생성**
 
@@ -994,6 +1033,7 @@ cd mcp-prompts
 mcp-server.py라는 이름의 파일을 생성하고 다음 코드를 입력합니다:
 
 ```
+cat << EOF > ./mcp-server.py
 import asyncio
 import sys
 
@@ -1009,6 +1049,7 @@ def create_new_project() -> str:
 
 if __name__ == "__main__":
     mcp.run()
+EOF
 ```
 
 > 위 코드는 “create\_new\_project”라는 MCP 프롬프트를 하나 제공하는 매우 단순한 MCP 서버입니다. 필요에 따라 더 복잡하게 확장 가능합니다.
@@ -1022,17 +1063,26 @@ uv add mcp "mcp[cli]"
 
 ***
 
-이제 프롬프트(Prompts)를 제공하는 간단한 사용자 정의 MCP 서버가 준비되었습니다. 이를 사용하기 위한 구성(configuration)은 아래와 같으며, {path to directory}는 앞서 MCP 서버를 생성한 디렉터리 경로로 바꾸어야 합니다. 예제에서는 해당 디렉터리를 'mcp-server'로 설정했습니다:
+이제 프롬프트(Prompts)를 제공하는 간단한 사용자 정의 MCP 서버가 준비되었습니다. 이를 사용하기 위한 구성은 아래와 같으며, {path to directory}는 앞서 MCP 서버를 생성한 디렉토리 경로로 바꾸어야 합니다. 예제에서는 해당 디렉터리를 'mcp-server'로 설정했습니다:
 
 ```
 {
     "mcpServers": {
-        "QCLIPromptDemo": {
+        "KiroCLIPromptDemo": {
             "command": "uv",
-            "args": ["--directory", "{path to directory}", "run", "--with", "mcp", "mcp", "run", "mcp-server.py"]
+            "args": ["--directory", "{path to directory}", "run", "--with", "mcp", "mcp", "run", "main.py"]
         }
     }
 }
+```
+
+LAB 환경에서는 아래와 같습니다.
+
+```
+    "KiroCLIPromptDemo": {
+      "command": "uv",
+      "args": ["--directory", "/home/ec2-user/mcp-prompts", "run", "--with", "mcp", "mcp", "run", "mcp-server.py"]
+    }
 ```
 
 이 MCP 서버를 기존의 사용자 정의 에이전트 JSON 설정 파일에 추가해주어야 합니다. 이 실습 전반에 걸쳐 사용해온 에이전트를 계속 활용해도 되고, 새롭게 생성한 에이전트를 사용해도 무방합니다.
@@ -1044,18 +1094,17 @@ pwd
 위 명령어를 실행했을 때, 다음과 같은 작업 디렉터리 경로가 출력되었다고 가정합니다:
 
 ```
-/Users/ricsue/amazon-q-developer-cli/mcp-server
+/home/ec2-user/mcp-prompts
 ```
 
 이 경로는 MCP 서버 실행을 위한 --directory 인자에 사용해야 할 실제 경로입니다. JSON 설정 내 {path to directory} 자리에 이 경로를 그대로 대입하면 됩니다.
 
-#### 🛠 Custom Agent에 MCP 서버 추가
+#### Custom Agent에 MCP 서버 추가
 
 다음은 이 MCP 서버를 기존 Custom Agent 설정(python-developer)에 통합하는 JSON 예시입니다. 디렉토리 경로는 본인의 환경에 맞게 조정하십시오:
 
 ```
 {
-  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
   "name": "python-developer",
   "description": "",
   "prompt": null,
@@ -1066,15 +1115,11 @@ pwd
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR",
         "AWS_DOCUMENTATION_PARTITION": "aws"
-      },
-      "disabled": false
+      }
     },
-    "QCLIPromptDemo": {
+    "KiroCLIPromptDemo": {
       "command": "uv",
-      "args": [
-        "--directory", "/Users/ricsue/amazon-q-developer-cli/mcp-server",
-        "run", "--with", "mcp", "mcp", "run", "mcp-server.py"
-      ]
+      "args": ["--directory", "/home/ec2-user/mcp-prompts", "run", "--with", "mcp", "mcp", "run", "mcp-server.py"]
     }
   },
   "tools": [
@@ -1085,36 +1130,48 @@ pwd
     "@awslabs.aws-documentation-mcp-server/search_documentation"
   ],
   "toolAliases": {},
-  "allowedTools": [
-    "@awslabs.aws-documentation-mcp-server/read_documentation"
-  ],
+  "allowedTools": ["fs_read", "fs_write", "use_aws"],
   "resources": [
-    "file://.amazonq/rules/**/*.md"
+    "file://AGENTS.md",
+    "file://README.md"
   ],
-  "hooks": {},
-  "toolsSettings": {}
+  "hooks": {
+    "userPromptSubmit": [
+      {
+        "command": "cat pirate.md"
+      }
+    ],
+    "agentSpawn": [
+     {
+       "command": "aws sts get-caller-identity"
+     }
+    ]
+  },
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "model": null
 }
 ```
 
 > &#x20;MCP 서버 설정은 "mcpServers" 블록 내에 "QCLIPromptDemo" 항목으로 추가됩니다.
 
-다음과 같이, 앞서 생성한 MCP 서버를 기존의 사용자 정의 에이전트(custom agent) 구성 파일에 추가한 것을 확인할 수 있습니다. 실습 사용자의 경우에는 MCP 서버를 생성한 디렉터리 경로가 다를 수 있으므로, 해당 부분은 여러분의 환경에 맞게 수정해야 합니다.
+다음과 같이, 앞서 생성한 MCP 서버를 기존의 사용자 정의 에이전트(custom agent) 구성 파일에 추가한 것을 확인할 수 있습니다. 실습 사용자의 경우에는 MCP 서버를 생성한 디렉터리 경로가 다를 수 있으므로, 해당 부분은 환경에 맞게 수정해야 합니다.
 
 ```
-	"QCLIPromptDemo": {
-          "command": "uv",
-          "args": ["--directory", "/Users/ricsue/amazon-q-developer-cli/mcp-server", "run", "--with", "mcp", "mcp", "run", "mcp-server.py"]
-        }
+    "KiroCLIPromptDemo": {
+      "command": "uv",
+      "args": ["--directory", "/home/ec2-user/mcp-prompts", "run", "--with", "mcp", "mcp", "run", "mcp-server.py"]
+    }
 ```
 
-#### 🚀 Amazon Q CLI 세션 시작 및 MCP 확인
+#### Kiro CLI 세션 시작 및 MCP 확인
 
 
 
 위 JSON 파일을 저장한 뒤, 아래 명령어로 Q CLI 세션을 시작합니다:
 
 ```
-q chat --agent python-developer
+kiro-cli --agent python-developer
 ```
 
 정상적으로 시작되면 아래와 같은 메시지를 볼 수 있습니다:
@@ -1128,10 +1185,20 @@ q chat --agent python-developer
 ```
 > /prompts list
 
-Prompt                    Arguments (* = required)
-▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
-QCLIPromptDemo (MCP):
-- create_new_project
+
+Usage: You can use a prompt by typing '@<prompt name> [...args]'
+
+
+Prompt                Description                              Arguments (* = required)
+▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+Global:
+/home/ec2-user/.kiro/prompts/proj-setup.md
+
+Local:
+/home/ec2-user/.kiro/prompts/proj-setup.md (overrides global)
+
+KiroCLIPromptDemo (MCP):
+- create_new_project 
 ```
 
 이제 실제로 실행해볼 차례입니다. 새로운 > 프롬프트에서 다음 명령어를 입력하세요:
@@ -1145,8 +1212,7 @@ QCLIPromptDemo (MCP):
 ```
 > @create_new_project
 
-요청된 디렉터리 구조와 README.md 파일로 프로젝트 레이아웃을 생성해드릴게요.  
-지금 바로 작업을 시작하겠습니다.
+프로젝트 구조를 만들어드릴게요! 웹 애플리케이션 같은 느낌이 나는데, 한번 뚝딱 만들어보겠습니다 🛠️
 ```
 
 이제 출력 내용을 따라가며 확인해보세요 — 파일을 생성해야 하기 때문에 권한 허용 요청이 나타날 수 있습니다. 참고로, 이 커스텀 에이전트는 fs\_write 권한이 부여되지 않았기 때문에, 파일 쓰기 작업에는 별도의 승인이 필요할 수 있습니다.
@@ -1155,17 +1221,16 @@ QCLIPromptDemo (MCP):
 
 ***
 
-## 🧩 16. Disabling MCP Servers
+## 16. Disabling MCP Servers
 
 MCP 서버를 비활성화하려면, 커스텀 에이전트 JSON 구성 파일을 수정하고 "disabled" 설정 항목을 추가하여 true로 지정하면 됩니다. (기본값은 false입니다.)
 
-### ✅ Task-09
+### Task-09
 
 다음과 같이 커스텀 에이전트 JSON 파일을 수정하세요:
 
 ```
 {
-  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
   "name": "python-developer",
   "description": "",
   "prompt": null,
@@ -1178,43 +1243,27 @@ MCP 서버를 비활성화하려면, 커스텀 에이전트 JSON 구성 파일�
         "AWS_DOCUMENTATION_PARTITION": "aws"
       },
       "disabled": true
-    }
-  },
-  "tools": ["*"],
-  "toolAliases": {},
-  "allowedTools": ["fs_read", "fs_write", "use_aws"],
-  "resources": [
-    "file://.amazonq/rules/**/*.md"
-  ],
-  "hooks": {},
-  "toolsSettings": {}
-}
+    },
 ```
 
-#### 💾 변경 후 해야 할 일
+#### 변경 후 해야 할 일
 
 * 설정 파일을 저장하세요.
-* Amazon Q CLI 세션을 재시작하세요.<br>
+* Kiro CLI 세션을 재시작하세요.<br>
 
 그 후, 화면 상단에 다음과 같은 메시지를 확인할 수 있어야 합니다:
 
 ```
+$ k
 ○ awslabs.aws-documentation-mcp-server is disabled
-```
-
-/mcp 명령어를 실행하면, 다음과 같이 표시되어야 합니다:
-
-```
-[python-developer] > /mcp
-
-awslabs.aws-documentation-mcp-server (disabled)
+✓ KiroCLIPromptDemo loaded in 0.45 s
 ```
 
 이로써 해당 MCP 서버가 현재 세션에서 비활성화된 것을 확인할 수 있습니다.
 
 ***
 
-### 🌐 조직 차원의 MCP 비활성화 (Disabling MCP for your organisation)&#x20;
+### 조직 차원의 MCP 비활성화 (Disabling MCP for your organisation)&#x20;
 
 MCP 서버(MCP Servers)는 Amazon Q CLI와 같은 AI 코딩 에이전트에게 강력한 기능을 제공하지만, 앞서 설명했듯 보안 측면에서의 위험성도 내포하고 있습니다.
 
@@ -1224,11 +1273,11 @@ MCP 서버(MCP Servers)는 Amazon Q CLI와 같은 AI 코딩 에이전트에게 �
 
 #### 조직 차원의 MCP 비활성화 기능
 
-이 기능은 Amazon Q Developer의 회사/프로페셔널 계정으로 로그인한 사용자에게만 제공됩니다. Amazon Q Developer의 중앙 관리(Admin) 화면에서 다음과 같은 토글 스위치를 통해 MCP 서버 사용 여부를 제어할 수 있습니다:
+이 기능은 회사/프로페셔널 계정으로 로그인한 사용자에게만 제공됩니다. 의K o중앙 관리(Admin) 화면에서 다음과 같은 토글 스위치를 통해 MCP 서버 사용 여부를 제어할 수 있습니다:
 
 <figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
-#### 🔐 관리자가 MCP를 비활성화했을 경우
+#### 관리자가 MCP를 비활성화했을 경우
 
 조직 관리자에 의해 MCP 서버 기능이 꺼진 상태에서, MCP 서버가 구성된 Custom Agent를 포함한 Amazon Q CLI 세션을 시작하게 되면, 다음과 같은 경고 메시지가 출력됩니다:
 
@@ -1245,11 +1294,11 @@ MCP 서버(MCP Servers)는 Amazon Q CLI와 같은 AI 코딩 에이전트에게 �
 * 비활성화 시, 모든 사용자에게 적용됨
 * CLI 실행 시 경고 메시지로 확인 가능
 
-필요 시 Amazon Q Developer 관리 화면에서 정책을 다시 활성화하거나, MCP 기능 없이도 Custom Agent를 사용할 수 있도록 구성할 수 있습니다.
+필요 시 관리 화면에서 정책을 다시 활성화하거나, MCP 기능 없이도 Custom Agent를 사용할 수 있도록 구성할 수 있습니다.
 
 ***
 
-## 🧩  17. Amazon Q CLI에서 Tool에 대한 세분화된 권한 설정&#x20;
+## 17. Kiro CLI에서 Tool에 대한 세분화된 권한 설정&#x20;
 
 이전 실습에서 Custom Agent(사용자 정의 에이전트) 안에서 어떤 Tool(도구) 을 사용할 수 있을지와, 그에 따른 기본 권한을 어떻게 부여할 수 있는지를 살펴보았습니다.
 
@@ -1257,7 +1306,7 @@ MCP 서버(MCP Servers)는 Amazon Q CLI와 같은 AI 코딩 에이전트에게 �
 
 > 예시: execute\_bash라는 도구는 Bash 명령어를 실행할 수 있습니다. 하지만 이 중에서 git status, git fetch 같은 명령어만 허용하고, git push, git commit은 막고 싶다면?
 
-#### **✅** toolsSettings:  도구별 세부 권한 제어 설정
+#### toolsSettings:  도구별 세부 권한 제어 설정
 
 이를 위해 toolsSettings라는 항목을 custom agent JSON 설정 파일 내에 추가할 수 있으며, 각 도구별로 다음과 같은 권한 필드를 정의할 수 있습니다:
 
