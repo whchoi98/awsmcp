@@ -38,13 +38,13 @@ Kiro CLI는 /reply 명령어를 통해 Kiro가 이전에 생성한 메시지의 
 Kiro가 여러 개의 확인 질문을 한 경우:
 
 ```
-> What programming language are you using?
+> 어떤 프로그래밍 언어(programming language)를 사용하고 있습니까?
 Python
 
-> What framework are you working with?
+> 어떤 프레임워크(framework)로 작업하고 있습니까?
 Django
 
-> What specific error are you encountering?
+> 어떤 구체적인 에러(error)를 겪고 있습니까?
 I'm getting a 404 error when trying to access my API endpoints.
 ```
 
@@ -53,14 +53,14 @@ I'm getting a 404 error when trying to access my API endpoints.
 Kiro가 여러 접근 방식을 제시했을 때:
 
 ```
-> Here are three approaches you could take:
-> 1. Use a database migration
-> 2. Update the model directly
-> 3. Create a custom management command
+> 다음은 사용할 수 있는 세 가지 접근 방식(approaches)입니다:
+> 1. 데이터베이스 마이그레이션(database migration)을 사용
+> 2. 모델(model)을 직접 업데이트
+> 3. 커스텀 매니지먼트 커맨드(custom management command)를 생성
 
-I'd like to go with option 1. Can you show me how to create the migration?
+저는 1번 옵션을 선택하고 싶습니다. 마이그레이션(migration)을 생성하는 방법을 보여줄 수 있나요?
 
-> Make sure to backup your data first.
+> 데이터를 먼저 백업(backup)하는 것을 잊지 마세요.
 Already done - I have a full backup from this morning.
 ```
 
@@ -69,16 +69,16 @@ Already done - I have a full backup from this morning.
 Kiro가 다수의 개선점을 제안했을 때:
 
 ```
-> I recommend these improvements:
-> - Add error handling for network requests
-> - Implement input validation
-> - Add logging for debugging
+> 다음 개선 사항(improvements)을 권장합니다:
+> - 네트워크 요청(network requests)에 대한 에러 핸들링(error handling) 추가
+> - 입력 검증(input validation) 구현
+> - 디버깅(debugging)을 위한 로깅(logging) 추가
 
 Agreed on all points. For the error handling:
-- Should I use try/catch blocks or a decorator pattern?
+- try/catch 블록을 사용해야 할까요, 아니면 데코레이터 패턴(decorator pattern)을 사용해야 할까요?
 
 For logging:
-- What level of detail do you recommend?
+- 어느 정도 수준의 상세도(level of detail)를 추천하나요?
 ```
 
 ***
@@ -87,10 +87,10 @@ For logging:
 
 `/reply` 명령 실행 시 다음과 같은 상태 메시지가 표시됩니다:
 
-* Success : "Content loaded from editor. Submitting prompt..."
-* No changes : "No changes made in editor, not submitting."
-* No message : "No assistant message found to reply to."
-* Editor error : "Error opening editor: \[specific error details]"
+* Success : “에디터(editor)에서 콘텐츠가 로드되었습니다. 프롬프트(prompt)를 제출합니다…”
+* No changes : “에디터(editor)에서 변경 사항이 없어 제출하지 않습니다.”
+* No message : “응답할 어시스턴트 메시지(assistant message)를 찾을 수 없습니다.”
+* Editor error : "에디터 열기 오류: \[specific error details]"
 
 ***
 

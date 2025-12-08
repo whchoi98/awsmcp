@@ -17,7 +17,7 @@ description: 'Update : 2025.12.07'
 #### 증상
 
 * “invalid JSON”, “syntax error” 등의 오류 메시지 출력
-* /agent list 목록에 에이전트가 표시되지 않음
+* `/agent list` 목록에 에이전트가 표시되지 않음
 * 기본 에이전트로 자동 폴백(fallback)
 
 #### 해결 방법
@@ -28,7 +28,7 @@ description: 'Update : 2025.12.07'
   * 마지막 요소 뒤의 트레일링 콤마
   * 괄호/중괄호 불일치
   * 문자열 내 따옴표 미이스케이프
-* /agent schema 명령으로 스키마 검증 수행
+* `/agent schema` 명령으로 스키마 검증 수행
 
 ***
 
@@ -44,7 +44,7 @@ description: 'Update : 2025.12.07'
 
 #### 해결 방법
 
-* /agent schema 를 사용하여 설정 구조 검증
+* `/agent schema` 를 사용하여 설정 구조 검증
 * 필드 이름 오타 확인 (allowedTools vs allowedTool)
 * 타입 일치 여부 확인 (예: 문자열 vs 배열, 문자열 vs boolean 등)
 
@@ -56,14 +56,14 @@ description: 'Update : 2025.12.07'
 
 #### 증상
 
-* /agent list 에 에이전트가 표시되지 않음
+* `/agent list` 에 에이전트가 표시되지 않음
 * 경고 없이 기본 에이전트로 전환됨
 
 #### 해결 방법
 
 * 파일 위치 확인:
-  * 글로벌: \~/.kiro/agents/\[name].json
-  * 워크스페이스: .kiro/agents/\[name].json
+  * 글로벌: `~/.kiro/agents/[name].json`
+  * 워크스페이스: `.kiro/agents/[name].json`
 * 파일 읽기 권한 확인
 * 파일명과 에이전트 name 일치 여부 확인
 * .json 확장자 여부 확인
@@ -82,7 +82,7 @@ description: 'Update : 2025.12.07'
 
 * 동일 이름의 로컬/글로벌 에이전트 중복 여부 확인
 * 로컬 에이전트가 항상 우선됨
-* /agent list 로 실제 로드된 파일 확인
+* `/agent list` 로 실제 로드된 파일 확인
 * 충돌 파일 삭제 또는 이름 변경
 
 ***
@@ -110,7 +110,7 @@ description: 'Update : 2025.12.07'
 
 #### 증상
 
-* /tools 실행 시 아무 도구도 표시되지 않음
+* `/tools` 실행 시 아무 도구도 표시되지 않음
 * 기대했던 도구가 목록에 없음
 
 #### 주요 원인
@@ -146,7 +146,7 @@ description: 'Update : 2025.12.07'
 
 ***
 
-## 4. 이전트 동작 디버깅)
+## 4. 에전트 동작 디버깅)
 
 ### 4.1. 리소스 또는 컨텍스트 누락
 
@@ -177,9 +177,9 @@ description: 'Update : 2025.12.07'
 문제를 체계적으로 진단하기 위해 다음 순서로 테스트하는 것이 좋습니다:
 
 1. JSON 구문 검사 — Validator 사용
-2. 스키마 검증 — /agent schema
-3. 로드 확인 — /agent list
-4. 에이전트 전환 — /agent swap \[name]
+2. 스키마 검증 — `/agent schema`
+3. 로드 확인 — `/agent list`
+4. 에이전트 전환 — `/agent swap [name]`
 5. 도구 동작 확인 — 각 tool 호출 테스트
 6. 리소스 및 hook 확인
 7. 실제 워크플로우 실행 테스트<br>

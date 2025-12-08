@@ -23,27 +23,27 @@ Custom Agents는 이러한 문제를 해결합니다.
 
 커스텀 에이전트는 다음과 같은 기능을 구성할 수 있도록 합니다:
 
-#### 1. Pre-approve specific tools : 특정 도구를 사전 승인하여 작업 중 매번 확인 요청을 피할 수 있음
+1\. Pre-approve specific tools : 특정 도구를 사전 승인하여 작업 중 매번 확인 요청을 피할 수 있음
 
-#### 2. Limit tool access : 필요한 도구만 허용하여 복잡성을 줄이고 보안을 강화
+2\. Limit tool access : 필요한 도구만 허용하여 복잡성을 줄이고 보안을 강화
 
-#### 3. Include relevant context : 프로젝트 문서, 설정 파일, 시스템 정보 등을 자동으로 컨텍스트로 로드&#x20;
+3\. Include relevant context : 프로젝트 문서, 설정 파일, 시스템 정보 등을 자동으로 컨텍스트로 로드&#x20;
 
-#### 4.  Configure tool behavior :  도구의 세부 동작 방식을 설정하여 자동화 품질 향상
+4\.  Configure tool behavior :  도구의 세부 동작 방식을 설정하여 자동화 품질 향상
 
 ***
 
 ## 2. Custom Agents  사용의 장점
 
-#### 1. Workflow Optimization (워크플로우 최적화) :  AWS 인프라 관리, 코드 리뷰, 디버깅 세션 등 특정 작업에 맞춘 최적화된 에이전트를 구축 가능.
+1\. Workflow Optimization (워크플로우 최적화) :  AWS 인프라 관리, 코드 리뷰, 디버깅 세션 등 특정 작업에 맞춘 최적화된 에이전트를 구축 가능.
 
-#### 2. Reduced Interruptions (작업 방해 감소) :  신뢰된 도구를 사전 승인하여 작업 중 등장하는 반복적인 권한 요청 제거.
+2\. Reduced Interruptions (작업 방해 감소) :  신뢰된 도구를 사전 승인하여 작업 중 등장하는 반복적인 권한 요청 제거.
 
-#### 3. Enhanced Context (향상된 컨텍스트 구성) : 프로젝트 문서, 설정 파일 등을 자동 로드하여 더 정확한 분석 및 응답 제공.
+3\. Enhanced Context (향상된 컨텍스트 구성) : 프로젝트 문서, 설정 파일 등을 자동 로드하여 더 정확한 분석 및 응답 제공.
 
-#### 4. Team Collaboration (팀 협업 강화) : 공유 가능한 에이전트 설정을 통해 팀 전체가 동일한 개발 환경을 유지할 수 있음.
+4\. Team Collaboration (팀 협업 강화) : 공유 가능한 에이전트 설정을 통해 팀 전체가 동일한 개발 환경을 유지할 수 있음.
 
-#### 5. Security Control (보안 관리 향상) : 사용 사례별로 필요한 최소 도구만 활성화하여 잠재적 보안 위험 최소화.
+5\. Security Control (보안 관리 향상) : 사용 사례별로 필요한 최소 도구만 활성화하여 잠재적 보안 위험 최소화.
 
 ***
 

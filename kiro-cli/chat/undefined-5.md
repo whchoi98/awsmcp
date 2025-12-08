@@ -25,7 +25,7 @@ Kiro는 채팅 세션 내에서 이미지를 직접 분석하고 논의할 수 �
 #### Example
 
 ```
-Kiro> /path/to/architecture-diagram.png Can you explain this architecture and generate sample code for implementing it?
+Kiro> /path/to/architecture-diagram.png 이 아키텍처(architecture)를 설명해주고, 이를 구현하기 위한 샘플 코드(sample code)를 생성해 줄 수 있나요?
 ```
 
 ***
@@ -35,7 +35,7 @@ Kiro> /path/to/architecture-diagram.png Can you explain this architecture and ge
 이미지를 보다 명확하게 지정하고 싶다면 read 도구(fs\_read) 를 직접 사용할 수 있습니다:
 
 ```
-Kiro> Can you analyze this screenshot at /path/to/screenshot.png?
+Kiro> /path/to/screenshot.png 에 있는 스크린샷(screenshot)을 분석할 수 있나요?
 ```
 
 Kiro는 대화 중 이미지 파일 경로나 확장자를 언급하면 Image Mode 사용을 자동 제안합니다.
