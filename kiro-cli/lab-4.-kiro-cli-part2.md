@@ -2,7 +2,7 @@
 description: 'Update : 2025.12.07'
 ---
 
-# LAB04. Kiro CLI Part2
+# LAB 4. Kiro CLI Part2
 
 ***
 
@@ -185,7 +185,7 @@ kiro-cli settings chat.disableAutoCompaction true
 
 ***
 
-### 13.7 Adding and removing session context
+### 13.7 Session context 제거와 추가
 
 현재 세션에서 특정 파일을 컨텍스트로 추가하려면 다음 명령을 사용합니다:
 
