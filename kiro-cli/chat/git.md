@@ -1,10 +1,6 @@
 # Git과 함께 작업하기
 
-아래는 원문을 유지하면서 고급 비즈니스 한국어로 재작성한 GitBook 스타일 문서입니다. 기술 용어는 한·영 병기 표기하며, 설명은 전문성과 명확성을 강화하는 방향으로 정제했습니다.
-
-***
-
-## Working with Git (Git과 함께 작업하기)
+## 1. Working with Git (Git과 함께 작업하기)
 
 <br>
 
@@ -14,13 +10,7 @@ Kiro CLI는 Git 리포지토리 환경에서 작업할 때 Git-aware Fuzzy Finde
 
 ***
 
-### How Git-aware Selection Works
-
-<br>
-
-(Git 인식 기반 선택 기능 동작 방식)
-
-<br>
+### How Git-aware Selection Works(Git 인식 기반 선택 기능 동작 방식)
 
 Git-aware 퍼지 파인더는 리포지토리의 Git 메타데이터를 활용하여 다음과 같은 기능을 제공합니다:
 
@@ -28,31 +18,18 @@ Git-aware 퍼지 파인더는 리포지토리의 Git 메타데이터를 활용�
 * Git 상태(Git Status)에 따른 시각적 표시 제공
 * Git 변경 이력(Git history)을 기반으로 관련성이 높은 파일을 우선순위로 정렬
 
-<br>
-
+\
 이를 통해 사용자는 컨텍스트 추가 시 보다 정확하고 효율적인 파일 선택을 수행할 수 있습니다.
 
 ***
 
-### Using Git-aware File Selection
-
-<br>
-
-(Git-aware 파일 선택 사용 방법)
-
-<br>
+### Using Git-aware File Selection(Git-aware 파일 선택 사용 방법)
 
 #### 1. Git 리포지토리 디렉토리로 이동
 
-<br>
-
 터미널에서 컨텍스트를 추가하려는 Git 프로젝트 루트로 이동합니다.
 
-<br>
-
-#### 2.&#x20;
-
-#### /context add
+#### 2. /context add
 
 #### &#x20;명령 실행
 
@@ -62,19 +39,13 @@ Git-aware 퍼지 파인더는 리포지토리의 Git 메타데이터를 활용�
 
 #### 3. 퍼지 파인더(Fuzzy Finder) 인터페이스 표시
 
-<br>
-
 파일 목록과 함께 Git 상태 표시(Git status indicators)가 나타납니다.
-
-<br>
 
 예시 상태 표시는 다음과 같습니다:
 
 * M – Modified (수정된 파일)
 * A – Added (추가된 파일)
 * ? – Untracked (추적되지 않은 파일)
-
-<br>
 
 #### 4. 파일 검색 및 선택
 
@@ -84,25 +55,9 @@ Git-aware 퍼지 파인더는 리포지토리의 Git 메타데이터를 활용�
 
 ***
 
-### Tips for Git-aware Selection
-
-<br>
-
-(Git-aware 선택 활용 팁)
+### Tips for Git-aware Selection(Git-aware 선택 활용 팁)
 
 * Git 상태 정보를 검색 기준으로 활용하면 수정된 파일(M) 또는 미추적 파일(?)을 빠르게 찾아 포함할 수 있습니다.
 * 퍼지 파인더는 Git 변경 이력 기반으로 최근 수정 파일을 우선 순위에 두고 표시합니다.
 * .gitignore에 의해 Git에서 무시되는 파일도 여전히 선택 목록에 나타나지만, 우선순위는 낮게 설정됩니다.
 
-***
-
-원하시면 다음과 같이 문서를 확장해드릴 수도 있습니다:
-
-* Git 상태 아이콘 및 의미를 시각적으로 정리한 표 추가
-* 실제 퍼지 파인더 화면 예시(Mock-up) 삽입
-* Context Management 문서와의 상호참조 링크 구성
-* Git 브랜치 기반 컨텍스트 관리 모범 사례 추가
-
-<br>
-
-계속 진행해드릴까요?

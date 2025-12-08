@@ -4,7 +4,7 @@ description: 'Update : 2025.12.07'
 
 # 컨텍스트 관리
 
-## Context Management (컨텍스트 관리)
+## 1. Context Management (컨텍스트 관리)
 
 Kiro는 컨텍스트를 제공하는 세 가지 방식을 지원하며, 각각의 방식은 특정 사용 목적에 최적화되어 있습니다.
 
@@ -16,7 +16,7 @@ Kiro는 컨텍스트를 제공하는 세 가지 방식을 지원하며, 각각�
 
 ***
 
-### Decision Flowchart (컨텍스트 선택 의사결정 흐름도)
+### 1.1. Decision Flowchart (컨텍스트 선택 의사결정 흐름도)
 
 1. 컨텐츠가 10MB 이상이거나 수천 개 파일로 구성되어 있는가?
    * Yes → Knowledge Bases 사용
@@ -27,7 +27,7 @@ Kiro는 컨텍스트를 제공하는 세 가지 방식을 지원하며, 각각�
 
 ***
 
-### Quick Reference (빠른 선택 기준)
+### 1.2. Quick Reference (빠른 선택 기준)
 
 * 프로젝트 핵심 파일(README, 설정, 표준 문서) → Agent Resources
 * 대규모 코드베이스 또는 방대한 문서 → Knowledge Bases
@@ -35,7 +35,7 @@ Kiro는 컨텍스트를 제공하는 세 가지 방식을 지원하며, 각각�
 
 ***
 
-## Understanding Context Window Impact (컨텍스트 윈도우 영향 이해)
+## 2. Understanding Context Window Impact (컨텍스트 윈도우 영향 이해)
 
 Agent Resources 및 Session Context에 추가된 파일은 참조 여부와 관계없이 매 요청마다 컨텍스트 윈도우(token window)를 소모합니다.
 
@@ -79,13 +79,13 @@ Knowledge Bases는 검색 시에만 컨텍스트를 사용하므로, 대용량 �
 
 ***
 
-## Managing Context (컨텍스트 관리 개요)
+## 3. Managing Context (컨텍스트 관리 개요)
 
 컨텍스트 파일은 프로젝트 요구사항, 개발 규칙, 코딩 표준 등 Kiro가 응답을 생성할 때 고려해야 하는 정보를 제공합니다.
 
 ***
 
-## Configuring Persistent Context with Agent Resources (에이전트 리소스 기반 지속적 컨텍스트 설정)
+## 4. Configuring Persistent Context with Agent Resources (에이전트 리소스 기반 지속적 컨텍스트 설정)
 
 가장 권장되는 방식은 에이전트 설정 파일의 resources 필드에 파일을 지정하는 것입니다.
 
@@ -109,7 +109,7 @@ Knowledge Bases는 검색 시에만 컨텍스트를 사용하므로, 대용량 �
 
 ***
 
-## Adding Temporary Session Context (임시 세션 컨텍스트 추가)
+## 5. Adding Temporary Session Context (임시 세션 컨텍스트 추가)
 
 /context add 명령어로 현재 세션에만 적용되는 컨텍스트를 추가할 수 있습니다.
 
@@ -130,7 +130,7 @@ Added 3 path(s) to context.
 
 ***
 
-## Knowledge Base Context (대규모 데이터셋 용 컨텍스트)
+## 6. Knowledge Base Context (대규모 데이터셋 용 컨텍스트)
 
 대규모 코드베이스 또는 문서가 컨텍스트 윈도우를 초과하는 경우 Knowledge Bases를 사용합니다.
 
@@ -152,7 +152,7 @@ kiro-cli chat
 
 ***
 
-## Viewing Context Usage (컨텍스트 사용량 확인)
+## 7. Viewing Context Usage (컨텍스트 사용량 확인)
 
 ```
 > /context show
@@ -172,7 +172,7 @@ Current context window (5.9% used)
 
 ***
 
-## Removing Context (컨텍스트 제거)
+## 8. Removing Context (컨텍스트 제거)
 
 특정 파일 제거:
 
@@ -195,7 +195,7 @@ Cleared context
 
 ***
 
-## Context Management Actions (컨텍스트 관리가 필요한 상황)
+## 9. Context Management Actions (컨텍스트 관리가 필요한 상황)
 
 #### 1. 반복적으로 같은 파일을 /context add 하고 있는 경우 → Agent Resources에 추가하는 것이 권장됩니다.
 
@@ -231,16 +231,16 @@ Cleared context
 
 ***
 
-## Best Practices (모범 사례)
+## 10. Best Practices (모범 사례)
 
-### Context File Organization (파일 구성)
+### 10.1. Context File Organization (파일 구성)
 
 * 컨텍스트 파일은 목적에 맞게 정리하고 불필요한 내용을 제거
 * 의미 있는 파일명 사용
 * 대규모 문서는 논리적 폴더 구조로 정리
 * 크기가 큰 파일은 토큰 소비에 유의
 
-### Performance Considerations (성능 고려사항)
+### 10.2. Performance Considerations (성능 고려사항)
 
 * /context show로 토큰 사용량을 지속적으로 모니터링
 * 지나치게 넓은 glob 패턴은 피하기
@@ -248,7 +248,7 @@ Cleared context
 * 대규모 파일은 소규모 파일로 분할 검토
 * 방대한 데이터는 Knowledge Base 활용
 
-### Security Considerations (보안 고려사항)
+### 10.3. Security Considerations (보안 고려사항)
 
 * 민감한 정보를 컨텍스트에 포함하지 않기
 * .gitignore로 민감 파일의 실수 커밋 방지
@@ -257,7 +257,7 @@ Cleared context
 
 ***
 
-## Related Documentation (관련 문서)
+## 11. Related Documentation (관련 문서)
 
 * Slash Commands — 인챗 컨텍스트 명령어
 * CLI Commands — 터미널 컨텍스트 명령어

@@ -1,16 +1,16 @@
 ---
-description: 'update : 2025.12.07 / 20min'
+description: 'update : 2025.12.07'
 ---
 
 # VSCode 서버 구성하기
 
-### VSCode Server 기반 실습 환경 구축 가이드 <a href="#vscode-server-eks" id="vscode-server-eks"></a>
+## 1. VSCode Server 기반 실습 환경 구축 가이드 <a href="#vscode-server-eks" id="vscode-server-eks"></a>
 
-이 문서는 Q CLI를 도구로 랩 환경에서 실습을 위해 필요한 도구 설치, VPC 및 클러스터 배포 과정을 안내합니다.
+이 문서는 ㅏCLI를 도구로 랩 환경에서 실습을 위해 필요한 도구 설치, VPC 및 클러스터 배포 과정을 안내합니다.
 
 ***
 
-### 1. 기본 환경 준비 <a href="#id-1" id="id-1"></a>
+### 1.1. 기본 환경 준비 <a href="#id-1" id="id-1"></a>
 
 Cloudshell에서 아래 git을 Clone하고, iam user를 생성합니다.
 
@@ -28,7 +28,7 @@ cd ~/useful-shell/
 
 ***
 
-### 2 . 관리용 VPC 및 ALB + VSCode Server 배포 <a href="#id-2-.-vpc-alb--vscode-server" id="id-2-.-vpc-alb--vscode-server"></a>
+### 1.2 . 관리용 VPC 및 ALB + VSCode Server 배포 <a href="#id-2-.-vpc-alb--vscode-server" id="id-2-.-vpc-alb--vscode-server"></a>
 
 신규 생성된 계정과 ID로 접속해서, 다시 Cloudshell을 실행합니다.
 

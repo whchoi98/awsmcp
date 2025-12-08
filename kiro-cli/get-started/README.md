@@ -6,7 +6,7 @@ description: 'Update: 2025.12.07'
 
 ***
 
-## Get Started / 시작하기
+## 1.Get Started / 시작하기
 
 Kiro CLI는 터미널 환경에서 AI 기반 개발 지원(AI-assisted Development) 기능을 제공하는 도구로, 자연어 명령과 자동화된 워크플로우를 활용해 애플리케이션을 빌드(Build), 테스트(Test), 배포(Deploy)할 수 있도록 해줍니다.
 
@@ -14,7 +14,7 @@ Kiro CLI는 터미널 환경에서 AI 기반 개발 지원(AI-assisted Developme
 
 ***
 
-### 1. Kiro CLI 설치(Installation)
+### 1.1. Kiro CLI 설치(Installation)
 
 macOS 및 Linux 환경에서는 아래 명령어 한 줄로 Kiro CLI를 설치할 수 있습니다.
 
@@ -26,7 +26,7 @@ curl -fsSL https://cli.kiro.dev/install | bash
 
 ***
 
-### 2. Kiro CLI 실행(Start Using Kiro CLI)
+### 1.2. Kiro CLI 실행(Start Using Kiro CLI)
 
 프로젝트 디렉터리로 이동하여 Kiro CLI를 실행합니다.
 
@@ -39,7 +39,7 @@ kiro-cli
 
 ***
 
-## Use Cases / 활용 사례
+## 2. Use Cases / 활용 사례
 
 Kiro CLI는 다음과 같은 상황에서 특히 효과적입니다.
 

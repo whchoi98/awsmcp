@@ -10,7 +10,7 @@ Kiro CLI는 로컬(Local) 프롬프트, 글로벌(Global) 프롬프트, 그리�
 
 ***
 
-### About Prompt Types (프롬프트 유형)
+### 1. About Prompt Types (프롬프트 유형)
 
 프롬프트 시스템은 다음 세 가지 유형을 지원합니다:
 
@@ -26,13 +26,13 @@ Kiro CLI는 로컬(Local) 프롬프트, 글로벌(Global) 프롬프트, 그리�
 
 ***
 
-### Commands (명령어)
+### 2. Commands (명령어)
 
 프롬프트 관련 모든 기능은 /prompts 명령어의 다양한 서브커맨드를 통해 접근합니다.
 
 ***
 
-### List Prompts (프롬프트 목록 조회)
+### 3. List Prompts (프롬프트 목록 조회)
 
 ```
 /prompts list
@@ -46,7 +46,7 @@ Kiro CLI는 로컬(Local) 프롬프트, 글로벌(Global) 프롬프트, 그리�
 
 ***
 
-### Create Prompts (프롬프트 생성)
+### 4. Create Prompts (프롬프트 생성)
 
 ```
 /prompts create –name name [–content content]
@@ -67,7 +67,7 @@ Kiro CLI는 로컬(Local) 프롬프트, 글로벌(Global) 프롬프트, 그리�
 
 ***
 
-### Edit Prompts (프롬프트 수정)
+### 5. Edit Prompts (프롬프트 수정)
 
 ```
 /prompts edit name
@@ -83,7 +83,7 @@ Kiro CLI는 로컬(Local) 프롬프트, 글로벌(Global) 프롬프트, 그리�
 
 ***
 
-### View Prompt Details (프롬프트 상세 정보 확인)
+### 6. View Prompt Details (프롬프트 상세 정보 확인)
 
 ```
 /prompts details name
@@ -100,7 +100,7 @@ Kiro CLI는 로컬(Local) 프롬프트, 글로벌(Global) 프롬프트, 그리�
 
 ***
 
-### Using Prompts (프롬프트 사용)
+### 7. Using Prompts (프롬프트 사용)
 
 생성한 프롬프트는 채팅에서 @ 프리픽스(prefix)를 통해 호출합니다.
 
@@ -120,7 +120,7 @@ Kiro CLI는 로컬(Local) 프롬프트, 글로벌(Global) 프롬프트, 그리�
 
 ***
 
-### Passing Arguments to MCP Prompts (MCP 프롬프트에 인자 전달)
+### 8. Passing Arguments to MCP Prompts (MCP 프롬프트에 인자 전달)
 
 MCP 서버 기반 프롬프트는 인수(arguments) 를 받아 동작을 커스터마이징할 수 있습니다.
 
@@ -147,7 +147,7 @@ MCP 서버 기반 프롬프트는 인수(arguments) 를 받아 동작을 커스�
 
 ***
 
-### Storage Locations (저장 위치)
+### 9. Storage Locations (저장 위치)
 
 #### Local Prompts (로컬 프롬프트)
 
@@ -169,7 +169,7 @@ MCP 서버 기반 프롬프트는 인수(arguments) 를 받아 동작을 커스�
 
 ***
 
-### Priority System (우선순위 체계)
+### 10. Priority System (우선순위 체계)
 
 동일한 이름의 프롬프트가 여러 위치에 존재하는 경우 다음 순서로 우선 적용됩니다:
 
@@ -181,7 +181,7 @@ MCP 서버 기반 프롬프트는 인수(arguments) 를 받아 동작을 커스�
 
 ***
 
-### Enhanced Features (향상된 기능)
+### 11. Enhanced Features (향상된 기능)
 
 #### Content Preview (콘텐츠 미리보기)
 
@@ -208,7 +208,7 @@ AI로 전달되기 이전의 완전한 프롬프트 내용을 표시해, 실제 
 
 ***
 
-### Examples (예시)
+### 12. Examples (예시)
 
 \
 Basic File-based Prompt Creation and Usage(기본 파일 기반 프롬프트 생성 및 사용)

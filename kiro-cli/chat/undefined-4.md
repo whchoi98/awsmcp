@@ -8,7 +8,7 @@ Kiro가 시스템에서 작업을 수행할 때 사용하는 Tools(도구) 에 �
 
 ***
 
-## Tools Commands (도구 명령어)
+## 1. Tools Commands (도구 명령어)
 
 <table data-header-hidden><thead><tr><th width="175.2734375"></th><th></th></tr></thead><tbody><tr><td>Command</td><td>Description</td></tr><tr><td>help</td><td>Tools 관련 도움말 표시</td></tr><tr><td>trust</td><td>특정 도구를 해당 세션 동안 신뢰(자동 승인)하도록 설정</td></tr><tr><td>untrust</td><td>특정 도구를 요청 시마다 확인하도록 설정</td></tr><tr><td>trust-all</td><td>모든 도구를 신뢰하도록 설정 <em>(이전 /acceptall 명령과 동일)</em></td></tr><tr><td>reset</td><td>모든 도구 권한을 기본값으로 재설정</td></tr></tbody></table>
 
@@ -23,7 +23,7 @@ Kiro> /tools
 
 ***
 
-## Permission States (권한 상태)
+## 2. Permission States (권한 상태)
 
 도구 권한은 두 가지 상태 중 하나입니다:
 
@@ -57,7 +57,7 @@ Kiro> /tools trust-all
 
 ***
 
-## Available Tools (지원 도구)
+## 3. 지원 도구
 
 Kiro가 기본적으로 사용할 수 있는 도구는 다음과 같습니다:
 
@@ -72,7 +72,7 @@ Kiro가 기본적으로 사용할 수 있는 도구는 다음과 같습니다:
 
 ***
 
-## When to Trust or Untrust Tools (도구 신뢰/비신뢰 설정 사례)
+## 4. 도구 신뢰/비신뢰 설정 사례
 
 \
 다음은 권한 설정을 선택하는 데 도움이 되는 대표적인 시나리오입니다:
@@ -95,13 +95,13 @@ Kiro가 기본적으로 사용할 수 있는 도구는 다음과 같습니다:
 
 ***
 
-## Permission Visibility (권한 표시)
+## 5. 권한 표시
 
 Kiro가 도구를 사용할 때마다 현재 적용 중인 권한 수준(Trusted/Per-request) 을 명확히 표시하여 사용자가 실행 과정과 보안 상태를 투명하게 파악할 수 있도록 합니다.
 
 ***
 
-## Setting Permissions at Session Start(세션 시작 시 도구 권한 지정)
+## 6. 세션 시작 시 도구 권한 지정
 
 kiro-cli chat 세션을 시작할 때 원하는 권한 구성을 사전에 지정할 수도 있습니다.
 

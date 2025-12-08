@@ -2,17 +2,17 @@
 description: 'Update : 2025.12.07'
 ---
 
-# Installation / 설치
+# 설치
 
 ***
 
-## Installation / 설치
+## 1. Installation / 설치
 
 이 페이지에서는 macOS, Linux(AppImage, zip, Ubuntu .deb), Proxy 환경 지원, 제거(Uninstall), 문제 해결(Debug) 등 Kiro CLI의 모든 설치 방식과 설정 옵션을 안내합니다.
 
 ***
 
-## 1. macOS 설치 (macOS Installation)
+### 1.1. macOS 설치 (macOS Installation)
 
 macOS에서는 터미널에서 아래 명령어를 실행하여 Kiro CLI를 네이티브로 설치할 수 있습니다.
 
@@ -24,7 +24,7 @@ curl -fsSL https://cli.kiro.dev/install | bash
 
 ***
 
-## 2. Linux AppImage 설치 (Linux AppImage Installation)
+### 1.2. Linux AppImage 설치 (Linux AppImage Installation)
 
 AppImage는 대부분의 Linux 배포판에서 별도 설치 없이 실행 가능한 휴대형 포맷입니다.
 
@@ -52,7 +52,7 @@ chmod +x kiro-cli.appimage
 
 ***
 
-## 3. Linux ZIP 설치 (Linux ZIP Installation)
+## 2. Linux ZIP 설치 (Linux ZIP Installation)
 
 Linux 환경에서는 ZIP 패키지를 통해 설치할 수도 있습니다.
 
@@ -64,7 +64,7 @@ Linux 환경에서는 ZIP 패키지를 통해 설치할 수도 있습니다.
 
 ***
 
-### 3.1 사전 요구사항 (Install & Update Requirements)
+### 2.1 사전 요구사항 (Install & Update Requirements)
 
 * ZIP 패키지를 압축 해제(unzip) 할 수 있어야 합니다.
 * Kiro CLI는 glibc 2.34 이상이 필요합니다. (2021년 이후 배포판 대부분 포함)
@@ -76,7 +76,7 @@ Linux 환경에서는 ZIP 패키지를 통해 설치할 수도 있습니다.
 
 ***
 
-### 3.2 glibc 버전 확인
+### 2.2 glibc 버전 확인
 
 ```
 ldd --version
@@ -89,7 +89,7 @@ ldd --version
 
 ***
 
-### 3.3 ZIP 파일 다운로드
+### 2.3 ZIP 파일 다운로드
 
 아키텍처 및 glibc 버전에 따라 올바른 ZIP 파일을 다운로드합니다.
 
@@ -133,15 +133,15 @@ curl --proto '=https' --tlsv1.2 -sSf \
 
 ***
 
-### 3.4 설치 실행
+### 2.3 설치 실행
 
-#### 1) 압축 해제
+#### 압축 해제
 
 ```
 unzip kirocli.zip
 ```
 
-#### 2) 설치 스크립트 실행
+#### 설치 스크립트 실행
 
 ```
 ./kirocli/install.sh
@@ -155,24 +155,24 @@ unzip kirocli.zip
 
 ***
 
-## 4. Ubuntu 설치 (Ubuntu Installation)
+## 3. Ubuntu 설치 (Ubuntu Installation)
 
 Ubuntu에서는 .deb 패키지를 사용하여 설치할 수 있습니다.
 
-#### 1) 설치 파일 다운로드
+#### 설치 파일 다운로드
 
 ```
 wget https://desktop-release.q.us-east-1.amazonaws.com/latest/kiro-cli.deb
 ```
 
-#### 2) 패키지 설치
+#### 패키지 설치
 
 ```
 sudo dpkg -i kiro-cli.deb
 sudo apt-get install -f
 ```
 
-#### 3) 실행
+#### 실행
 
 ```
 kiro-cli
@@ -182,13 +182,13 @@ kiro-cli
 
 ***
 
-## 5. Proxy 환경 구성 (Proxy Configuration)
+## 4. Proxy 환경 구성 (Proxy Configuration)
 
 Kiro CLI v1.8.0 이상은 기업 환경에서 사용되는 프록시 서버(proxy servers) 를 지원합니다.
 
 CLI는 일반적인 proxy 환경 변수(proxy environment variables) 를 자동으로 인식합니다.
 
-### 5.1 프록시 환경 변수 설정
+### 4.1 프록시 환경 변수 설정
 
 ```
 # HTTP 트래픽용 프록시
@@ -201,14 +201,14 @@ export HTTPS_PROXY=http://proxy.company.com:8080
 export NO_PROXY=localhost,127.0.0.1,.company.com
 ```
 
-### 5.2 인증이 필요한 프록시
+### 4.2 인증이 필요한 프록시
 
 ```
 export HTTP_PROXY=http://username:password@proxy.company.com:8080
 export HTTPS_PROXY=http://username:password@proxy.company.com:8080
 ```
 
-### 5.3 프록시 문제 해결
+### 4.3 프록시 문제 해결
 
 * 프록시 서버 접근성 및 인증 정보 확인
 * 사내 방화벽이 AWS 엔드포인트를 차단하는지 확인
@@ -217,7 +217,7 @@ export HTTPS_PROXY=http://username:password@proxy.company.com:8080
 
 ***
 
-## 6. Uninstall / 제거
+## 5. Uninstall / 제거
 
 ### macOS 제거
 
@@ -227,13 +227,13 @@ kiro-cli uninstall
 
 ### Ubuntu 제거
 
-#### 1) 패키지 제거
+#### 패키지 제거
 
 ```
 sudo apt-get remove kiro-cli
 ```
 
-#### 2) 잔여 설정 파일 제거
+#### 잔여 설정 파일 제거
 
 ```
 sudo apt-get purge kiro-cli
@@ -241,7 +241,7 @@ sudo apt-get purge kiro-cli
 
 ***
 
-## 7. Debugging / 디버깅
+## 6. Debugging / 디버깅
 
 문제가 발생하면 다음 명령을 실행하여 환경을 점검할 수 있습니다.
 
@@ -267,7 +267,7 @@ kiro-cli issue
 
 ***
 
-## 8. Common Issues / 일반적인 문제
+## 7. Common Issues / 일반적인 문제
 
 #### • 인증 실패(Authentication failures)
 
@@ -283,7 +283,7 @@ SSH 서버가 필요한 환경 변수를 허용하도록 올바르게 구성되�
 
 ***
 
-## 9. Troubleshooting Steps / 문제 해결 절차
+## 8. Troubleshooting Steps / 문제 해결 절차
 
 1. kiro-cli doctor 실행
 2. 네트워크 연결 확인

@@ -10,7 +10,7 @@ Kiro는 로컬 시스템 및 AWS 리소스에 영향을 미칠 수 있는 강력
 
 ***
 
-## Understanding Security Risks (보안 리스크 이해하기)
+## 1. Understanding Security Risks (보안 리스크 이해하기)
 
 Kiro를 사용할 때 고려해야 할 잠재적 보안 위험은 다음과 같습니다:
 
@@ -47,7 +47,7 @@ Kiro가 수행하는 모든 작업에 대한 책임은 사용자에게 있습니
 
 ***
 
-## General Security Best Practices (일반 보안 모범 사례)
+## 2. General Security Best Practices (일반 보안 모범 사례)
 
 특히 민감한 파일, 개인 키(private keys), 토큰(tokens), 인증 정보(credentials) 등과 함께 Kiro를 사용할 때는 다음 보안 조치를 적극 고려해야 합니다.
 
@@ -77,7 +77,7 @@ echo 'alias kiro-cli="kiro-cli --untrust-fs-read"' >> ~/.bashrc
 
 ***
 
-## Additional Security Measures
+## 3. Additional Security Measures
 
 특히 고도의 민감 데이터를 다루는 환경에서는 다음을 고려하십시오:
 
@@ -89,7 +89,7 @@ echo 'alias kiro-cli="kiro-cli --untrust-fs-read"' >> ~/.bashrc
 
 ***
 
-## Using /tools trust-all Safely (/tools trust-all 안전 사용 방법)
+## 4. Using /tools trust-all Safely (/tools trust-all 안전 사용 방법)
 
 특정 워크플로우에서 /tools trust-all 또는 /acceptall 사용이 불가피한 경우, 아래의 안전 수칙을 반드시 준수하십시오:
 
@@ -112,12 +112,3 @@ echo 'alias kiro-cli="kiro-cli --untrust-fs-read"' >> ~/.bashrc
 ```
 
 이 명령은 도구 권한을 기본값으로 재설정하며, 기본적으로 read 도구만 Trusted, 나머지는 모두 Per-request 상태로 복귀합니다.
-
-***
-
-## Related Documentation (관련 문서)
-
-* Permissions — 접근 제어 관리
-* Context Management — 공유 데이터 제어
-* Authentication — 안전한 로그인 방식
-* Privacy and Security — 전체 보안 정책 및 모범 사례

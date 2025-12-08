@@ -6,9 +6,9 @@ Kiro는 개발 업무 전반을 지원하기 위해 Auto, Claude Sonnet 4.0, Cla
 
 ***
 
-### Available Models (지원 모델)
+### 1. Available Models (지원 모델)
 
-#### Auto (권장 설정)
+### 1.1. Auto (권장 설정)
 
 Auto는 Kiro의 기본 모델 라우팅(Model Routing) 엔진으로, 여러 최첨단 LLM을 조합하고 고급 최적화 기법을 적용하여 가장 효율적인 결과를 제공합니다.
 
@@ -25,7 +25,7 @@ Auto는 Claude Sonnet 4를 포함한 최상위급 LLM(best-in-class LLM) 조합�
 
 ***
 
-#### Claude Sonnet 4.0
+### 1.2. Claude Sonnet 4.0
 
 일관된 모델 선택을 선호하거나, 특정 워크로드에서 명확히 Sonnet 4.0을 요구하는 사용자를 위한 Anthropic Claude Sonnet 4.0 직접 접근 모델입니다.
 
@@ -37,7 +37,7 @@ Auto는 Claude Sonnet 4를 포함한 최상위급 LLM(best-in-class LLM) 조합�
 
 ***
 
-#### Claude Sonnet 4.5
+### 1.3. Claude Sonnet 4.5
 
 복잡한 에이전트 운영과 소프트웨어 엔지니어링(SWE) 작업에서 최고의 성능을 제공하는 Anthropic의 상위 모델입니다.
 
@@ -49,7 +49,7 @@ Auto는 Claude Sonnet 4를 포함한 최상위급 LLM(best-in-class LLM) 조합�
 
 ***
 
-#### Claude Opus 4.5
+### 1.4. Claude Opus 4.5
 
 Anthropic의 최상위급 지능을 제공하는 모델로, 복잡한 전문 업무, 프로덕션급 소프트웨어 엔지니어링, 고급 에이전트 운영에 적합합니다.
 
@@ -66,7 +66,7 @@ Anthropic의 최상위급 지능을 제공하는 모델로, 복잡한 전문 업
 
 ***
 
-#### Claude Haiku 4.5
+### 1.5. Claude Haiku 4.5
 
 가장 빠르고 지능적인 Haiku 시리즈 모델로, Sonnet 4에 근접한 지능을 훨씬 낮은 비용과 빠른 속도로 제공합니다.
 
@@ -79,7 +79,7 @@ Anthropic의 최상위급 지능을 제공하는 모델로, 복잡한 전문 업
 
 ***
 
-### Cost Comparison (모델별 비용 비교)
+### 2. Cost Comparison (모델별 비용 비교)
 
 모델별 크레딧 소모 방식은 다음과 같습니다:
 
@@ -87,7 +87,7 @@ Anthropic의 최상위급 지능을 제공하는 모델로, 복잡한 전문 업
 
 ***
 
-### Choosing the Right Model (모델 선택 기준)
+### 3. Choosing the Right Model (모델 선택 기준)
 
 #### Claude Haiku 4.5를 고려할 때
 
@@ -125,7 +125,7 @@ Anthropic의 최상위급 지능을 제공하는 모델로, 복잡한 전문 업
 
 ***
 
-### How to Switch Models (모델 변경 방법)
+### 4.How to Switch Models (모델 변경 방법)
 
 * Chat 인터페이스 내에서 /model 명령어 사용
 
@@ -137,7 +137,7 @@ kiro-cli settings chat.defaultModel claude-sonnet4
 
 ***
 
-### Best Practices (모범 사례)
+### 5. Best Practices (모범 사례)
 
 #### 효율 극대화
 
