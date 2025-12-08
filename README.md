@@ -4,7 +4,7 @@ description: 'Update: 2025.12.07'
 
 # Kiro CLI
 
-### Kiro CLI란?
+### Kiro CLI란? ([https://kiro.dev/](https://kiro.dev/))
 
 * Kiro CLI는 터미널(커맨드라인)에서 동작하는 AI-보조 개발 도구입니다. GUI IDE 대신 쉘(shell) 환경에서 Kiro 의 AI 에이전트를 사용해 코드 생성, 수정, 테스트, 인프라 코드 작성 등을 할 수 있게 해줍니다.&#x20;
 * Kiro CLI는 기존 Amazon Q Developer CLI 의 리브랜딩된 AI-보조 개발도구로, 2025년 정식 릴리스된 버전입니다.&#x20;
