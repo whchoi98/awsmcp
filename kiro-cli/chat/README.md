@@ -72,12 +72,12 @@ Kiro CLI는 대화를 폴더(디렉터리) 단위로 저장하여, 동일한 디
 
 ***
 
-### Directory-based Persistence / 디렉터리 기반 지속성
+### 1. Directory-based Persistence / 디렉터리 기반 지속성
 
 * 특정 디렉터리에서 처음 Kiro와 대화를 시작하는 경우 → 새로운 대화 생성
 * 해당 디렉터리에서 이전 대화가 존재하는 경우 → 자동으로 로드 가능
 
-#### 명시적으로 이전 대화 불러오기
+#### 2. 명시적으로 이전 대화 불러오기
 
 ```
 kiro-cli chat --resume
@@ -93,7 +93,7 @@ kiro-cli chat --resume
 
 ***
 
-/save \[path] — 대화 저장
+### 1. /save \[path] — 대화 저장
 
 ```
 /save ./my-project-conversation.json
@@ -112,9 +112,7 @@ kiro-cli chat --resume
 
 ***
 
-### /load \[path]
-
-### &#x20;— 대화 불러오기
+### 2 `/load` \[path]  — 대화 불러오기
 
 ```
 /load ./my-project-conversation.json
@@ -124,9 +122,7 @@ kiro-cli chat --resume
 
 ***
 
-### Info / 참고
-
-<br>
+### Info / 참고 <br>
 
 /save 및 /load 명령은 대화가 저장된 디렉터리와 독립적으로 동작합니다.
 
@@ -134,6 +130,3 @@ kiro-cli chat --resume
 
 ***
 
-원하시면 다음 문서(Agents, Hooks, Steering, Configuration, Commands Reference)도
-
-동일한 GitBook 한국어 스타일로 변환해드릴까요?
