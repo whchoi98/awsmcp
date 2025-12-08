@@ -6,7 +6,7 @@ description: 'Update: 2025.12.07'
 
 ### Kiro CLI란?
 
-* Kiro CLI는 터미널(커맨드라인)에서 동작하는 AI-보조 개발 도구입니다. 즉, GUI IDE 대신 쉘(shell) 환경에서 Kiro 의 AI 에이전트를 사용해 코드 생성, 수정, 테스트, 인프라 코드 작성 등을 할 수 있게 해줍니다.&#x20;
+* Kiro CLI는 터미널(커맨드라인)에서 동작하는 AI-보조 개발 도구입니다. GUI IDE 대신 쉘(shell) 환경에서 Kiro 의 AI 에이전트를 사용해 코드 생성, 수정, 테스트, 인프라 코드 작성 등을 할 수 있게 해줍니다.&#x20;
 * Kiro CLI는 기존 Amazon Q Developer CLI 의 리브랜딩된 AI-보조 개발도구로, 2025년 정식 릴리스된 버전입니다.&#x20;
 
 ### 주요 기능 & 특징
@@ -15,7 +15,7 @@ description: 'Update: 2025.12.07'
 * MCP 및 도구 연동 — 파일 읽기/쓰기, API 호출, bash 명령 실행 등 로컬/원격 환경에서 다양한 작업을 할 수 있고, 기존 IDE 환경 설정과 동일한 MCP(tool-management) & steering 설정을 CLI에서도 그대로 활용합니다.&#x20;
 * 유연한 개발 환경 — IDE 대신 터미널만 사용할 때, 또는 SSH / 서버 환경에서 빠르게 작업할 때 유용. GUI에 의존하지 않고 어디서든 AI와 상호작용 가능.&#x20;
 
-### Kiro CLI가 유용한 상황 / 대상
+### Kiro CLI가 유용한 환경과 대상
 
 * GUI IDE 없이 터미널 또는 원격 서버 환경에서 작업할 때
 * 규모가 크거나 코드베이스가 방대해서 일관된 코딩 스타일, 테스트, 문서화, 인프라 구성이 중요한 경우
@@ -30,5 +30,5 @@ description: 'Update: 2025.12.07'
 curl -fsSL https://cli.kiro.dev/install | bash
 ```
 
-* 또는 macOS에서는 Homebrew로 설치 가능.&#x20;
-* 설치 후 kiro-cli 명령어로 실행하고, 초기 로그인(예: Builder ID or AWS 인증) 하면 사용 준비 완료.&#x20;
+* macOS에서는 Homebrew로 설치 가능합니다.
+* 설치 후 kiro-cli 명령어로 실행하고, 초기 로그인(예: Builder ID or AWS 인증) 하면 사용 준비가 완료된 것입니다.
