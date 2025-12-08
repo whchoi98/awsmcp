@@ -8,8 +8,6 @@ description: 'Update : 2025.12.07'
 
 ## 01. Kiro CLI 탐색
 
-_(Exploring Kiro CLI)_
-
 이 실습에서는 Kiro CLI의 에이전트(Agentic) 기능을 본격적으로 탐색합니다.
 
 본 실습은 모든 사전 요구 사항(prerequisites)을 충족하고 Kiro CLI 설치가 완료된 상태를 전제로 진행됩니다.
@@ -89,8 +87,6 @@ Kiro CLI의 명령은 모두 `/` 로 시작합니다.
 ***
 
 ## 02. 멀티라인 프롬프트
-
-_(Multi-line Prompts)_
 
 지금까지는 단일 줄(single-line) 프롬프트를 입력해 보았습니다.
 
@@ -485,15 +481,13 @@ Allow this action? Use 't' to trust (always allow) this tool for the session. [y
 
 ## 07. 대화 종료 및 재개
 
-_(Exiting and Resuming Conversations)_
-
 Kiro CLI는 자연어 기반의 작업 흐름을 중심으로 설계되어 있으며, 사용자가 언제든지 CLI 세션을 종료하고, 다시 돌아와 직전의 작업 문맥을 그대로 재개할 수 있도록 지원합니다.
 
 이는 장시간 진행되는 개발 작업이나 프로젝트 기반 분석을 수행할 때 특히 유용합니다.
 
 ***
 
-### 7.1 대화 종료(Exiting a Session)
+### 7.1 대화 종료
 
 Kiro CLI에서 대화를 종료하는 방법은 두 가지입니다.
 
@@ -513,7 +507,7 @@ Kiro CLI에서 대화를 종료하는 방법은 두 가지입니다.
 
 ***
 
-### 7.2 대화를 재개하는 방법(Resuming a Conversation)
+### 7.2 대화를 재개하는 방법
 
 Kiro CLI는 디렉터리 기반의 세션 기억 기능(directory-based persistence)을 제공합니다.
 
@@ -584,8 +578,6 @@ kiro-cli chat --resume
 ***
 
 ## 08. 대화 세션 저장 및 불러오기
-
-_(Saving and Loading Chat Sessions)_
 
 Kiro CLI를 사용하다 보면, 특정 주제에 대해 장시간 논의하거나, 생성된 히스토리를 보관하여 추후 참고해야 하는 경우가 있습니다.
 
@@ -830,8 +822,6 @@ cli.json 파일에 다음 내용을 추가:
 
 ## 10. 명령 실행하기&#x20;
 
-_Executing Commands_
-
 Kiro CLI는 기본적으로 대화(Chat) 기반 상호작용을 중심으로 동작하지만, 필요할 경우 대화 세션 내부에서 직접 시스템 명령을 실행할 수 있습니다.
 
 이는 Kiro를 사용한 개발 워크플로우에서 매우 강력한 기능으로, 파일 확인 · 스크립트 실행 · 디렉터리 조회 등 다양한 작업을 즉시 수행할 수 있습니다.
@@ -899,8 +889,6 @@ Kiro CLI를 활용하면 대화형 AI와 시스템 명령 실행을 단일 인�
 ***
 
 ## 11. 프롬프트 관리&#x20;
-
-_Managing Prompts_
 
 Kiro CLI는 자주 사용하는 지시문(prompt)을 마크다운 파일 형태로 저장하고 재사용할 수 있는 기능을 제공합니다.
 
@@ -1083,9 +1071,7 @@ Use PostgreSQL for all data
 
 ***
 
-## 12. Tools
-
-_Kiro CLI 도구 및 권한 관리_
+## 12. Tool
 
 Kiro CLI는 외부 환경과 상호작용하기 위해 Tools(도구) 개념을 사용합니다.
 
@@ -1200,8 +1186,6 @@ Kiro CLI를 적극적으로 자동화 환경에서 활용하려면 Tools 설정�
 <table data-header-hidden><thead><tr><th width="179.89453125"></th><th></th></tr></thead><tbody><tr><td>개념</td><td>설명</td></tr><tr><td>Tools</td><td>Kiro CLI가 외부 작업을 수행하기 위한 실행 모듈</td></tr><tr><td>Trust Levels</td><td>trusted / not trusted / restricted</td></tr><tr><td>승인 흐름</td><td>도구 호출 시 사용자에게 허용 여부 요청</td></tr><tr><td>세션 기반 신뢰</td><td>세션 종료 시 기본 상태로 초기화</td></tr><tr><td>MCP 연계</td><td>서버별로 새로운 도구가 추가되며 기본적으로 untrusted</td></tr></tbody></table>
 
 Tools는 Kiro CLI의 기능 확장 및 자동화의 핵심이며, 올바른 신뢰 관리가 안전하고 효율적인 워크플로우 구축에 필수적입니다.
-
-***
 
 
 

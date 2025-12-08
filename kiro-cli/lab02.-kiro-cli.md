@@ -4,23 +4,17 @@ description: 'Update : 2025.12.06'
 
 # LAB02. Kiro CLI 고급 구성
 
-## Advanced Configuration of Kiro CLI
-
 본 섹션은 선택(Optional) 항목으로, Kiro CLI의 내부 구조와 설정 방식을 보다 깊이 이해하고자 하는 사용자에게 제공됩니다. 기본 실습을 빠르게 진행하고자 한다면 본 섹션은 건너뛰어도 무방합니다.
 
 ***
 
 ## 1. Kiro CLI 구성 심층 탐색
 
-_Exploring Kiro CLI Configuration_
-
 Kiro CLI는 전역 설정(Global Configuration)과 프로젝트 기반 로컬 설정(Project-scoped Configuration)을 모두 지원하며, 이를 통해 사용자는 CLI의 행동과 모델 설정을 세밀하게 조정할 수 있습니다.
 
 ***
 
 ## 2. 디렉터리 구조 이해하기
-
-Directory Structure Overview
 
 Kiro CLI는 설정 파일을 다음 두 위치에서 관리합니다.
 
@@ -68,8 +62,6 @@ _Using Kiro CLI Behind a Proxy_
 
 ## 4. Kiro CLI 디버깅 옵션
 
-_Debugging Options in Kiro CLI_
-
 Kiro CLI 실행 시 환경 변수(Env Variable) KIRO\_LOG\_LEVEL을 지정하면 로그 상세 수준(Log Verbosity Level)을 변경할 수 있습니다.
 
 #### 예시
@@ -100,8 +92,6 @@ $TMPDIR/kiro-log/kiro-chat-log
 ***
 
 ## 5. Kiro CLI Settings 구조 및 관리
-
-_Managing Kiro CLI Settings_
 
 전역 설정 파일은 다음 위치에 있습니다:
 
@@ -165,8 +155,6 @@ chat.defaultModel = "claude-sonnet-4.5"
 
 ## 6. Kiro CLI 진단 정보 수집
 
-_Diagnostic Tools for Kiro CLI_
-
 설치 환경과 구성 정보를 요약하여 제공하는 유용한 명령:
 
 ```
@@ -217,8 +205,6 @@ TERM = "xterm-256color"
 
 ## 7. 실험적 기능(Experimental Features) 사용하기
 
-Working with Experimental Features
-
 Kiro CLI는 출시 초기 단계의 기능(베타 기능)을 /experiment 명령을 통해 활성화하거나 비활성화할 수 있습니다.
 
 #### 실행
@@ -247,25 +233,13 @@ Kiro CLI는 출시 초기 단계의 기능(베타 기능)을 /experiment 명령�
 * Space 로 기능 ON/OFF 전환
 * 변경 사항은 자동으로 settings.json에 반영됨
 
-<br>
-
-> 고급 워크샵 단계에서 이러한 기능을 실제로 활용해봅니다.
-
 ***
 
 ## 8. 작업 완료 알림 설정
 
-<br>
-
-Enabling Task Completion Notifications
-
-<br>
-
 장시간 작업을 Kiro CLI가 수행하는 경우,
 
 작업 완료 시 터미널 알림(Terminal Notification)을 받을 수 있습니다.
-
-<br>
 
 #### 알림 활성화
 
@@ -287,25 +261,9 @@ kiro-cli settings chat.enableNotifications false
 
 ## Supporting Resources
 
-<br>
-
 추가 참고 자료
 
 * Kiro CLI Experimental Features Documentation
 * 공식 문서: https://kiro.dev/
 
 ***
-
-### ✔ 다음 단계도 도와드릴까요?
-
-<br>
-
-원하시면
-
-* Advanced Topics 섹션 전체
-* Hooks, Agents, MCP Servers, Steering 등 심화 문서
-* GitBook 전체 워크숍 커리큘럼 구조 설계
-
-<br>
-
-까지 동일한 톤과 품질로 제작해드릴 수 있습니다.

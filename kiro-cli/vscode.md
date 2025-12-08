@@ -6,7 +6,9 @@ description: 'update : 2025.12.07'
 
 ## 1. VSCode Server 기반 실습 환경 구축 가이드 <a href="#vscode-server-eks" id="vscode-server-eks"></a>
 
-이 문서는 ㅏCLI를 도구로 랩 환경에서 실습을 위해 필요한 도구 설치, VPC 및 클러스터 배포 과정을 안내합니다.
+이 문서는 Kiro CLI를 도구로 랩 환경에서 실습을 위해 필요한 도구 설치, VPC 및 클러스터 배포 과정을 안내합니다.
+
+MAC OS , 또는 다른 환경에서 이미 Kiro CLI를 설치하였다면, 해당 챕터는 생략해도 됩니다.
 
 ***
 
@@ -60,8 +62,4 @@ git clone https://github.com/whchoi98/ec2_vscode.git
 ```
 
 * ALB DNS로 재접속하면, 신규 설정된 패스워드를 입력하고 VSCode에 연결합니다.
-
-
-
-
 

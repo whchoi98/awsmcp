@@ -1,3 +1,7 @@
+---
+description: 'Update : 2025.12.07'
+---
+
 # LAB05. Kiro CLI 고급 기능
 
 ## Kiro CLI 고급 기능
