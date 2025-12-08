@@ -1,2 +1,0 @@
-# AWS CloudFormation MCP Server
-

@@ -1,2 +1,0 @@
-# Finch MCP Server
-

@@ -81,7 +81,7 @@ MCP는 Client-Server 아키텍처를 따르며, 3가지 주요 구성 요소로 
 11. Kiro CLI는 이를 바탕으로 최종 응답(final response) 생성
 12. 사용자에게 결과를 반환
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

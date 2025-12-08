@@ -54,11 +54,25 @@ Builder ID 준비가 완료되면, Kiro CLI를 다운로드 → 설치 → 초�
 
 ### 3.1 macOS
 
-Kiro.dev 공식 문서의 설치 절차를 따르면 간단히 설치할 수 있습니다.
+```
+curl -fsSL https://cli.kiro.dev/install | bash
+```
 
 ### 3.3 Linux
 
-Ubuntu 및 기타 Linux 배포판 설치 방법은 모두 Kiro.dev 문서에 정리되어 있습니다.
+설치 파일 다운로드
+
+```
+curl --proto '=https' --tlsv1.2 -sSf \
+'https://desktop-release.q.us-east-1.amazonaws.com/latest/kirocli-x86_64-linux.zip' \
+-o 'kirocli.zip'
+```
+
+압축 해제
+
+```
+unzip kirocli.zip
+```
 
 ***
 
@@ -92,18 +106,46 @@ kiro-cli login --use-device-flow
 
 ```
 ? Select login method ›
- Use for Free with Builder ID
-❯Use with Pro license
+  Use with Builder ID
+  Use with IDC Account
 ```
 
 Builder ID를 선택하면 디바이스 코드 인증(Device Code Authentication) 화면이 표시됩니다:
 
+IDC Account를 선택하면 Identity Center로 인증을 시도합니다.
+
 ```
-Code: PNDN-QVKB
-Open this URL:
-https://whchoi01.awsapps.com/start/#/device?user_code=PNDN-QVKB
-▰▰▱▱▱▱▱ Logging in...
+$ kiro-cli login --use-device-flow
+✔ Select login method · Use with IDC Account
+✔ Enter Start URL · https://whchoi01.awsapps.com/start/
+? Enter Region › us-east-1
 ```
+
+인증을 위해서 아래와 같은 URL 접속을 요청합니다.
+
+```
+Confirm the following code in the browser
+Code: XXXX-XXXX
+
+Open this URL: https://whchoi01.awsapps.com/start/#/device?user_code=xxxx-xxxx
+▰▰▰▰▱▱▱ Logging in...
+```
+
+IDC에 등록된 USER NAME을 입력합니다.
+
+<div align="left"><figure><img src="../.gitbook/assets/image.png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+Password를 입력합니다.
+
+<div align="left"><figure><img src="../.gitbook/assets/image (1).png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+Kiro CLI 서비스를 사용하기 위한 인증권한을 컨펌합니다.
+
+<div align="left"><figure><img src="../.gitbook/assets/image (2).png" alt="" width="375"><figcaption></figcaption></figure></div>
+
+접근 권한을 최종 수락합니다.
+
+<div align="left"><figure><img src="../.gitbook/assets/image (3).png" alt="" width="375"><figcaption></figcaption></figure></div>
 
 브라우저에서 인증 후 터미널에는 다음 메시지가 표시됩니다:
 
@@ -115,13 +157,25 @@ Logged in successfully
 
 ### 4.4 고급 인증 옵션
 
-AWS Identity Center(IdC)를 통한 엔터프라이즈 인증:
+AWS Identity Center(IdC)를 통한 엔터프라이즈 인증을 아래와 같이 옵션을 통해서, 명령을 수행할 수도 있습니다.
 
 ```
 kiro-cli login --use-device-flow --license pro \
 --identity-provider {IdC login URL} \
 --region {region}
 ```
+
+4.5 인증확인
+
+아래와 같은 명령을 통해서, Kiro CLI 에 접근이 가능한지 확인합니다.
+
+```
+kiro-cli
+```
+
+정상적으로 로그인이 된다면 아래와 같이 출력됩니다.
+
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

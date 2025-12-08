@@ -1,2 +1,0 @@
-# AWS Terraform MCP Server
-

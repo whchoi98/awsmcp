@@ -1,2 +1,0 @@
-# AWS Documentation MCP Server
-

@@ -1,2 +1,0 @@
-# AWS Knowledge MCP Server
-

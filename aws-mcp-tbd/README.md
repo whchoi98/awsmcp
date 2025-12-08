@@ -1,6 +1,0 @@
----
-description: TBD
----
-
-# AWS MCP
-

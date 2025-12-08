@@ -1,2 +1,0 @@
-# AWS CDK MCP Server
-

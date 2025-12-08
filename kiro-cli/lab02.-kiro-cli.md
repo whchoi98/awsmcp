@@ -54,10 +54,6 @@ _Using Kiro CLI Behind a Proxy_
 
 기업망 또는 보안 환경에서 Kiro CLI를 실행하는 경우, 프록시 서버가 필요한 경우가 있습니다.
 
-프록시 설정 방법은 공식 문서에 상세히 설명되어 있으므로 다음 페이지를 참고하십시오:
-
-→ _Kiro CLI Proxy Configuration Documentation_
-
 ***
 
 ## 4. Kiro CLI 디버깅 옵션

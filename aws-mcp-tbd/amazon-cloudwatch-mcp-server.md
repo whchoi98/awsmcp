@@ -1,2 +1,0 @@
-# Amazon CloudWatch MCP Server
-

@@ -404,7 +404,7 @@ Kiro CLI는 다음을 수행합니다:
 
 1. example-erd.png 파일을 가져오고, 아래 디렉토리를 생성해서 업로드 합니다.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 2. 로컬 프로젝트에서 다음과 같은 디렉토리를 생성합니다.
 

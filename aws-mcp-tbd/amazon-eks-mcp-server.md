@@ -1,2 +1,0 @@
-# Amazon EKS MCP Server
-

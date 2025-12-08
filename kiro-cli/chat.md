@@ -108,8 +108,6 @@ kiro-cli chat --resume
 /save /home/user/project/my-project-conversation.json
 ```
 
-> ⚠️ 주의: \~(홈 디렉터리)은 사용할 수 없습니다.
-
 ***
 
 ### 4.2. `/load` \[path]  — 대화 불러오기

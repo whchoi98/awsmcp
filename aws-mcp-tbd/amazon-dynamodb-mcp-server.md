@@ -1,2 +1,0 @@
-# Amazon DynamoDB MCP Server
-

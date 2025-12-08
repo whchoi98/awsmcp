@@ -1,2 +1,0 @@
-# AWS Pricing MCP Server
-
