@@ -10,7 +10,7 @@ Kiro는 필요한 경우 TODO 리스트를 스스로 생성하고, 사용자는 
 
 ***
 
-## 1. Enabling TODO List Functionality
+## 1. TODO List 기능 활성화
 
 TODO 리스트 기능은 실험적 기능이므로 먼저 활성화해야 합니다.
 
@@ -22,9 +22,9 @@ kiro-cli settings chat.enableTodoList true
 
 ***
 
-## 2. How It Works
+## 2. 동작 방식
 
-### 2.1 Automatic TODO Creation
+### 2.1 Automatic TODO 생성
 
 Kiro는 다음과 같은 상황에서 자동으로 TODO 리스트를 생성합니다:
 
@@ -42,7 +42,7 @@ Kiro는 즉시 리스트를 생성하고 도구를 사용하여 결과를 출력
 
 ***
 
-### 2.2 Task Management
+### 2.2 작업 관리
 
 Kiro는 다음 작업을 수행할 수 있습니다:
 
@@ -135,7 +135,7 @@ Kiro는 다음 작업을 수행할 수 있습니다:
 
 ***
 
-## 4. Storage Structure
+## 4. Storage 구조
 
 TODO 리스트는 프로젝트별로 지속 저장되며 세션이 종료되어도 유지됩니다.
 
@@ -161,7 +161,7 @@ my-project/
 
 ***
 
-## 5. Use Cases
+## 5. 사용 사례
 
 ### 5.1 복잡한 작업 분해
 
@@ -256,7 +256,7 @@ kiro-cli settings chat.enableTodoList true
 
 ***
 
-## 10. Example Workflow
+## 10. Workflow 예제
 
 1. 복잡한 작업 요청
 2. Kiro가 자동 TODO 생성

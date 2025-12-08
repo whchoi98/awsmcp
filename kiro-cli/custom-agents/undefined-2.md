@@ -2,7 +2,7 @@
 description: 'Update : 2025.12.07'
 ---
 
-# Agent Examples (에이전트 예시)
+# 에이전트 예시
 
 이 페이지는 다양한 워크플로우를 위한 커스텀 에이전트 구성 예시를 제공합니다.
 
@@ -331,7 +331,7 @@ Docker, Database, Build/Testing 등의 워크플로우에 맞춰 강화할 수 �
 
 ***
 
-## 5. Remote MCP Server Integration
+## 5. 원격 MCP 서버와 통합 에이전트
 
 원격 MCP 서버와 통합된 에이전트 예시입니다.
 
@@ -355,7 +355,7 @@ OAuth 인증이 필요한 서버인 경우, /mcp 명령을 통해 인증 요청�
 
 ***
 
-## 6. Tips for Creating Effective Custom Agents
+## 6. 효율적인 커스텀 에이전트 구성 예시
 
 효율적인 커스텀 에이전트를 만들기 위한 모범 사례:
 

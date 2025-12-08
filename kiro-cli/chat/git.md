@@ -1,8 +1,6 @@
 # Git과 함께 작업하기
 
-## 1. Working with Git (Git과 함께 작업하기)
-
-<br>
+## 1. Git과 함께 작업하기
 
 Kiro CLI는 Git 리포지토리 환경에서 작업할 때 Git-aware Fuzzy Finder(깃 인식 퍼지 파인더) 기능을 제공하여, 컨텍스트에 포함할 파일을 보다 쉽고 빠르게 선택할 수 있도록 지원합니다.
 
@@ -10,7 +8,7 @@ Kiro CLI는 Git 리포지토리 환경에서 작업할 때 Git-aware Fuzzy Finde
 
 ***
 
-### How Git-aware Selection Works(Git 인식 기반 선택 기능 동작 방식)
+### Git 인식 기반 선택 기능 동작 방식
 
 Git-aware 퍼지 파인더는 리포지토리의 Git 메타데이터를 활용하여 다음과 같은 기능을 제공합니다:
 
@@ -23,7 +21,7 @@ Git-aware 퍼지 파인더는 리포지토리의 Git 메타데이터를 활용�
 
 ***
 
-### Using Git-aware File Selection(Git-aware 파일 선택 사용 방법)
+### Git-aware 파일 선택 사용 방법
 
 #### 1. Git 리포지토리 디렉토리로 이동
 
@@ -55,7 +53,7 @@ Git-aware 퍼지 파인더는 리포지토리의 Git 메타데이터를 활용�
 
 ***
 
-### Tips for Git-aware Selection(Git-aware 선택 활용 팁)
+### Git-aware 선택 활용 팁
 
 * Git 상태 정보를 검색 기준으로 활용하면 수정된 파일(M) 또는 미추적 파일(?)을 빠르게 찾아 포함할 수 있습니다.
 * 퍼지 파인더는 Git 변경 이력 기반으로 최근 수정 파일을 우선 순위에 두고 표시합니다.

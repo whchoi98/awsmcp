@@ -19,7 +19,7 @@ Custom Agents는 이러한 문제를 해결합니다.
 
 ***
 
-## 1. What Custom Agents Enable(커스텀 에이전트가 제공하는 기능)
+## 1. Custom Agents Enable(커스텀 에이전트 기능)
 
 커스텀 에이전트는 다음과 같은 기능을 구성할 수 있도록 합니다:
 
@@ -33,7 +33,7 @@ Custom Agents는 이러한 문제를 해결합니다.
 
 ***
 
-## 2. Benefits of Using Custom Agents (커스텀 에이전트 사용의 이점)
+## 2. Custom Agents  사용의 장점
 
 #### 1. Workflow Optimization (워크플로우 최적화) :  AWS 인프라 관리, 코드 리뷰, 디버깅 세션 등 특정 작업에 맞춘 최적화된 에이전트를 구축 가능.
 
@@ -47,7 +47,7 @@ Custom Agents는 이러한 문제를 해결합니다.
 
 ***
 
-## 3. Relationship to MCP and Built-in Tools (MCP 및 내장 도구와의 관계)
+## 3. MCP 및 내장 도구와의 관계
 
 Custom Agents는 Kiro의 내장 도구(Built-in Tools) 와 Model Context Protocol(MCP) 을 통한 외부 도구 모두와 함께 작동합니다.
 

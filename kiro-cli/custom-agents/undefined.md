@@ -1,393 +1,123 @@
 ---
-description: 'Update : 2025.12.08'
+description: 'Update : 2025.12.07'
 ---
 
-# 에이전트 구성 레퍼런스
+# 커스텀 에이전트 생성
 
-에이전트 구성 파일(Agent Configuration File)에는 다음과 같은 섹션을 포함할 수 있습니다:
+커스텀 에이전트(Custom Agents)는 특정 작업(Task)에 맞게 Kiro CLI의 동작 방식을 세밀하게 조정할 수 있도록 해주는 기능입니다. 이를 통해 다음을 정의할 수 있습니다:
 
-* name — 에이전트 이름(선택 사항, 생략 시 파일명에서 유추)
-* description — 에이전트 역할 및 목적 설명
-* prompt — 고수준 컨텍스트(System Prompt 역할)
-* mcpServers — 에이전트가 접근할 수 있는 MCP 서버
-* tools — 에이전트가 사용할 수 있는 도구 목록
-* toolAliases — 도구 이름 충돌 해결을 위한 Alias 매핑
-* allowedTools — 사용자 승인 없이 실행 가능한 도구
-* toolsSettings — 개별 도구 설정
-* resources — 에이전트가 사용할 수 있는 리소스 파일
-* hooks — 특정 트리거 지점에서 실행될 명령
-* includeMcpJson — MCP 설정 파일의 서버 포함 여부
-* model — 에이전트가 사용할 모델 ID
+* 사용 가능한 도구(Tools)
+* 사전 부여할 권한(Permissions)
+* 자동으로 포함될 컨텍스트(Context)
+* 특정 모델(Model) 또는 프롬프트(Prompt) 구성
 
 ***
 
-## 1. Name Field (name 필드)
+## 1. 빠른 시작
 
-에이전트 식별용 이름을 지정합니다.
-
-```
-{
-  "name": "aws-expert"
-}
-```
-
-***
-
-## 2. Description Field (description 필드)
-
-에이전트의 역할을 설명하는 인간 친화적 텍스트입니다.
+커스텀 에이전트는 Kiro CLI 채팅 세션 내 slash command 를 사용하여 빠르게 생성할 수 있습니다:
 
 ```
-{
-  "description": "An agent specialized for AWS infrastructure tasks"
-}
+> /agent generate
 ```
 
-***
-
-## 3. Prompt Field (prompt 필드)
-
-에이전트에 고수준 지침을 부여하는 시스템 프롬프트 역할을 합니다.
-
-텍스트 또는 file:// URI를 사용하여 외부 파일을 참조할 수 있습니다.
-
-#### Inline 프롬프트 예시
+실행하면 아래와 같은 단계별 설정 안내가 나타납니다:
 
 ```
-{
-  "prompt": "You are an expert AWS infrastructure specialist"
-}
+✔ Enter agent name:  · backend-specialist
+✔ Enter agent description:  · You are specialist in backend coding practices 
+✔ Agent scope · Local (current workspace)
+
+Select MCP servers (use Space to toggle, Enter to confirm):
+  markdown-downloader (node)
+  code-analysis (uv)
+
+✓ Agent 'backend-specialist' has been created and saved successfully!
 ```
 
-#### File URI 프롬프트 예시
+또는 CLI 명령어를 사용하여 생성할 수도 있습니다:
 
 ```
-{
-  "prompt": "file://./my-agent-prompt.md"
-}
+kiro-cli agent create --name my-agent
 ```
 
-#### 파일 경로 처리 규칙
-
-* 상대 경로: 에이전트 설정 파일 기준으로 해석
-  * "file://./prompt.md" → 동일 디렉토리
-  * "file://../shared/prompt.md" → 상위 디렉토리
-* 절대 경로: 그대로 사용
-  * "file:///Users/dev/prompts/agent.md"
-
-***
-
-## 4. MCP Servers Field (mcpServers 필드)
-
-에이전트가 사용할 Model Context Protocol(MCP) 서버를 정의합니다.
+이 명령은 설정 과정을 안내하며, 생성된 에이전트 구성 파일은 다음 위치에 저장됩니다:
 
 ```
-{
-  "mcpServers": {
-    "fetch": {
-      "command": "fetch3.1",
-      "args": []
-    },
-    "git": {
-      "command": "git-mcp",
-      "args": [],
-      "env": { "GIT_CONFIG_GLOBAL": "/dev/null" },
-      "timeout": 120000
-    }
-  }
-}
-```
-
-각 서버 설정 항목:
-
-* command (필수) — MCP 서버 실행 명령
-* args (선택) — 실행 시 전달할 인자
-* env (선택) — 서버에 적용할 환경 변수
-* timeout (선택) — 요청 타임아웃(ms), 기본값 120000
-
-***
-
-## 5. Tools Field (tools 필드)
-
-에이전트가 사용할 수 있는 도구 목록을 정의합니다.
-
-도구 참조 방식:
-
-* 내장 도구(Built-in tools): "read", "write", "shell"
-* MCP 전체 도구: "@git" (git 서버의 모든 도구)
-* MCP 특정 도구: "@git/git\_status"
-* 모든 도구 포함: "\*"
-* 모든 Built-in 도구 포함: "@builtin"
-
-예시:
-
-```
-{
-  "tools": [
-    "read",
-    "write",
-    "shell",
-    "@git",
-    "@rust-analyzer/check_code"
-  ]
-}
-```
-
-전체 도구 허용:
-
-```
-{
-  "tools": ["*"]
-}
+~/.kiro/agents/my-agent.json
 ```
 
 ***
 
-## 6. ToolAliases Field (toolAliases 필드)
+## 2. 에이전트 구성 파일
 
-서버 간 동일 이름 도구 충돌 해결 또는 보다 직관적인 도구 이름 제공을 위해 사용합니다.
+커스텀 에이전트는 JSON 기반의 설정 파일로 정의됩니다.
 
-```
-{
-  "toolAliases": {
-    "@github-mcp/get_issues": "github_issues",
-    "@gitlab-mcp/get_issues": "gitlab_issues"
-  }
-}
-```
-
-짧은 alias 생성 예시:
+아래는 기본적인 예시입니다:
 
 ```
 {
-  "toolAliases": {
-    "@aws-cloud-formation/deploy_stack_with_parameters": "deploy_cf",
-    "@kubernetes-tools/get_pod_logs_with_namespace": "pod_logs"
-  }
-}
-```
-
-***
-
-## 7. AllowedTools Field (allowedTools 필드)
-
-사용자 승인 없이 자동 실행을 허용할 도구를 지정합니다.
-
-보안 기능이므로 신중하게 구성해야 합니다.
-
-```
-{
-  "allowedTools": [
-    "read",
-    "write",
-    "@git/git_status",
-    "@server/read_*",
-    "@fetch"
-  ]
-}
-```
-
-#### 패턴 매칭 (Wildcard) 지원
-
-* "@server/read\_\*" → read\_file, read\_config 등
-* "@git-\*/status" → git-mcp/status 등
-* "@server/\*\_get" → \*\_get 도구
-* "@git-\*/\*" → git-\* 서버의 모든 도구
-* Built-in 도구 prefix 매칭: "r\*" → read
-
-{% hint style="info" %}
-주의: allowedTools는 "\*" 로 전체 허용을 지원하지 않습니다. (보안 이유)
-{% endhint %}
-
-***
-
-## 8. ToolsSettings Field (toolsSettings 필드)
-
-개별 도구에 특화된 설정을 제공합니다.
-
-```
-{
-  "toolsSettings": {
-    "write": {
-      "allowedPaths": ["~/**"]
-    },
-    "@git/git_status": {
-      "git_user": "$GIT_USER"
-    }
-  }
-}
-```
-
-***
-
-## 9. Resources Field (resources 필드)
-
-에이전트가 로드할 파일 기반 리소스를 지정합니다.
-
-반드시 file:// 접두사 사용.
-
-```
-{
-  "resources": [
-    "file://AmazonQ.md",
-    "file://README.md",
-    "file://.amazonq/rules/**/*.md"
-  ]
-}
-```
-
-지원 기능:
-
-* 단일 파일
-* Glob 패턴
-* 상대/절대 경로
-
-***
-
-## 10. Hooks Field (hooks 필드)
-
-에이전트 생명주기(Lifecycle) 및 도구 실행 시점에서 특정 명령을 실행합니다.
-
-```
-{
-  "hooks": {
-    "agentSpawn": [{ "command": "git status" }],
-    "userPromptSubmit": [{ "command": "ls -la" }],
-    "preToolUse": [
-      {
-        "matcher": "shell",
-        "command": "{ echo \"$(date) - Bash command:\"; cat; } >> /tmp/bash_audit_log"
-      }
-    ],
-    "postToolUse": [
-      {
-        "matcher": "write",
-        "command": "cargo fmt --all"
-      }
-    ]
-  }
-}
-```
-
-#### Hook 타입
-
-<table data-header-hidden><thead><tr><th width="200.23046875"></th><th></th></tr></thead><tbody><tr><td>Hook</td><td>설명</td></tr><tr><td>agentSpawn</td><td>에이전트 초기화 시 실행</td></tr><tr><td>userPromptSubmit</td><td>사용자가 메시지를 제출할 때</td></tr><tr><td>preToolUse</td><td>도구 실행 전(차단 가능)</td></tr><tr><td>postToolUse</td><td>도구 실행 후</td></tr><tr><td>stop</td><td>Assistant 응답 종료 시</td></tr></tbody></table>
-
-***
-
-## 11. includeMcpJson Field (includeMcpJson 필드)
-
-글로벌 및 로컬 MCP 설정 파일에 정의된 MCP 서버를 자동 포함할지 여부:
-
-```
-{
-  "includeMcpJson": true
-}
-```
-
-***
-
-## 12. Model Field (model 필드)
-
-에이전트가 사용할 모델 ID를 지정합니다.
-
-```
-{
+  "name": "my-agent",
+  "description": "A custom agent for my workflow",
+  "tools": ["read", "write"],
+  "allowedTools": ["read"],
+  "resources": ["file://README.md", "file://.kiro/steering/**/*.md"],
+  "prompt": "You are a helpful coding assistant",
   "model": "claude-sonnet-4"
 }
 ```
 
-모델이 사용 가능하지 않으면 기본 모델로 폴백(fallback)되며 경고가 표시됩니다.
+#### 주요 필드 설명
+
+| 필드           | 설명                     |
+| ------------ | ---------------------- |
+| name         | 에이전트 이름                |
+| description  | 에이전트 목적 및 역할 설명        |
+| tools        | 사용 가능한 도구 목록           |
+| allowedTools | 사용자 승인 없이 자동 실행되는 도구   |
+| resources    | 에이전트가 자동으로 로드할 컨텍스트 파일 |
+| prompt       | 에이전트의 기본 시스템 프롬프트 설정   |
+| model        | 사용할 LLM 모델 지정          |
 
 ***
 
-## 13. Complete Example (전체 예시)
+## 3.커스텀 에이전트 사용하기
+
+### 3.1. 새 채팅 세션에서 에이전트 전환하기
+
+기본적으로 새 세션은 kiro\_default 에이전트로 시작됩니다.
+
+아래 명령으로 에이전트를 교체할 수 있습니다:
 
 ```
-{
-  "name": "aws-rust-agent",
-  "description": "Specialized agent for AWS and Rust development",
-  "prompt": "file://./prompts/aws-rust-expert.md",
-  "mcpServers": {
-    "fetch": { "command": "fetch-server", "args": [] },
-    "git": { "command": "git-mcp", "args": [] }
-  },
-  "tools": ["read", "write", "shell", "aws", "@git", "@fetch/fetch_url"],
-  "toolAliases": {
-    "@git/git_status": "status",
-    "@fetch/fetch_url": "get"
-  },
-  "allowedTools": ["read", "@git/git_status"],
-  "toolsSettings": {
-    "write": { "allowedPaths": ["src/**", "tests/**", "Cargo.toml"] },
-    "aws": { "allowedServices": ["s3", "lambda"], "autoAllowReadonly": true }
-  },
-  "resources": ["file://README.md", "file://docs/**/*.md"],
-  "hooks": {
-    "agentSpawn": [{ "command": "git status" }],
-    "postToolUse": [
-      { "matcher": "write", "command": "cargo fmt --all" }
-    ]
-  },
-  "model": "claude-sonnet-4"
-}
+> /agent swap
+```
+
+에이전트 선택 화면이 나타납니다:
+
+```
+Choose one of the following agents
+❯ rust-developer-agent
+  kiro_default
+  backend-specialist
+```
+
+에이전트를 선택하면 다음과 같이 프롬프트가 변경됩니다:
+
+```
+✔ Choose one of the following agents · backend-specialist
+
+[backend-specialist] >
 ```
 
 ***
 
-## 14. Agent File Locations (에이전트 파일 위치)
+### 3.2. 시작 시 특정 에이전트 지정하기
 
-### Local Agents (프로젝트 전용)
-
-```
-.kiro/agents/
-```
-
-해당 워크스페이스에서만 사용 가능하며 팀과 버전 관리하기 용이합니다.
-
-예시:
+새로운 CLI 세션을 특정 에이전트로 바로 실행할 수도 있습니다:
 
 ```
-my-project/
-  .kiro/
-    agents/
-      dev-agent.json
-      aws-specialist.json
+kiro-cli --agent my-agent
 ```
 
-### Global Agents (사용자 전역)
-
-```
-~/.kiro/agents/
-```
-
-어디서든 사용 가능하며 개인화된 에이전트에 적합합니다.
-
-***
-
-## 15.Agent Precedence (에이전트 우선순위)
-
-1. Local 에이전트 우선
-2. 동일 이름이 존재할 경우 Global 에이전트는 무시되며 경고 표시
-
-***
-
-## 16. Best Practices (모범 사례)
-
-#### 1. Security
-
-* allowedTools는 최소 권한으로 시작
-* 와일드카드 사용 시 주의
-* toolsSettings로 민감 작업 제한
-
-#### 2. Organization
-
-* 의미 있는 에이전트 이름 사용
-* prompt 파일은 별도 디렉터리에 구성
-* 프로젝트 레포 안에서 에이전트 버전 관리
-
-#### 3. Workflow
-
-* 단일 작업 목적용 특화 에이전트 생성
-* 컨텍스트(resources) 활용해 정확도 향상
-* MCP 서버를 활용해 도구 확장
+이 경우 해당 에이전트 설정이 즉시 적용된 상태로 대화가 시작됩니다.

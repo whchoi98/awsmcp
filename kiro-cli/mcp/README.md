@@ -15,7 +15,7 @@ Tip\
 
 ***
 
-## 2. What is MCP?
+## 2. MCP란?
 
 MCP(Model Context Protocol)는 Kiro가 외부 서버와 통신하여 전문화된 도구 및 정보에 접근할 수 있도록 해주는 표준화된 프로토콜입니다.
 
@@ -30,9 +30,9 @@ MCP(Model Context Protocol)는 Kiro가 외부 서버와 통신하여 전문화�
 
 ***
 
-## 3. Setting Up MCP (MCP 설정)
+## 3. MCP 설정
 
-### Prerequisites (사전 요구 사항)
+### 사전 요구 사항
 
 MCP 사용 전 다음을 확인하십시오:
 
@@ -43,13 +43,13 @@ MCP 사용 전 다음을 확인하십시오:
 
 ***
 
-## 4. Managing MCP Servers (MCP 서버 관리)
+## 4. MCP 서버 관리
 
 Kiro CLI에서 MCP 서버를 통합하는 방법은 두 가지입니다:
 
 ***
 
-### 4.1. Command Line Management (CLI 명령어 기반 관리)
+### 4.1. CLI 명령어 기반 관리
 
 ```
 # Add new MCP server
@@ -99,7 +99,7 @@ kiro-cli mcp add github \
 
 ***
 
-## 5. Agent Configuration (에이전트 구성에서 MCP 사용)
+## 5. 에이전트 구성에서 MCP 사용
 
 에이전트의 mcpServers 필드는 해당 에이전트가 사용할 MCP 서버를 명시합니다.
 
@@ -134,7 +134,7 @@ kiro-cli mcp add github \
 
 ***
 
-## 6. Troubleshooting MCP (문제 해결)
+## 6. 문제 해결
 
 <table data-header-hidden><thead><tr><th width="264.4609375"></th><th></th></tr></thead><tbody><tr><td>문제</td><td>해결 방법</td></tr><tr><td>Connection failures</td><td>MCP 서버 요구 사항 및 사전 설치 요소 확인</td></tr><tr><td>Permission errors</td><td>인증 토큰/API 키 유효성 확인</td></tr><tr><td>Tool not responding</td><td>MCP 서버 로그 확인</td></tr><tr><td>Configuration not loading</td><td>JSON 문법 검증 후 파일 다시 저장</td></tr></tbody></table>
 

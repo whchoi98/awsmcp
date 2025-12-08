@@ -1,5 +1,5 @@
 ---
-description: 'Update : 2025.12'
+description: 'Update : 2025.12.07'
 ---
 
 # Delegate
@@ -10,7 +10,7 @@ Delegate 기능은 비동기 백그라운드 태스크를 생성하고 관리하
 
 ***
 
-## 1. Enabling Delegate
+## 1. Delegate 활성화
 
 Delegate 기능 활성화:
 
@@ -27,7 +27,7 @@ kiro-cli settings chat.enableDelegate true
 
 ***
 
-## 2. Overview
+## 2. 개요
 
 Delegate 기능은 다음을 제공합니다:
 
@@ -40,9 +40,9 @@ Delegate 기능은 다음을 제공합니다:
 
 ***
 
-## 3. How It Works
+## 3. 동작 방식
 
-### 3.1 Task Creation
+### 3.1 Task 생성
 
 자연어로 태스크를 요청합니다:
 
@@ -75,7 +75,7 @@ Kiro는 다음을 수행합니다:
 
 ***
 
-### 3.3 Task Management
+### 3.3 Task 관리
 
 생성된 태스크는 다음이 가능합니다:
 
@@ -88,12 +88,12 @@ Kiro는 다음을 수행합니다:
 
 ***
 
-## 4. Usage Examples
+## 4. 사용 사례
 
 ### Example 1: API 성능 분석 태스크
 
 ```
-> Can you create a background task to analyze the performance of our API endpoints?
+> API 엔드포인트(API endpoints)의 성능을 분석하기 위한 백그라운드 작업(background task)을 생성해줄 수 있나요?
 ```
 
 예시 응답:
@@ -115,7 +115,7 @@ Approve this agent? (y/n): y
 메인 대화 유지:
 
 ```
-> Great! Now help me with the frontend code...
+> 이제 프런트엔드(frontend) 코드도 도와줘…
 ```
 
 상태 확인:
@@ -138,13 +138,13 @@ Results:
 ### Example 2: 테스트 실행
 
 ```
-> Run our test suite in the background while I work on the new feature
+> 새 기능(new feature)을 작업하는 동안, 테스트 스위트(test suite)를 백그라운드(background)에서 실행해줘
 ```
 
 이후:
 
 ```
-> How's the test suite doing?
+> 테스트 스위트(test suite) 진행 상태가 어떻습니까?
 
 Status: Running (45% complete)
 Progress: 127/283 tests passed
@@ -155,7 +155,7 @@ Progress: 127/283 tests passed
 ### Example 3: 문서 생성
 
 ```
-> Generate API documentation in the background
+> API 문서(API documentation)를 백그라운드(background)에서 생성해줘.
 ```
 
 완료 후:
@@ -205,7 +205,7 @@ Saved to: docs/api/
 
 ## 6. 모범사례
 
-### 6.1 When to Use Delegate
+### 6.1 Delegate 권장 사항
 
 * 장시간 수행되는 작업
 * 테스트 실행, 분석 작업
@@ -213,7 +213,7 @@ Saved to: docs/api/
 * 병렬로 진행 가능한 작업
 * 지속 모니터링이 필요한 작업
 
-### 6.2 When NOT to Use
+### 6.2 Deleage 가 필요없는 경우
 
 * 즉각적 결과가 필요한 작업
 * 사용자 입력이 필요한 작업
@@ -228,7 +228,7 @@ Saved to: docs/api/
 
 ***
 
-## 7. Security Considerations
+## 7. Security 고려사항
 
 ### 7.1 Agent Approval
 
@@ -245,7 +245,7 @@ trust-all 모드로 동작할 수 있으므로:
 * 민감 작업에는 에이전트 사용 권장
 * 최소 권한 원칙 적용
 
-### 7.3 Best Practices
+### 7.3 모범사례
 
 * 세분화된 권한을 갖는 Custom Agent 생성
 * 태스크 활동 주기적으로 모니터링
@@ -253,7 +253,7 @@ trust-all 모드로 동작할 수 있으므로:
 
 ***
 
-## 8. Limitations
+## 8. 제약사항
 
 * 동시 태스크 개수 제한
 * 시스템 리소스에 영향 가능
@@ -263,7 +263,7 @@ trust-all 모드로 동작할 수 있으므로:
 
 ***
 
-## 9. Troubleshooting
+## 9. 트러블슈팅
 
 #### 태스크가 시작되지 않음
 
@@ -286,9 +286,9 @@ kiro-cli settings chat.enableDelegate
 
 ***
 
-## 10. Advanced Usage
+## 10. 고급 활용 사례
 
-### 10.1 Custom Agents for Delegated Tasks
+### 10.1 Delegated Tasks 를 위한 Custom Agents
 
 예시: test-suite용 경량 에이전트
 
@@ -306,7 +306,7 @@ kiro-cli settings chat.enableDelegate
 }
 ```
 
-### 10.2 Common Task Patterns
+### 10.2 공통 Task Patterns
 
 #### 분석 태스크
 
@@ -325,12 +325,4 @@ kiro-cli settings chat.enableDelegate
 * Log file watch
 * File change tracking
 * Resource usage monitoring
-
-***
-
-## 11. Related Features
-
-* Custom Agents — Delegate 작업에 특화된 Agent 구성
-* TODO Lists — 장기 작업 구성
-* Experimental Features — Delegate는 실험 기능 중 하나
 

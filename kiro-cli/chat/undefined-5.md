@@ -12,7 +12,7 @@ Kiro는 채팅 세션 내에서 이미지를 직접 분석하고 논의할 수 �
 
 ***
 
-### 1.1. Drag and Drop Images (이미지 드래그 앤 드롭)
+### 1.1. 이미지 드래그 앤 드롭
 
 가장 간단한 이미지 공유 방식은 이미지를 터미널 창으로 직접 드래그 앤 드롭하는 것입니다.
 
@@ -30,7 +30,7 @@ Kiro> /path/to/architecture-diagram.png Can you explain this architecture and ge
 
 ***
 
-### 1.2. Using fs\_read with Images(fs\_read 도구를 활용한 이미지 분석)
+### 1.2. `fs_read` 도구를 활용한 이미지 분석
 
 이미지를 보다 명확하게 지정하고 싶다면 read 도구(fs\_read) 를 직접 사용할 수 있습니다:
 
@@ -42,7 +42,7 @@ Kiro는 대화 중 이미지 파일 경로나 확장자를 언급하면 Image Mo
 
 ***
 
-## 2. Image Use Cases (이미지 활용 사례)
+## 2. 이미지 활용 사례
 
 Kiro는 다양한 이미지 기반 작업을 지원하며, 대표적인 활용 시나리오로는 다음이 있습니다:
 
@@ -55,7 +55,7 @@ Kiro는 다양한 이미지 기반 작업을 지원하며, 대표적인 활용 �
 
 ***
 
-## 3. Supported Formats and Limitations(지원 포맷 및 제한 사항)
+## 3. 지원 포맷 및 제한 사항
 
 #### 지원 이미지 형식
 
@@ -71,7 +71,7 @@ Kiro는 다양한 이미지 기반 작업을 지원하며, 대표적인 활용 �
 
 ***
 
-## 4. Best Practices (모범 활용 방법)
+## 4. 모범 사례
 
 최상의 결과를 위해 아래 사항을 권장합니다:
 

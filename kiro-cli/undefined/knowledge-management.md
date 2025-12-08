@@ -1,3 +1,7 @@
+---
+description: 'Update : 2025.12.07'
+---
+
 # Knowledge Management
 
 `/knowledge` 명령은 Kiro CLI에 영구적인 지식 저장소(Persistent Knowledge Base) 기능을 제공합니다.
@@ -6,7 +10,7 @@
 
 ***
 
-## 1. Getting Started
+## 1. 시작하
 
 ### Enable Knowledge Feature
 
@@ -18,7 +22,7 @@ kiro-cli settings chat.enableKnowledge true
 
 ***
 
-## 2. Basic Usage
+## 2. 기본 사용법
 
 기능 활성화 후, /knowledge 명령을 사용하여 지식 저장소를 관리할 수 있습니다.
 
@@ -229,7 +233,7 @@ Note: 일부 바이너리 파일은 텍스트 추출 없이 메타데이터만 �
 
 ***
 
-## 7. Configuration Options
+## 7. 구성 옵션
 
 ```
 kiro-cli settings knowledge.maxFiles 10000
@@ -269,7 +273,7 @@ Kiro는 에이전트별 독립적인 지식 저장소를 운영합니다.
 
 ***
 
-## 9. How It Works
+## 9. 동작방식
 
 #### Indexing Pipeline
 
@@ -315,7 +319,7 @@ Kiro는 에이전트별 독립적인 지식 저장소를 운영합니다.
 
 ***
 
-## 11. Limitations
+## 11. 제약 사항
 
 #### File Type
 
@@ -334,7 +338,7 @@ Kiro는 에이전트별 독립적인 지식 저장소를 운영합니다.
 
 ***
 
-## 12. Troubleshooting
+## 12. 트러블슈팅
 
 #### Files not indexed
 

@@ -1,3 +1,7 @@
+---
+description: 'Update : 2025.12.06'
+---
+
 # 모델 선택
 
 ***
@@ -6,7 +10,7 @@ Kiro는 개발 업무 전반을 지원하기 위해 Auto, Claude Sonnet 4.0, Cla
 
 ***
 
-### 1. Available Models (지원 모델)
+## 1. 지원 모델
 
 ### 1.1. Auto (권장 설정)
 
@@ -79,7 +83,7 @@ Anthropic의 최상위급 지능을 제공하는 모델로, 복잡한 전문 업
 
 ***
 
-### 2. Cost Comparison (모델별 비용 비교)
+## 2. 모델별 비용 비교
 
 모델별 크레딧 소모 방식은 다음과 같습니다:
 
@@ -87,7 +91,7 @@ Anthropic의 최상위급 지능을 제공하는 모델로, 복잡한 전문 업
 
 ***
 
-### 3. Choosing the Right Model (모델 선택 기준)
+## 3. 모델 선택 기준
 
 #### Claude Haiku 4.5를 고려할 때
 
@@ -125,7 +129,7 @@ Anthropic의 최상위급 지능을 제공하는 모델로, 복잡한 전문 업
 
 ***
 
-### 4.How to Switch Models (모델 변경 방법)
+## 4.모델 변경 방법
 
 * Chat 인터페이스 내에서 /model 명령어 사용
 
@@ -137,7 +141,7 @@ kiro-cli settings chat.defaultModel claude-sonnet4
 
 ***
 
-### 5. Best Practices (모범 사례)
+## 5. 모범 사례
 
 #### 효율 극대화
 

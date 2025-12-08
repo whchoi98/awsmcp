@@ -20,11 +20,9 @@ Hooks는 Kiro의 에이전트 기능을 조직·프로젝트 요구사항에 맞
 
 ***
 
-## Defining Hooks
+## Hook 정의
 
 Hooks는 에이전트 설정(agent configuration) 파일 내에서 정의됩니다.
-
-전체 문법 및 예제는 _Agent Configuration Reference_ 문서를 참고하십시오.
 
 ***
 
@@ -53,7 +51,7 @@ Hooks는 에이전트 설정(agent configuration) 파일 내에서 정의됩니�
 
 ***
 
-## 3. Tool Matching (도구 매칭 규칙)
+## 3. 도구 매칭 규칙
 
 matcher 필드를 통해 특정 도구에만 Hook이 적용되도록 지정할 수 있습니다.
 
@@ -65,7 +63,7 @@ matcher 필드를 통해 특정 도구에만 Hook이 적용되도록 지정할 �
 
 ***
 
-## 4. Hook Types (Hook 종류)
+## 4. Hook 종류
 
 ### 4.1. AgentSpawn
 
@@ -199,7 +197,7 @@ Assistant가 응답을 완료할 때마다 실행되는 Hook입니다.
 
 ***
 
-## 5. MCP Example
+## 5. MCP 예
 
 MCP 도구가 호출될 때는 tool\_name에 서버 네임스페이스가 포함됩니다.
 

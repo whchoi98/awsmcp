@@ -10,7 +10,7 @@ Tangent Mode는 대화의 흐름을 보존한 채, 임시로 다른 주제를 �
 
 ***
 
-## 1. Overview
+## 1. 개요
 
 Tangent Mode는 “대화 체크포인트(checkpoint)“를 생성하여 다음을 가능하게 합니다:
 
@@ -23,7 +23,7 @@ Tangent Mode는 “대화 체크포인트(checkpoint)“를 생성하여 다음�
 
 ***
 
-## 2. Enabling Tangent Mode
+## 2. Tangent Mode 활성화
 
 Tangent Mode는 실험적 기능이므로 다음 중 하나를 통해 활성화해야 합니다.
 
@@ -42,7 +42,7 @@ kiro-cli settings chat.enableTangentMode true
 
 ***
 
-## 3. Basic Usage
+## 3. 기본 사용법
 
 ### 3.1 Tangent Mode 진입
 
@@ -101,7 +101,7 @@ Restored conversation from checkpoint (↯) with last conversation entry preserv
 
 ***
 
-## 4. Usage Examples
+## 4. 사용 예
 
 ### Example 1 – 대안 탐색
 
@@ -172,7 +172,7 @@ Tangent에서 명확화:
 
 ***
 
-## 5. Configuration
+## 5. 구성
 
 ### 5.1 키보드 단축키 변경
 
@@ -194,7 +194,7 @@ kiro-cli settings introspect.tangentMode true
 
 ***
 
-## 6. When to Use Tangent Mode
+## 6. Tangent Mode 활용 시나리오
 
 ### 적합한 시나리오
 
@@ -220,7 +220,7 @@ kiro-cli settings introspect.tangentMode true
 
 ***
 
-## 8. How It Works
+## 8. 동작 방식
 
 ### 8.1 Checkpoint 생성
 
@@ -246,7 +246,7 @@ Tangent 종료 시:
 
 ***
 
-## 9. Troubleshooting
+## 9. 트러블슈팅
 
 | 문제                   | 해결방법                 |
 | -------------------- | -------------------- |
@@ -257,7 +257,7 @@ Tangent 종료 시:
 
 ***
 
-## 10. Best Practices
+## 10. 모범사례
 
 ### 권장 워크플로우
 

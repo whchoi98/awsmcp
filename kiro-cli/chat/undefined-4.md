@@ -8,7 +8,7 @@ Kiro가 시스템에서 작업을 수행할 때 사용하는 Tools(도구) 에 �
 
 ***
 
-## 1. Tools Commands (도구 명령어)
+## 1. Tools Commands
 
 <table data-header-hidden><thead><tr><th width="175.2734375"></th><th></th></tr></thead><tbody><tr><td>Command</td><td>Description</td></tr><tr><td>help</td><td>Tools 관련 도움말 표시</td></tr><tr><td>trust</td><td>특정 도구를 해당 세션 동안 신뢰(자동 승인)하도록 설정</td></tr><tr><td>untrust</td><td>특정 도구를 요청 시마다 확인하도록 설정</td></tr><tr><td>trust-all</td><td>모든 도구를 신뢰하도록 설정 <em>(이전 /acceptall 명령과 동일)</em></td></tr><tr><td>reset</td><td>모든 도구 권한을 기본값으로 재설정</td></tr></tbody></table>
 
@@ -23,7 +23,7 @@ Kiro> /tools
 
 ***
 
-## 2. Permission States (권한 상태)
+## 2. 권한 상태
 
 도구 권한은 두 가지 상태 중 하나입니다:
 
@@ -49,7 +49,7 @@ Kiro> /tools trust-all
 
 ***
 
-## ⚠️ Warning (주의)
+## ⚠️ 주의
 
 /tools trust-all 명령은 편리하지만 보안 리스크가 존재합니다.
 

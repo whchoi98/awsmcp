@@ -8,7 +8,7 @@ Kiro CLI는 고급 기능을 빠르게 실험하고 사용자 피드백을 수�
 
 ***
 
-### Important Notes
+### 중요 고려 사항
 
 {% hint style="danger" %}
 Experimental 기능은 예고 없이 변경되거나 제거될 수 있습니다.\
@@ -20,9 +20,9 @@ Experimental 기능은 예고 없이 변경되거나 제거될 수 있습니다.
 
 ***
 
-## 1. Managing Experiments
+## 1. 실험적 기능의 관리
 
-실험적 기능은 /experiment 명령으로 관리할 수 있습니다.
+실험적 기능은 `/experiment` 명령으로 관리할 수 있습니다.
 
 ```
 /experiment
@@ -36,7 +36,7 @@ Experimental 기능은 예고 없이 변경되거나 제거될 수 있습니다.
 
 ***
 
-## 2.Available Experiments
+## 2. 주요 실험적 기능 목록
 
 아래는 Kiro CLI에서 제공하는 주요 실험적 기능 목록입니다.
 
@@ -48,14 +48,14 @@ Experimental 기능은 예고 없이 변경되거나 제거될 수 있습니다.
 
 Persistent Knowledge Base 기능을 추가하여 대화 세션 간 지속적인 문맥 저장 및 검색을 제공합니다.
 
-#### Features
+#### 기능
 
 * 파일, 디렉터리, 텍스트 기반 지식 저장
 * 의미 기반 검색(Semantic Search) 지원
 * 세션 간 유지되는 지속형 지식 저장소
 * 에이전트별 지식 격리
 
-#### Enable
+#### 활성화 방법
 
 ```
 kiro-cli settings chat.enableKnowledge true
@@ -69,14 +69,14 @@ kiro-cli settings chat.enableKnowledge true
 
 메인 대화를 유지한 상태에서 사이드 토픽을 탐색할 수 있는 모드입니다.
 
-#### Features
+#### 기능
 
 * 대화 체크포인트 생성
 * 주제와 독립된 분기(conversational branch) 탐색
 * 필요 시 메인 대화로 복귀
 * 전체 문맥 유지
 
-#### Enable
+#### 활성화 방법
 
 ```
 kiro-cli settings chat.enableTangentMode true
@@ -90,14 +90,14 @@ kiro-cli settings chat.enableTangentMode true
 
 Kiro가 자동으로 TODO 리스트를 생성하고 관리하는 기능입니다.
 
-#### Features
+#### 기능
 
 * Kiro가 맥락에 따라 자동 TODO 생성
 * TODO 조회·관리·삭제 지원
 * 기존 TODO 리스트 이어서 사용
 * 세션 간 지속됨
 
-#### Enable
+#### 활성화 방법
 
 ```
 kiro-cli settings chat.enableTodoList true
@@ -109,14 +109,14 @@ kiro-cli settings chat.enableTodoList true
 
 AI의 단계별 사고(process of reasoning)를 투명하게 보여주는 기능입니다.
 
-#### Features
+#### 기능
 
 * 복잡한 문제 해결 과정 가시화
 * 단계별 사고(Chain-of-thought) 출력
 * 디버깅 및 학습 목적에 유용
 * 결론 도출 과정 명확화
 
-#### Enable
+#### 활성화 방법
 
 ```
 kiro-cli settings chat.enableThinking true
@@ -130,7 +130,7 @@ Command: /checkpoint
 
 Git 기반 스냅샷과 유사한 방식으로 파일 변경 사항을 세션 단위로 추적합니다.
 
-#### Features
+#### 기능
 
 * Shadow Git Repo에 변경 사항 저장
 * 체크포인트 목록/확장/비교(diff)/복원 지원
@@ -138,13 +138,13 @@ Git 기반 스냅샷과 유사한 방식으로 파일 변경 사항을 세션 �
 * Git 저장소에서는 자동 활성화
 * 비-Git 디렉터리도 수동 초기화 가능
 
-#### Enable
+#### 활성화 방법
 
 ```
 kiro-cli settings chat.enableCheckpoint true
 ```
 
-#### Basic Usage
+#### 주요 사용 방법
 
 ```
 /checkpoint list
@@ -172,7 +172,7 @@ kiro-cli settings chat.enableCheckpoint true
 * Yellow: 50–89%
 * Red: 90–100%
 
-#### Enable
+#### 활성화 방법
 
 ```
 kiro-cli settings chat.enableContextUsageIndicator true
@@ -184,35 +184,28 @@ kiro-cli settings chat.enableContextUsageIndicator true
 
 Kiro가 비동기(background) 작업을 실행하고, 병렬 에이전트 세션을 관리할 수 있도록 합니다.
 
-#### Features
+#### 기능
 
 * 자연어 기반 백그라운드 태스크 생성
 * 특정 에이전트로 병렬 대화 세션 실행
 * 각 작업의 진행 상황 개별 모니터링
 * 보안 확인을 위한 에이전트 승인 절차 제공
 
-#### Enable
+#### 활성화 방법
 
 ```
 kiro-cli settings chat.enableDelegate true
 ```
 
-#### Usage Example
+#### 사용 예제
 
 ```
-Can you create a background task to analyze the performance of our API endpoints?
-```
-
-결과 확인:
-
-```
-Check the status of my API analysis task  
-Show me the results from the background analysis
+API 엔드포인트(API endpoints)의 성능을 분석하기 위한 백그라운드 작업(background task)을 생성할 수 있습니까?
 ```
 
 ***
 
-## 3.Settings Integration
+## 3. 설정 통합
 
 실험적 기능 설정은 모두 Kiro CLI 설정에 저장되며, 세션 간 지속됩니다.
 
@@ -232,19 +225,19 @@ kiro-cli settings chat.enableDelegate true
 
 ***
 
-## 4.Fuzzy Search Support
+## 4.Fuzzy Search 지원
 
 모든 실험 기능 명령은 fuzzy search(Ctrl+S)에서도 사용할 수 있습니다:
 
-* /experiment — 실험 기능 관리
-* /knowledge — Knowledge Base 관련 명령
-* /todo — TODO 관리 명령
-* /tangent — Tangent Mode
-* /checkpoint — Checkpoint 기능
+* `/experiment` — 실험 기능 관리
+* `/knowledge` — Knowledge Base 관련 명령
+* `/todo` — TODO 관리 명령
+* `/tangent` — Tangent Mode
+* `/checkpoint` — Checkpoint 기능
 
 ***
 
-## 5.Best Practices (모범사례)
+## 5. 모범사례
 
 #### 1. 비프로덕션 환경에서 먼저 실험
 
@@ -268,7 +261,7 @@ Checkpointing, TODO 등 파일 변경 가능성이 있는 기능은 반드시 �
 
 ***
 
-## 6.Troubleshooting
+## 6. 트러블슈팅
 
 ### Feature Not Working
 

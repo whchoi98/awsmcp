@@ -4,7 +4,7 @@ description: 'Update : 2025.12.06'
 
 # 메시지에 응답하기
 
-## 1. Overview (개요)
+## 1. 개요
 
 Kiro CLI는 /reply 명령어를 통해 Kiro가 이전에 생성한 메시지의 특정 부분에 직접적으로 응답할 수 있는 기능을 제공합니다. 이 명령어는 최근 Assistant 메시지를 자동으로 가져와 각 줄 앞에 `>` 인용 접두어를 붙여 편집기에 로드하며, 사용자는 해당 인용문 사이에 답변을 추가하거나 아래에 구조화된 피드백을 작성할 수 있습니다.
 
@@ -12,7 +12,7 @@ Kiro CLI는 /reply 명령어를 통해 Kiro가 이전에 생성한 메시지의 
 
 ***
 
-## 2. How It Works (동작 방식)
+## 2. 동작 방식
 
 1. Retrieves last response - 대화 내 가장 최근의 Assistant 메시지를 자동 탐색 및 로드합니다.
 2. Formats with quotes - 메시지의 모든 줄 앞에 `>`가 붙어 명확하게 구분된 인용 구조로 변환합니다.
@@ -22,7 +22,7 @@ Kiro CLI는 /reply 명령어를 통해 Kiro가 이전에 생성한 메시지의 
 
 ***
 
-## 3. Editor Behavior (에디터 동작 방식)
+## 3. 에디터 동작 방식
 
 * Pre-populated content (사전 채워진 콘텐츠) - 에디터는 Assistant 응답이 `>` 인용 형식으로 이미 포함된 상태로 시작합니다.
 * Quote format (인용 형식) - 각 줄에 `>`가 자동으로 추가되어 원문과 사용자의 응답을 명확히 구분할 수 있습니다.
@@ -31,9 +31,9 @@ Kiro CLI는 /reply 명령어를 통해 Kiro가 이전에 생성한 메시지의 
 
 ***
 
-## 4. Use Cases (활용 사례)
+## 4. 활용 사례
 
-### 4.1. Responding to multiple questions (여러 질문에 개별적으로 응답)
+### 4.1. 여러 질문에 개별적으로 응답
 
 Kiro가 여러 개의 확인 질문을 한 경우:
 
@@ -48,7 +48,7 @@ Django
 I'm getting a 404 error when trying to access my API endpoints.
 ```
 
-### 4.2. Addressing specific points (특정 항목에 대한 대응)
+### 4.2. 특정 항목에 대한 대응
 
 Kiro가 여러 접근 방식을 제시했을 때:
 
@@ -64,7 +64,7 @@ I'd like to go with option 1. Can you show me how to create the migration?
 Already done - I have a full backup from this morning.
 ```
 
-### 4.3. Providing structured feedback (구조화된 피드백 제공)
+### 4.3. 구조화된 피드백 제공
 
 Kiro가 다수의 개선점을 제안했을 때:
 
@@ -83,9 +83,9 @@ For logging:
 
 ***
 
-## 5. Status Messages (상태 메시지)
+## 5. 상태 메시지
 
-/reply 명령 실행 시 다음과 같은 상태 메시지가 표시됩니다:
+`/reply` 명령 실행 시 다음과 같은 상태 메시지가 표시됩니다:
 
 * Success : "Content loaded from editor. Submitting prompt..."
 * No changes : "No changes made in editor, not submitting."
@@ -94,7 +94,7 @@ For logging:
 
 ***
 
-## 6. Error Handling (오류 처리)
+## 6. 오류 처리
 
 * No assistant message : 응답할 Assistant 메시지가 없으면 경고 메시지 표시
 * Editor failures : 에디터 실행 실패 시 시스템 오류 메시지 포함 상세 안내 제공
@@ -103,7 +103,7 @@ For logging:
 
 ***
 
-## 7. Best Practices (모범 사례)
+## 7. 모범 사례
 
 * Kiro의 응답이 여러 개의 항목으로 구성된 경우, /reply를 활용해 구조적으로 응답
 * 인용문 사이에 명확하고 개별적인 답변을 작성
@@ -113,7 +113,7 @@ For logging:
 
 ***
 
-## 8. Tips (팁)
+## 8. Tips&#x20;
 
 * 응답이 필요 없는 인용 라인은 자유롭게 삭제 가능
 * 가독성을 높이려면 응답 사이에 빈 줄 추가

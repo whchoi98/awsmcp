@@ -2,7 +2,7 @@
 description: 'Update : 2025.12.07'
 ---
 
-# Examples
+# MCP 예시
 
 본 가이드는 Model Context Protocol(MCP) 서버의 대표적인 예시, 제공 기능, 및 Kiro와의 설정 방법을 설명합니다.
 
@@ -18,7 +18,7 @@ Kiro는 서드파티 MCP 서버 또는 외부 패키지에 대해 책임지지 �
 
 AWS Documentation MCP 서버는 AWS 공식 문서에 대한 검색·조회·추천 기능을 제공합니다.
 
-### 1.1. Capabilities (기능)
+### 1.1. 기능
 
 * AWS 서비스 전체 문서에 대한 검색(Search)
 * AWS 문서 페이지를 Markdown 형식으로 읽기(Read)
@@ -26,9 +26,9 @@ AWS Documentation MCP 서버는 AWS 공식 문서에 대한 검색·조회·추�
 
 ***
 
-### 1.2. Setup Instructions (설치 및 설정)
+### 1.2. 설치 및 설정
 
-#### Prerequisites (사전 준비)
+#### 사전 준비
 
 1\. Astral의 uv 설치
 
@@ -48,7 +48,7 @@ uv python install 3.10
 
 ***
 
-### 1.3. Configuration (구성)
+### 1.3. 구성
 
 #### macOS / Linux 설정 예시
 
@@ -92,7 +92,7 @@ uv python install 3.10
 
 ***
 
-### 1.4. Available Tools (제공 도구)
+### 1.4. 제공 도구
 
 | 도구명                                   | 설명                |
 | ------------------------------------- | ----------------- |
@@ -102,7 +102,7 @@ uv python install 3.10
 
 ***
 
-### 1.5. Usage Examples (사용 예시)
+### 1.5. 사용 예시
 
 * S3 버킷 정책 관련 문서 검색 - “Search AWS documentation for S3 bucket policies”
 * Lambda Function URLs 문서 읽기 - “Read the AWS Lambda function URLs documentation”
@@ -114,7 +114,7 @@ uv python install 3.10
 
 GitHub MCP 서버는 Kiro가 GitHub 리포지토리·이슈·PR과 상호작용할 수 있도록 해줍니다.
 
-### 2.1. Capabilities (기능)
+### 2.1. 기능
 
 * 리포지토리 파일·커밋·브랜치 조회
 * 이슈 및 PR 생성·관리
@@ -122,7 +122,7 @@ GitHub MCP 서버는 Kiro가 GitHub 리포지토리·이슈·PR과 상호작용�
 
 ***
 
-### 2.2. Setup Instructions (설치 및 설정)
+### 2.2. 설치 및 설정
 
 {% hint style="danger" %}
 주의\
@@ -144,7 +144,7 @@ GitHub → Settings → Developer settings → Personal access tokens
 
 ***
 
-### 2.3. Configuration (구성)
+### 2.3. 구성
 
 .kiro/settings/mcp.json 에 추가:
 
@@ -175,7 +175,7 @@ GitHub → Settings → Developer settings → Personal access tokens
 
 ***
 
-### 2.4. Common Tools (주요 제공 도구)
+### 2.4. 주요 제공 도구
 
 | 카테고리          | 도구                    | 설명        |
 | ------------- | --------------------- | --------- |
@@ -188,7 +188,7 @@ GitHub → Settings → Developer settings → Personal access tokens
 
 ***
 
-### 2.5. Toolsets (도구 세트 관리)
+### 2.5. Toolsets&#x20;
 
 GitHub MCP 서버는 기능을 toolset 단위로 구성합니다.
 
@@ -203,7 +203,7 @@ docker run -i --rm \
 
 ***
 
-### 2.6. Usage Examples (사용 예시)
+### 2.6. 사용 예시
 
 * “Show me information about the tensorflow/tensorflow repository”
 * “Find examples of React hooks in facebook/react”
@@ -211,7 +211,7 @@ docker run -i --rm \
 
 ***
 
-## 3. Custom MCP Servers (사용자 정의 MCP 서버)
+## 3. 사용자 정의 MCP 서버
 
 원하는 기능을 추가하기 위해 나만의 MCP 서버를 직접 개발할 수도 있습니다.
 
@@ -230,7 +230,7 @@ docker run -i --rm \
 
 ***
 
-## 4. Additional MCP Servers (기타 MCP 서버)
+## 4. 기타 MCP 서버
 
 #### Database Servers
 
@@ -244,7 +244,7 @@ docker run -i --rm \
 
 ***
 
-## 5. Finding More MCP Servers (추가 MCP 서버 찾기)
+## 5. 추가 MCP 서버 찾기
 
 * MCP Registry
 * GitHub MCP Organization

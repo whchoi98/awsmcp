@@ -4,24 +4,24 @@ description: 'Update : 2025.12.07'
 
 # Steering
 
-## 1. Steering 이란?
+## 1. Steering
 
-### 1.1 What is Steering?
+### 1.1. Steering 이란?
 
 \
-Steering은 .kiro/steering/ 디렉터리에 저장된 Markdown 파일을 통해 프로젝트 지식(Project Knowledge)을 Kiro가 지속적으로 학습하고 유지하도록 하는 기능입니다.
+Steering은 `.kiro/steering/` 디렉터리에 저장된 Markdown 파일을 통해 프로젝트 지식(Project Knowledge)을 Kiro가 지속적으로 학습하고 유지하도록 하는 기능입니다.
 
 이를 통해 매 대화마다 동일한 프로젝트 규칙이나 관례를 반복 설명할 필요 없이, Kiro가 귀하의 팀이 정의한 패턴, 라이브러리, 표준, 아키텍처 원칙을 일관되게 준수하도록 합니다.
 
 ***
 
-### 1.2. Key Benefits(핵심 이점)
+### 1.2. 핵심 이점
 
-#### 1. 일관된 코드 생성(Consistent Code Generation)
+#### 1. 일관된 코드 생성
 
 컴포넌트, API 엔드포인트, 테스트 코드 등 모든 산출물이 팀 표준과 아키텍처 규칙을 준수하도록 보장합니다.
 
-#### 2. 반복 작업 감소(Reduced Repetition)
+#### 2. 반복 작업 감소
 
 프로젝트 규칙을 매번 설명할 필요가 없습니다.
 
@@ -31,7 +31,7 @@ Kiro는 Steering 파일을 기반으로 항상 동일한 맥락을 유지합니�
 
 신입 개발자부터 시니어 개발자까지, 모든 팀원이 동일한 표준 아래에서 작업할 수 있습니다.
 
-#### 4. 확장 가능한 프로젝트 지식(Scalable Knowledge)
+#### 4. 확장 가능한 프로젝트 지식
 
 코드베이스가 확장됨에 따라 프로젝트 결정, 패턴, 구조적 선택을 Steering 파일로 지속적으로 축적할 수 있습니다.
 
@@ -45,7 +45,7 @@ Steering 파일은 Workspace Scope와 Global Scope 두 가지로 관리됩니다
 
 ### 2.1. Workspace Steering
 
-* 위치: \<project-root>/.kiro/steering/
+* 위치: `<project-root>/.kiro/steering/`
 * 적용 범위: 현재 워크스페이스에만 적용
 * 용도: 해당 프로젝트 전용 규칙, 패턴, 라이브러리 정의
 
@@ -55,7 +55,7 @@ Steering 파일은 Workspace Scope와 Global Scope 두 가지로 관리됩니다
 
 ### 2.2. Global Steering
 
-* 위치: \~/.kiro/steering/
+* 위치: `~/.kiro/steering/`
 * 적용 범위: 모든 워크스페이스에 공통 적용
 * 용도: 조직 전체 또는 개인의 전역 개발 표준 정의
 
@@ -63,7 +63,7 @@ Steering 파일은 Workspace Scope와 Global Scope 두 가지로 관리됩니다
 
 ***
 
-### 2.3. Priority (우선순위)
+### 2.3. 우선순위
 
 Global Steering과 Workspace Steering에 동일한 항목이 정의된 경우:
 
@@ -83,13 +83,13 @@ Global Steering은 팀 단위 중앙 관리에도 사용할 수 있습니다.
 * 그룹 정책(Group Policy),
 * 중앙 레포지토리에서 Pull
 
-등의 방식으로 팀원 PC의 \~/.kiro/steering에 Steering 파일을 배포할 수 있습니다.
+등의 방식으로 팀원 PC의 `~/.kiro/steering`에 Steering 파일을 배포할 수 있습니다.
 
 ***
 
-## 3. Foundational Steering Files
+## 3. Steering Files&#x20;
 
-Kiro는 기본적으로 다음의 세 가지 Steering 파일을 \*\*기초 프로젝트 맥락(Baseline Context)\*\*으로 인식합니다.
+Kiro는 기본적으로 다음의 세 가지 Steering 파일을 기초 프로젝트 맥락(Baseline Context)으로 인식합니다.
 
 #### 1.  Product Overview — product.md
 
@@ -113,14 +113,14 @@ Kiro가 생성하는 코드가 프로젝트 구조와 자연스럽게 맞도록 
 
 ***
 
-## 4.Creating Custom Steering Files
+## 4.Custom Steering File 생성
 
 기초 파일 외에도 프로젝트 고유의 특성을 반영하기 위해 임의의 Steering 파일을 추가할 수 있습니다.
 
 ### 4.1. 생성 방법
 
-1. .kiro/steering/ 디렉터리에 새로운 .md 파일 생성
-2. 의미 있는 파일명 지정 (예: api-standards.md, testing-guidelines.md)
+1. `.kiro/steering/` 디렉터리에 새로운 .md 파일 생성
+2. 의미 있는 파일명 지정 (예: `api-standards.md`, `testing-guidelines.md`)
 3. Markdown 문법으로 가이드를 기술
 4. 자연어로 명확히 요구사항, 규칙, 이유 등을 설명
 
@@ -134,20 +134,20 @@ API 스펙: #[[file:api/openapi.yaml]]
 
 ***
 
-## 5. AGENTS.md 지원
+## 5. `AGENTS.md` 지원
 
-Kiro는 AGENTS.md 표준도 Steering 파일과 동일한 방식으로 지원합니다.
+Kiro는 `AGENTS.md` 표준도 Steering 파일과 동일한 방식으로 지원합니다.
 
-단, AGENTS.md 파일은 항상 포함된다는 점이 다릅니다.
+단, `AGENTS.md` 파일은 항상 포함된다는 점이 다릅니다.
 
-* 전역 위치: \~/.kiro/steering/AGENTS.md
-* 워크스페이스 위치: \<project-root>/AGENTS.md
+* 전역 위치: `~/.kiro/steering/AGENTS.md`
+* 워크스페이스 위치: `<project-root>/AGENTS.md`
 
 두 위치 모두 자동으로 로드됩니다.
 
 ***
 
-## 6. Best Practices
+## 6. 모범사례
 
 ### 6.1. 파일은 작고 목적에 집중 (Single Domain per File)
 
@@ -183,7 +183,7 @@ Steering 파일은 코드베이스 일부이므로 민감한 정보(API 키, 비
 
 ***
 
-## 7. Common Steering File Strategies
+## 7. 공통 Steering 파일 전략&#x20;
 
 #### API Standards — api-standards.md
 

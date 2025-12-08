@@ -1,6 +1,10 @@
+---
+description: 'Update : 2025.12.07'
+---
+
 # Auto Complete
 
-## 1.Completions & Autocomplete
+## 1. Completions & Autocomplete
 
 Kiro CLI는 터미널 작업 효율을 극대화하기 위해 두 가지 AI 기반 자동완성 기능을 제공합니다:
 
@@ -17,7 +21,7 @@ Kiro CLI는 터미널 작업 효율을 극대화하기 위해 두 가지 AI 기�
 
 Autocomplete Dropdown은 명령어를 입력하는 즉시 커서 오른쪽에 표시되며, 사용할 수 있는 옵션, 서브커맨드(Subcommand), 인수를 시각적으로 탐색할 수 있게 합니다.
 
-### Using Autocomplete (사용 방법)
+### 사용 방법
 
 Autocomplete 기능은 Kiro CLI 설치 직후 자동 활성화됩니다.
 
@@ -29,7 +33,7 @@ Autocomplete 기능은 Kiro CLI 설치 직후 자동 활성화됩니다.
 
 ***
 
-## 3.Configuration (설정)
+## 3. 설정
 
 ```
 # 자동완성 활성/비활성화
@@ -58,9 +62,7 @@ Inline Suggestions는 사용자가 입력하는 동안 명령줄 내부에 회�
 
 Dropdown 메뉴와는 별도로 동작합니다.
 
-### 4.1. Using Inline Suggestions (사용 방법)
-
-Inline Suggestions는 기본적으로 활성화되어 있습니다.
+### 4.1. 사용 방법)Inline Suggestions는 기본적으로 활성화되어 있습니다.
 
 1. 명령어 입력을 시작합니다.
 2. 회색 고스트 텍스트가 예상 명령을 제안합니다.
@@ -69,7 +71,7 @@ Inline Suggestions는 기본적으로 활성화되어 있습니다.
 
 ***
 
-### 4.2. Managing Inline Suggestions (관리)
+### 4.2. Inline Suggestions 관리
 
 ```
 # Inline suggestions 활성화
@@ -118,7 +120,7 @@ kiro-cli inline show-customizations
 
 ***
 
-## 6. Troubleshooting
+## 6. 트러블슈팅
 
 자동완성 기능이 예상대로 동작하지 않을 경우 다음을 확인하십시오.
 

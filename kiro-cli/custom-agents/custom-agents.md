@@ -2,15 +2,15 @@
 description: 'Update : 2025.12.07'
 ---
 
-# Troubleshooting Custom Agents
+# Custom Agents 트러블슈팅
 
 커스텀 에이전트(C​ustom Agents) 구성 및 사용 과정에서 발생할 수 있는 일반적인 문제를 진단하고 해결하는 방법을 안내합니다.
 
 ***
 
-## 1. Configuration Errors (구성 오류)
+## 1. 구성 오류
 
-### 1.1. Invalid JSON Syntax (잘못된 JSON 문법)
+### 1.1. 잘못된 JSON 문법
 
 #### 문제 - 커스텀 에이전트가 JSON 구문 오류로 인해 로드되지 않음.
 
@@ -32,7 +32,7 @@ description: 'Update : 2025.12.07'
 
 ***
 
-### 1.2. Schema Validation Errors (스키마 검증 오류)
+### 1.2. 스키마 검증 오류
 
 #### 문제 - 에이전트 설정이 스키마 요구 사항을 충족하지 않음.
 
@@ -50,9 +50,9 @@ description: 'Update : 2025.12.07'
 
 ***
 
-## 2. Custom Agent Loading Issues (에이전트 로딩 문제)
+## 2. 에이전트 로딩 문제
 
-### 2.1. Custom Agent Not Found (에이전트 검색 불가)
+### 2.1. 에이전트 검색 불가
 
 #### 증상
 
@@ -70,7 +70,7 @@ description: 'Update : 2025.12.07'
 
 ***
 
-### 2.2. Wrong Version Loading (잘못된 버전의 에이전트 로드)
+### 2.2. 잘못된 버전의 에이전트 로드
 
 #### 증상
 
@@ -87,9 +87,9 @@ description: 'Update : 2025.12.07'
 
 ***
 
-## 3. Tool Permission Problems (도구 권한 문제)
+## 3. 도구 권한 문제
 
-### 3.1. Tool Not Available (도구 사용 불가)
+### 3.1. 도구 사용 불가
 
 #### 증상
 
@@ -130,7 +130,7 @@ description: 'Update : 2025.12.07'
 
 ***
 
-### 3.3. Unexpected Permission Prompts (예상치 못한 권한 요청)
+### 3.3. 예상치 못한 권한 요청
 
 #### 증상
 
@@ -146,9 +146,9 @@ description: 'Update : 2025.12.07'
 
 ***
 
-## 4. Debugging Custom Agent Behavior (에이전트 동작 디버깅)
+## 4. 이전트 동작 디버깅)
 
-### 4.1. Missing Context or Resources (리소스 또는 컨텍스트 누락)
+### 4.1. 리소스 또는 컨텍스트 누락
 
 #### 해결 방법
 
@@ -160,7 +160,7 @@ description: 'Update : 2025.12.07'
 
 ***
 
-### 4.2. MCP Server Issues (MCP 서버 관련 문제)
+### 4.2. MCP 서버 관련 문제
 
 #### 해결 방법
 
@@ -172,7 +172,7 @@ description: 'Update : 2025.12.07'
 
 ***
 
-## 5. Testing Custom Agent Configurations (커스텀 에이전트 테스트 절차)
+## 5. 커스텀 에이전트 테스트 절차
 
 문제를 체계적으로 진단하기 위해 다음 순서로 테스트하는 것이 좋습니다:
 

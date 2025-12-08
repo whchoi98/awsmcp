@@ -8,7 +8,7 @@ Thinking Tool 기능은 복잡한 문제를 해결하는 과정에서 Kiro의 \*
 
 ***
 
-## 1. Overview
+## 1. 개요
 
 Thinking Tool을 활성화하면 Kiro는 다음을 수행합니다:
 
@@ -21,7 +21,7 @@ Thinking Tool을 활성화하면 Kiro는 다음을 수행합니다:
 
 ***
 
-## 2. Enabling Thinking Tool
+## 2. Thinking Tool 활성화
 
 ### CLI 설정으로 활성화
 
@@ -38,7 +38,7 @@ kiro-cli settings chat.enableThinking true
 
 ***
 
-## 3. How It Works
+## 3. 동작 방식
 
 Thinking Tool은 Kiro가 “복잡한 문제”라고 판단할 때 자동으로 활성화됩니다.
 
@@ -62,7 +62,7 @@ Thinking Tool 활성화 시 Kiro는 다음을 수행합니다:
 
 ***
 
-## 4. Example Usage
+## 4. 사용 사례
 
 ### 4.1 일반 응답과 Thinking Tool 비교
 
@@ -96,7 +96,7 @@ Conclusion: Redis is the most suitable choice.
 
 ***
 
-## 5. Benefits
+## 5. 장점
 
 ### 5.1 For Learning & Knowledge Transfer
 
@@ -118,40 +118,41 @@ Conclusion: Redis is the most suitable choice.
 
 ***
 
-## 6. Use Cases
+## 6. 활용 사례
 
-### 6.1 Architecture Decisions
+### 6.1 Architecture 결정
 
 ```
-> Should we use microservices or a monolith?
+
+> 마이크로서비스(microservices)를 사용할지, 모놀리식(monolith)을 사용할지 어떻게 결정해야 할까요?
 🧠 Thinking...
-- Consider team size, scalability, deployment needs
-- Trade-offs between complexity vs speed
-- Recommend monolith for small teams, uncertain requirements
+	•	팀 규모, 확장성(scalability), 배포 요구사항(deployment needs)을 고려
+	•	복잡성(complexity) vs 개발 속도(speed) 간의 트레이드오프(trade-offs)
+	•	소규모 팀이거나 요구사항이 불확실할 경우 모놀리식(monolith)을 권장
 ```
 
-### 6.2 Algorithm Selection
+### 6.2 Algorithm 선택
 
 ```
-> Which sorting algorithm should I use?
+> 어떤 Sorting 알고리즘을 사용해야 할까요?
 🧠 Thinking...
-- Evaluate data size, partial-sortedness, memory constraints
-- Compare Quick Sort, Merge Sort, Tim Sort, Heap Sort
-- Provide recommendation with reasoning
+	•	데이터 크기(data size), 부분 정렬 상태(partial-sortedness), 메모리 제약(memory constraints) 평가
+	•	퀵 정렬(Quick Sort), 병합 정렬(Merge Sort), 팀 정렬(Tim Sort), 힙 정렬(Heap Sort) 비교
+	•	근거(reasoning)를 포함한 추천 제공
 ```
 
-### 6.3 Debugging Complex Issues
+### 6.3 복잡한 이슈에 대한 디버깅
 
 ```
-> My application is slow but I don't know why
+> 어플리케이션이 느린데, 이유를 모르겠어요.
 🧠 Thinking...
-- Check DB queries, network latency, memory leaks, CPU-bound tasks
-- Suggest diagnostic order and reasoning
+	•	DB 쿼리(DB queries), 네트워크 지연(network latency), 메모리 누수(memory leaks), CPU-바운드 작업(CPU-bound tasks) 점검
+	•	진단 순서(diagnostic order)와 그 근거(reasoning) 제안
 ```
 
 ***
 
-## 7. Configuration
+## 7. 구성
 
 ### Enable/Disable
 
@@ -168,9 +169,9 @@ kiro-cli settings chat.enableThinking
 
 ***
 
-## 8. Limitations
+## 8. 제약 사항
 
-### 8.1 Performance
+### 8.1 성능
 
 Thinking Tool는 reasoning을 생성하므로 다음이 발생할 수 있습니다:
 
@@ -178,7 +179,7 @@ Thinking Tool는 reasoning을 생성하므로 다음이 발생할 수 있습니�
 * 토큰 사용량 증가
 * 출력 결과가 길어짐
 
-### 8.2 Not Needed For
+### 8.2 필요하지 않은 케이스
 
 * 단순 질문
 * 빠른 반복 작업
@@ -186,16 +187,16 @@ Thinking Tool는 reasoning을 생성하므로 다음이 발생할 수 있습니�
 
 ***
 
-## 9. Best Practices
+## 9. 모범 사례
 
-### 9.1 When to Enable
+### 9.1 활용이 필요할 때.
 
 * 새로운 기술을 학습할 때
 * 중요한 아키텍처 결정을 검증해야 할 때
 * 복잡한 문제를 분석하거나 디버깅할 때
 * reasoning 구조를 보고 싶을 때
 
-### 9.2 When to Disable
+### 9.2 활용이 필요하지 않을 때.
 
 * 빠른 응답이 필요한 경우
 * reasoning 없이 결과만 필요할 때
@@ -209,7 +210,7 @@ Thinking Tool는 reasoning을 생성하므로 다음이 발생할 수 있습니�
 
 ***
 
-## 10. Troubleshooting
+## 10. 트러블슈팅
 
 ### Thinking이 보이지 않는 경우
 
@@ -233,10 +234,3 @@ kiro-cli settings chat.enableThinking false
 
 * “간단히 설명해줘” 또는 “short version” 요청
 
-***
-
-## 11. Related Features
-
-* Tangent Mode — reasoning 보조 질문을 분리된 대화로 진행
-* TODO Lists — planning reasoning을 구조화해 action items로 자동 변환
-* Experimental Features — Thinking Tool 포함 실험 기능 전체 관리
