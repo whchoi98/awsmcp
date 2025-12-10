@@ -2,7 +2,7 @@
 description: 'update : 2025.12.07'
 ---
 
-# VSCode 서버 구성하기
+# LAB 0. VSCode 서버 구성하기
 
 ## 1. VSCode Server 기반 실습 환경 구축 가이드 <a href="#vscode-server-eks" id="vscode-server-eks"></a>
 

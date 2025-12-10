@@ -30,7 +30,7 @@
     * [TODO Lists](kiro-cli/undefined/todo-lists.md)
     * [Thinking Tool](kiro-cli/undefined/thinking-tool.md)
     * [Delegate](kiro-cli/undefined/delegate.md)
-  * [LAB 0. VSCode 서버 구성하기](kiro-cli/lab-0.-vscode.md)
+  * [LAB 0. VSCode 서버 구성하기](kiro-cli/vscode.md)
   * [LAB 1 . Kiro CLI 초기 구축 및 사용](kiro-cli/lab-1-.-kiro-cli.md)
   * [LAB 2. Kiro CLI 고급 구성](kiro-cli/lab-2.-kiro-cli.md)
   * [LAB 3. Kiro CLI Part 1](kiro-cli/lab-3.-kiro-cli-part-1.md)

@@ -58,8 +58,8 @@ Kiro CLI 에 별도의 프로파일과 컨텍스트를 설계하지 않았다면
 아래와 같이 Global 환경의 Context를 작성해 봅니다.
 
 ```
-mkdir ~/.amazonq/rules/
-cat > ~/.amazonq/rules/AmazonQ.md << 'EOF'
+mkdir ~/.kiro/steering/
+cat > ~/.kiro/steering/AGENTS.md << 'EOF'
 ## 1. 역할 및 전문성 정의
 기본 리전은 ap-northeast-2 입니다.
 당신은 10년 경력의 AWS 솔루션 아키텍트입니다. 
@@ -134,23 +134,21 @@ EOF
 출력 예시
 
 ```
-/context show
-
 > /context show
 
+Agent (kiro_default)
+  - AmazonQ.md (no matches)
+  - AGENTS.md (no matches)
+  - README.md (no matches)
+  - /home/ec2-user/.kiro/steering/**/*.md /home/ec2-user/.kiro/steering/AGENTS.md
 
-🌍 global:
-    .amazonq/rules/**/*.md (1 match)
-    README.md 
-    AmazonQ.md 
+Session (temporary)
+  <none>
 
-👤 profile (default):
-    <none>
+1 matched file in use
+- /home/ec2-user/.kiro/steering/AGENTS.md (0.4% of context window)
 
-1 matched file in use:
-🌍 /home/ec2-user/.amazonq/rules/AmazonQ.md (~720 tkns)
-
-Total: ~720 tokens
+Context files total: 0.4% of context window
 ```
 
 ***
@@ -159,8 +157,8 @@ Total: ~720 tokens
 
 #### ✅ 컨텍스트 경량화 전략
 
-* 너무 많은 파일은 Q 응답 지연 유발 할 수 있습니다. 주제별 최소화 필요가 있습니다.
-* DevOps, 네트워크, 보안 등 역할별로 context 그룹 분리해서 활용하는 방안을 고려합니다.
+* 너무 많은 파일은 Kiro CLI 응답 지연 유발 할 수 있습니다. 주제별 최소화 필요가 있습니다.
+* DevOps, 네트워크, 보안 등 역할별로 Steering 파일을 분리해서 활용하는 방안을 고려합니다.
 
 #### ✅ 운영 기준 문서화
 
