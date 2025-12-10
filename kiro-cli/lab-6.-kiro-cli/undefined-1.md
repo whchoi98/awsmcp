@@ -6,9 +6,9 @@ description: 'Update : 2025.07.22 / 20min'
 
 ***
 
-## 1. Amazon Q CLI 기반 네트워크 운영 진단 랩
+## 1. Kiro CLI 기반 네트워크 운영 진단 랩
 
-본 랩은 실제 운영 환경에서 발생 가능한 네트워크 문제를 Amazon Q CLI를 통해 진단하고, 실시간으로 문제 원인을 파악하여 해결책을 제시하는 실습입니다. 인프라 운영, 보안, SRE 관점의 다양한 케이스를 포함하고 있으며, 이미 배포된 AWS 환경을 기준으로 진행됩니다.
+본 랩은 실제 운영 환경에서 발생 가능한 네트워크 문제를 Kiro CLI를 통해 진단하고, 실시간으로 문제 원인을 파악하여 해결책을 제시하는 실습입니다. 인프라 운영, 보안, SRE 관점의 다양한 케이스를 포함하고 있으며, 이미 배포된 AWS 환경을 기준으로 진행됩니다.
 
 ***
 
@@ -188,27 +188,27 @@ network 운영자를 위한 프로파일을 생성합니다.
 출력 예시:
 
 ```
-[ec2ops] > /context show
+[netops] 38% > /context add ~/.kiro/steering/netops.md
 
 
-🌍 global:
-[netops] > /context show
+Added 1 path(s) to context.
+Note: Context modifications via slash command is temporary.
 
 
-🌍 global:
-    .amazonq/rules/**/*.md (1 match)
-    README.md 
-    AmazonQ.md 
 
-👤 profile (netops):
-    ~/projects/netops/rules/netops.md (1 match)
+[netops] 38% > /context show
 
-2 matched files in use:
-🌍 /home/ec2-user/.amazonq/rules/AmazonQ.md (~720 tkns)
-👤 /home/ec2-user/projects/netops/rules/netops.md (~1200 tkns)
+Agent (netops)
+  - AGENTS.md (no matches)
+  - README.md (no matches)
 
-Total: ~1920 tokens
+Session (temporary)
+  /home/ec2-user/.kiro/steering/netops.md
 
+1 matched file in use
+- /home/ec2-user/.kiro/steering/netops.md (0.6% of context window)
+
+Context files total: 0.6% of context window
 ```
 
 ### 1.3. Step2: 현재 네트워크를 상세하게 분석하기&#x20;
@@ -350,7 +350,7 @@ DMZVPC NAT Gateway CloudWatch 메트릭을 분석하고 해줘.
 
 **🔧 상황 만들기:**  EC2 Stop
 
-새로운 Q CLI 채팅창 (default 프로파일) 에서 자연어를 입력합니다.
+새로운 Kiro CLI 채팅창 (default 프로파일) 에서 자연어를 입력합니다.
 
 💬 장애 상황 프롬프트 예시:&#x20;
 
