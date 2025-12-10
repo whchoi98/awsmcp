@@ -27,10 +27,7 @@ description: 'Update : 2025.07.22 / 20min'
 ✅  네트워크 운영자를 위한 Profile과 Context를 구성해 봅니다.
 
 ````
-mkdir ~/projects
-mkdir ~/projects/netops
-mkdir ~/projects/netops/rules
-cat > ~/projects/netops/rules/netops.md << 'EOF'
+cat > ~/.kiro/steering/netops.md << 'EOF'
 ## Cloud Network Infrastructure Operations Specialist
 
 ## 1. 역할 및 전문성 정의 (Role & Expertise Definition)
@@ -169,13 +166,17 @@ EOF
 network 운영자를 위한 프로파일을 생성합니다.
 
 ```bash
-/profile create netops
+/agent create -n netops
 ```
 
 앞서 생성한 EC2 운영자를 위한 context를 ec2ops 프로파일에 연결 구성합니다.
 
 ```
-/context add ~/projects/netops/rules/netops.md
+/agent swap netops
+```
+
+```
+/context add ~/.kiro/steering/netops.md
 ```
 
 아래 명령을 통해서 정상적으로 context가 입력되었는지 확인합니다.
