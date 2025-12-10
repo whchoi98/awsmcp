@@ -2,7 +2,7 @@
 description: 'Update : 2025.12.0'
 ---
 
-# LAB 01 . Kiro CLI 초기 구축 및 사용
+# LAB 1 . Kiro CLI 초기 구축 및 사용
 
 ## Kiro CLI 초기 구축 및 사용
 
@@ -74,6 +74,12 @@ curl --proto '=https' --tlsv1.2 -sSf \
 unzip kirocli.zip
 ```
 
+설치 스크립트 쉘 시작
+
+```
+./kirocli/install.sh
+```
+
 ***
 
 ## 4. Kiro CLI 로그인 절차
@@ -85,6 +91,8 @@ unzip kirocli.zip
 ***
 
 ### 4.1 CLI에서 로그인 시작
+
+또는 아래 명령어로 로그인을 시작합니다.
 
 ```
 kiro-cli login --use-device-flow

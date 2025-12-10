@@ -233,7 +233,7 @@ Session (temporary)
 1. 다음 내용을 가진 tmp-context.md 파일 생성:
 
 ```
-cat << EOF > ~/tmp-context.md
+cat << EOF > ~/kiro-cli-workshop/tmp-context.md
 당신은 파이썬(Python) 으로 코드를 작성하는 것을 좋아합니다.
 플라스크(Flask) 웹 애플리케이션 프레임워크(web application framework)를 선호합니다.
 공백(space) 대신 탭(tab) 을 사용합니다.
@@ -264,12 +264,17 @@ Agent (kiro_default)
   - README.md (no matches)
 
 Session (temporary)
-  /home/ec2-user/tmp-context.md
+  <none>
 
-1 matched file in use
-- /home/ec2-user/tmp-context.md (0.0% of context window)
+No files in the current directory matched the rules above.
 
-Context files total: 0.0% of context window
+
+
+> /context add tmp-context.md
+
+
+Added 1 path(s) to context.
+Note: Context modifications via slash command is temporary.
 ```
 
 ***
@@ -281,18 +286,6 @@ Context files total: 0.0% of context window
 * 세션 컨텍스트는 임시적이며 `/context add` 로 추가 가능합니다.
 * `/context` 명령으로 전체 컨텍스트 윈도우의 토큰 사용량을 확인할 수 있습니다.
 * 과도한 컨텍스트는 오히려 품질을 낮출 수 있으므로 적절한 관리가 필수적입니다.
-
-***
-
-아래는 \*\*섹션 14(Compacting)\*\*을 원문을 최대한 유지하면서,
-
-고급 비즈니스 한국어 + 기술용어 한영 병기,
-
-GitBook 스타일로 정제한 버전입니다.
-
-<br>
-
-이전 섹션 13에서 사용한 스타일과 100% 동일하게 맞추었습니다.
 
 ***
 
