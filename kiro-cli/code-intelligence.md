@@ -53,7 +53,7 @@ Kiro CLI는 백그라운드에서 LSP 서버 프로세스(Language Server Proces
 
        를 분석·인덱싱
 5. 사용자가 자연어로 질문하면:
-   * Kiro가 이를 \*\*LSP 요청(LSP Request)\*\*으로 변환
+   * Kiro가 이를 LSP 요청(LSP Request)\*으로 변환
    * 관련 서버에 전달
    * 결과를 사람이 읽기 쉬운 형태로 가공하여 출력
 
