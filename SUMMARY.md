@@ -24,6 +24,7 @@
   * [Steering](kiro-cli/steering.md)
   * [Hook](kiro-cli/hook.md)
   * [Auto Complete](kiro-cli/auto-complete.md)
+  * [Code Intelligence](kiro-cli/code-intelligence.md)
   * [실험적 기능](kiro-cli/undefined/README.md)
     * [Knowledge Management](kiro-cli/undefined/knowledge-management.md)
     * [Tangent Mode](kiro-cli/undefined/tangent-mode.md)
