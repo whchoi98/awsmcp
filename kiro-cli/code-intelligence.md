@@ -133,7 +133,7 @@ Available LSPs:
 #### 예제 1: 심볼 찾기 (Find Symbol)
 
 ```
-> Find the UserRepository class
+> UserRepository 클래스(class)를 찾아줘.
 ```
 
 출력 예시:
@@ -145,31 +145,31 @@ Available LSPs:
 #### 예제 2: 참조 찾기 (Find References)
 
 ```
-> Find references of Person class
+> Person 클래스(class)에 대한 참조(references)를 찾아줘.
 ```
 
 #### 예제 3: 정의로 이동 (Go to Definition)
 
 ```
-> Find the definition of UserService
+> UserService 정의를 찾아줘.
 ```
 
 #### 예제 4: 파일 내 심볼 조회 (Get File Symbols)
 
 ```
-> What symbols are in auth.service.ts?
+> auth.service.ts 파일에 어떤 심볼이 들어 있나요?
 ```
 
 #### 예제 5: 리네임 미리보기 (Rename – Dry Run)
 
 ```
-> Dry run: rename the method "FetchUser" to "fetchUserData"
+> Dry run: 메서드(method) 이름 “FetchUser”를 “fetchUserData”로 변경해줘.
 ```
 
 #### 예제 6: 진단 정보 조회 (Diagnostics)
 
 ```
-> Get diagnostics for main.ts
+> main.ts에 대한 진단 정보(diagnostics)를 가져와
 ```
 
 5\. 커스텀 언어 서버 설정 (Custom Language Servers)<br>
