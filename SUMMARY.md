@@ -19,6 +19,7 @@
     * [에이전트 예시](kiro-cli/custom-agents/undefined-2.md)
     * [Custom Agents 트러블슈팅](kiro-cli/custom-agents/custom-agents.md)
   * [MCP](kiro-cli/mcp/README.md)
+    * [Configuration](kiro-cli/mcp/configuration.md)
     * [MCP 예시](kiro-cli/mcp/mcp.md)
     * [Security](kiro-cli/mcp/security.md)
   * [Steering](kiro-cli/steering.md)
