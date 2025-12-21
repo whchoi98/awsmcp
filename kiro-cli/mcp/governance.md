@@ -2,7 +2,7 @@
 description: 'Update : 2025.12.20'
 ---
 
-# Governancege
+# Governance
 
 ## 1. Governance
 
