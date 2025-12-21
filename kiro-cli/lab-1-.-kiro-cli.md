@@ -271,8 +271,13 @@ Kiro CLI는 사용자의 모든 입력 기록을 다음 파일에 저장합니�
 ## 10. CLI 사용 편의를 위한 Alias 구성
 
 ```
-alias k='kiro-cli'
-alias kh='cat ~/.kiro/.cli_bash_history'
+k() {
+  command kiro-cli "$@"
+}
+
+kh() {
+  cat ~/.kiro/.cli_bash_history 2>/dev/null
+}
 ```
 
 * k → Kiro CLI 실행 단축
