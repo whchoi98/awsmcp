@@ -22,6 +22,7 @@
     * [Configuration](kiro-cli/mcp/configuration.md)
     * [MCP 예시](kiro-cli/mcp/mcp.md)
     * [Security](kiro-cli/mcp/security.md)
+    * [Governancege](kiro-cli/mcp/governancege.md)
   * [Steering](kiro-cli/steering.md)
   * [Hook](kiro-cli/hook.md)
   * [Auto Complete](kiro-cli/auto-complete.md)
